@@ -12,10 +12,8 @@ public class MoveBetweenTwoDots : MonoBehaviour
     [Range(0,10)]
     [SerializeField] private float moveDuration;
 
-
     [Header("На сколько объект задерживается при достижении точки")]
     [SerializeField] private float delayWhenPointReached;
-
 
     private void Start()
     {
