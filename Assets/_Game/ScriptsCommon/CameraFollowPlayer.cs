@@ -10,6 +10,8 @@ public class CameraFollowPlayer : MonoBehaviour
     [Header("ќфсет по вертикали относительно цели")]
     [SerializeField] private float yOffset;
 
+    [SerializeField] private float followSpeed;
+
     private Vector3 _currentTargetPosition;
 
     void Update()
@@ -20,6 +22,6 @@ public class CameraFollowPlayer : MonoBehaviour
 
         _currentTargetPosition.y += yOffset;
 
-        transform.position = Vector3.Lerp(transform.position, _currentTargetPosition, Time.deltaTime);
+        transform.position = Vector3.Lerp(transform.position, _currentTargetPosition, Time.deltaTime * followSpeed);
     }
 }

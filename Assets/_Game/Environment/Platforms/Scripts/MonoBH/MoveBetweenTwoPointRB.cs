@@ -2,7 +2,7 @@ using System.Collections;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody))]
-public class MoveBetweenTwoPointRB : MonoBehaviour
+public class MoveBetweenTwoPointRB : MonoBehaviour, IMovingPlatform
 {
     [Header("-----      Настройки      -----")]
     [Header("Точки, между которыми движется пивот объекта")]

@@ -2,8 +2,11 @@ using System;
 using System.Collections;
 using UnityEngine;
 
-public class MoveBetweenTwoDots : MonoBehaviour
+public class MoveBetweenTwoDots : MonoBehaviour, IMovingPlatform
 {
+    [Header("Двигаемый объект")]
+    [SerializeField] private Transform transformToMove;
+
     [Header("Точки, между которыми движется пивот объекта")]
     [SerializeField] private Transform firstPoint;
     [SerializeField] private Transform secondPoint;
@@ -33,7 +36,7 @@ public class MoveBetweenTwoDots : MonoBehaviour
             {
                 estimatedTime += Time.deltaTime;
 
-                transform.position = Vector3.Lerp(currentStart, currentFinish, estimatedTime / moveDuration);
+                transformToMove.position = Vector3.Lerp(currentStart, currentFinish, estimatedTime / moveDuration);
 
                 yield return null;
             }
