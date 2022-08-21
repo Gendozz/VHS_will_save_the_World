@@ -2,41 +2,50 @@ using System;
 using System.Collections;
 using UnityEngine;
 
-public class MoveBetweenTwoDots : MonoBehaviour, IMovingPlatform
+public class MoveBetweenTwoDots : MonoBehaviour, IMovingPlatform, IActivated
 {
     [Header("Двигаемый объект")]
-    [SerializeField] private Transform transformToMove;
+    [SerializeField] private Transform _transformToMove;
 
     [Header("Точки, между которыми движется пивот объекта")]
-    [SerializeField] private Transform firstPoint;
-    [SerializeField] private Transform secondPoint;
+    [SerializeField] private Transform _firstPoint;
+    [SerializeField] private Transform _secondPoint;
 
     [Header("Время полного пути между точками")]
     [Range(0,10)]
-    [SerializeField] private float moveDuration;
+    [SerializeField] private float _moveDuration;
 
     [Header("На сколько объект задерживается при достижении точки")]
-    [SerializeField] private float delayWhenPointReached;
+    [SerializeField] private float _delayWhenPointReached;
+
+    [Header("Активировать при старте?")]
+    [SerializeField] private bool _toActivateOnStart = true;
+
+    private bool isActive;
 
     private void Start()
     {
-        StartCoroutine(Move());
+        if (_toActivateOnStart)
+        {
+            StartCoroutine(Move());
+        }
+        
     }
 
     private IEnumerator Move()
     {
-        Vector3 currentStart = firstPoint.position;
-        Vector3 currentFinish = secondPoint.position;
+        Vector3 currentStart = _firstPoint.position;
+        Vector3 currentFinish = _secondPoint.position;
 
         while (true)
         {
             float estimatedTime = 0;
 
-            while (estimatedTime < moveDuration)
+            while (estimatedTime < _moveDuration)
             {
                 estimatedTime += Time.deltaTime;
 
-                transformToMove.position = Vector3.Lerp(currentStart, currentFinish, estimatedTime / moveDuration);
+                _transformToMove.position = Vector3.Lerp(currentStart, currentFinish, estimatedTime / _moveDuration);
 
                 yield return null;
             }
@@ -45,7 +54,12 @@ public class MoveBetweenTwoDots : MonoBehaviour, IMovingPlatform
             currentStart = currentFinish;
             currentFinish = temp;
 
-            yield return new WaitForSeconds(delayWhenPointReached);
+            yield return new WaitForSeconds(_delayWhenPointReached);
         }       
+    }
+
+    public void Activate()
+    {
+        StartCoroutine(Move());
     }
 }

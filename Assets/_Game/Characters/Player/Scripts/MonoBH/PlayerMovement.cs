@@ -11,22 +11,34 @@ public class PlayerMovement : MonoBehaviour
     [Header("Динамика изменения горизонтальной скорости от времени нажатия клавиши")]
     [SerializeField] private AnimationCurve _speedCurve;
 
-    [Header("Сила прыжка")]
-    [Range(5, 10)]
-    [SerializeField] private float _jumpForce;
-
-    [Header("Сила отскока от стены")]
-    [SerializeField] private float _wallJumpForce;
-
-    [Header("Продолжительность блокировки после рыжка от стены")]
-    [SerializeField] private float _stopMoveAfterWallJumpDelay;
+    [Header("Слой, который считать землёй")]
+    [SerializeField] private LayerMask _groundLayer;
 
     [Header("Модификатор гравитации при падении")]
     [Range(1, 8)]
-    [SerializeField] private float _fallGravityMultilier;
+    [SerializeField] private float _fallGravityMultiplier;
 
-    [Header("Слой, который считать землёй")]
-    [SerializeField] private LayerMask _groundLayer;
+    [Header("ДЛЯ ТЕСТА --- Есть ли способность ко второму прыжку?")]
+    [SerializeField] private bool _haveDoubleJumpAbility = false;            // Temp imitation of switching-on/off double jump ability
+
+    [Header("Сила прыжка вверх от земли")]
+    [Range(5, 10)]
+    [SerializeField] private float _jumpForce;
+
+    [Header("Слой, который считать стеной")]
+    [SerializeField] private LayerMask _wallLayer;
+
+    [Header("Скорость скольжения по стене")]
+    [SerializeField] private float _wallSlideGravityVelocity;
+
+    [Header("Сила отскока от стены")]
+    [SerializeField] private float _wallJumpSideForce;
+
+    [Header("Сила прыжка вверх от стены")]
+    [SerializeField] private float _wallJumpUpForce;
+
+    [Header("Продолжительность блокировки после рыжка от стены")]
+    [SerializeField] private float _afterWallJumpBlockMovementDuration;
 
     [Space]
     [Header("-----      Компоненты и системные     -----")]
@@ -41,7 +53,10 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float _groundCheckRadius;
 
     [Header("Расстояние вбок от пивота персонажа, в которой детектятся стены")]
-    [SerializeField] private Vector3 _wallCheckBoxSize;
+    [SerializeField] private Vector3 _wallCheckBoxHalfSize;
+
+    [Header("Длительность блокировки детекта стен после прыжка от стены")]
+    [SerializeField] private float _blockWallDetectionDuration;
 
     // Ground relative
     public bool IsGrounded { get; private set; } = false;
@@ -52,7 +67,13 @@ public class PlayerMovement : MonoBehaviour
 
     private float _horizontalInputTreshold = 0.1f;
 
-    private bool _isHorizontalMove = false;
+    // Jump relative
+
+    public bool HaveDoubleJumpAbility { get { return _haveDoubleJumpAbility; } private set { } }        // TODO: To refactor after implement double jump ability
+
+    private bool _isJumpInput;
+
+    private bool _canDoubleJump;
 
     // Wall jump relative
 
@@ -62,8 +83,15 @@ public class PlayerMovement : MonoBehaviour
 
     private int _offTheWallDirection = 0;
 
+    private bool _shoudDetectWall = true;
+
+
     // Common
     private bool _canMove = true;
+
+    private Coroutine _blockMovementRoutine = null;
+
+    private bool _isBlockMovementRoutineStillWorking = false;
 
 
     private void Awake()
@@ -74,67 +102,104 @@ public class PlayerMovement : MonoBehaviour
 
     private void Update()
     {
-        if (_canMove)
-        {
-            WaitWhenShouldMove();
+        ModifyGravityDependingOnPlayerStatus();
 
-            WaitWhenShouldJump();
-        }
+        SetIsJumpInput();
 
-        ChangeGravityIfFalling();
-    }
-    private void WaitWhenShouldMove()
-    {
-        if (Mathf.Abs(_playerInput.HorizontalDirection) > _horizontalInputTreshold)
-        {
-            _isHorizontalMove = true;
-        }
-        else
-        {
-            _isHorizontalMove = false;
-        }
     }
 
-    private void WaitWhenShouldJump()
+    private void ModifyGravityDependingOnPlayerStatus()
     {
-        if (_playerInput.IsJumpButtonPressed)
-        {
-            if (IsGrounded)
-            {
-                Debug.Log("Jump");
-                Jump();
-            }
-            else if (IsOnWall && !IsGrounded)
-            {
-                Debug.Log("Wall jump in direction " + _offTheWallDirection);
-                WallJump();
-            }
-        }
-    }
 
-    private void ChangeGravityIfFalling()
-    {
         if (_rigidbody.velocity.y < 0)
         {
-            _rigidbody.velocity += transform.up * Physics.gravity.y * (_fallGravityMultilier - 1) * Time.deltaTime;
+            if (IsOnWall)
+            {
+
+                //_rigidbody.velocity += transform.up * Physics.gravity.y * (_wallSlideGravityMultiplier - 1) * Time.deltaTime; // Uncomment this and comment next line If no need to decrease speed on slide start when fall velocity is big
+                _rigidbody.velocity = new Vector3(_rigidbody.velocity.x, Mathf.Clamp(_rigidbody.velocity.y, -_wallSlideGravityVelocity, float.MaxValue), _rigidbody.velocity.y);
+
+                return;
+            }
+            _rigidbody.velocity += transform.up * Physics.gravity.y * (_fallGravityMultiplier - 1) * Time.deltaTime;
+        }
+    }
+
+    private void SetIsJumpInput()
+    {
+        if (_playerInput.IsJumpButtonPressed && _canMove)
+        {
+            _isJumpInput = true;
         }
     }
 
     private void FixedUpdate()
     {
+
         CheckGround();
 
-        CheckWall();
-
-        if (_isHorizontalMove && _canMove)
+        if (_shoudDetectWall)
         {
-            MoveToDirection(_playerInput.HorizontalDirection);
+            CheckWall();
+        }
+
+        if (_canMove)
+        {
+            ApplyInputToHorizontalMovement();
+
+            ApplyInputToJump();
         }
     }
 
-    private void MoveToDirection(float direction)
+
+    private void ApplyInputToJump()
     {
-        _rigidbody.velocity = new Vector3(_speedCurve.Evaluate(direction), _rigidbody.velocity.y, _rigidbody.velocity.z);
+        switch (_haveDoubleJumpAbility)
+        {
+            case false:
+                if (_isJumpInput)
+                {
+                    if (IsGrounded)
+                    {
+                        Jump();
+                    }
+                    else if (IsOnWall)
+                    {
+                        WallJump();
+                    }
+                }
+                break;
+            case true:
+                if (_isJumpInput)
+                {
+                    if (IsGrounded)
+                    {
+                        Jump();
+                        _canDoubleJump = true;
+                    }
+                    else if (IsOnWall)
+                    {
+                        WallJump();
+                        _canDoubleJump = true;
+                    }
+                    else if (_canDoubleJump)
+                    {
+                        Jump();
+                        _canDoubleJump = false;
+                    }
+                }
+                break;
+        }
+        
+        _isJumpInput = false;
+    }
+
+    private void ApplyInputToHorizontalMovement()
+    {
+        if (Mathf.Abs(_playerInput.HorizontalDirection) > _horizontalInputTreshold)
+        {
+            _rigidbody.velocity = new Vector3(_speedCurve.Evaluate(_playerInput.HorizontalDirection), _rigidbody.velocity.y, _rigidbody.velocity.z);
+        }
     }
 
     private void Jump()
@@ -145,8 +210,16 @@ public class PlayerMovement : MonoBehaviour
     private void WallJump()
     {
         _rigidbody.velocity = Vector3.zero;
-        StartCoroutine(BlockMovementOnSeconds(_stopMoveAfterWallJumpDelay));
-        _rigidbody.velocity = new Vector3(_wallJumpForce * _offTheWallDirection, _jumpForce, _rigidbody.velocity.z);
+        _shoudDetectWall = false;
+        StartCoroutine(RestoreWallDetection(_blockWallDetectionDuration));
+        _blockMovementRoutine = StartCoroutine(BlockMovementOnSeconds(_afterWallJumpBlockMovementDuration));
+        _rigidbody.velocity = new Vector3(_wallJumpSideForce * _offTheWallDirection, _wallJumpUpForce, _rigidbody.velocity.z);
+    }
+
+    private IEnumerator RestoreWallDetection(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        _shoudDetectWall = true;
     }
 
     private void CheckGround()
@@ -156,18 +229,37 @@ public class PlayerMovement : MonoBehaviour
 
     private void CheckWall()
     {
-        IsOnWall = Physics.OverlapBoxNonAlloc(transform.position + transform.up, _wallCheckBoxSize, _wallCollider, Quaternion.identity, _groundLayer) > 0;
+        IsOnWall = Physics.OverlapBoxNonAlloc(transform.position + transform.up, _wallCheckBoxHalfSize, _wallCollider, Quaternion.identity, _wallLayer) > 0;
 
         if (IsOnWall)
         {
-            _offTheWallDirection = _wallCollider[0].transform.position.x - transform.position.x > 0 ? -1 : 1;
+            _offTheWallDirection = MathF.Sign(transform.position.x - _wallCollider[0].transform.position.x);
+
+            // For the case when jump from another wall and still blocking moving
+            if (_isBlockMovementRoutineStillWorking)
+            {
+                InterruptBlockMovementRoutine();
+            }
         }
     }
 
     private IEnumerator BlockMovementOnSeconds(float seconds)
     {
+        _isBlockMovementRoutineStillWorking = true;
+
         _canMove = false;
+
         yield return new WaitForSeconds(seconds);
+
+        _canMove = true;
+
+        _isBlockMovementRoutineStillWorking = false;
+    }
+
+    private void InterruptBlockMovementRoutine()
+    {
+        StopCoroutine(_blockMovementRoutine);
+        _isBlockMovementRoutineStillWorking = false;
         _canMove = true;
     }
 
@@ -179,7 +271,7 @@ public class PlayerMovement : MonoBehaviour
 
         // Box that detects walls
         Gizmos.color = Color.blue;
-        Gizmos.DrawWireCube(transform.position + transform.up, _wallCheckBoxSize * 2);
+        Gizmos.DrawWireCube(transform.position + transform.up, _wallCheckBoxHalfSize * 2);
     }
 }
 

@@ -9,7 +9,11 @@ public class CameraFollowPlayer : MonoBehaviour
 
     [Header("Офсет по вертикали относительно цели")]
     [SerializeField] private float yOffset;
+    
+    [Header("Отдаление от цели от")]
+    [SerializeField] private float zOffset;
 
+    [Header("Скорость слежения")]
     [SerializeField] private float followSpeed;
 
     private Vector3 _currentTargetPosition;
@@ -18,7 +22,7 @@ public class CameraFollowPlayer : MonoBehaviour
     {
         _currentTargetPosition = target.transform.position;
 
-        _currentTargetPosition.z = -10f;
+        _currentTargetPosition.z += zOffset;
 
         _currentTargetPosition.y += yOffset;
 

@@ -2,16 +2,17 @@ using UnityEngine;
 
 public class ParentToMovingPlatform : MonoBehaviour
 {
+    [Header("‘изическое тело объекта")]
     [SerializeField] private Rigidbody _rigidbody;
 
+    [Header("—сылка PlayerMovement")]
     [SerializeField] private PlayerMovement _playerMovement;
 
-
-    private Transform originParent;
+    private Transform _originParent;
 
     private void Awake()
     {
-        originParent = transform.parent;
+        _originParent = transform.parent;
         _rigidbody = GetComponent<Rigidbody>();
     }
 
@@ -29,7 +30,7 @@ public class ParentToMovingPlatform : MonoBehaviour
     {
         if (collision.gameObject.TryGetComponent<IMovingPlatform>(out IMovingPlatform movingPlatform))
         {
-            transform.parent = originParent;
+            transform.parent = _originParent;
             _rigidbody.interpolation = RigidbodyInterpolation.Interpolate;
         }
     }
