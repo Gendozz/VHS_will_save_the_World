@@ -28,8 +28,7 @@ public class MoveBetweenTwoDots : MonoBehaviour, IMovingPlatform, IActivated
         if (_toActivateOnStart)
         {
             StartCoroutine(Move());
-        }
-        
+        }        
     }
 
     private IEnumerator Move()

@@ -93,6 +93,8 @@ public class PlayerMovement : MonoBehaviour
 
     private bool _isBlockMovementRoutineStillWorking = false;
 
+    private bool _isGrappling = false;
+
 
     private void Awake()
     {
@@ -110,8 +112,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void ModifyGravityDependingOnPlayerStatus()
     {
-
-        if (_rigidbody.velocity.y < 0)
+        if (_rigidbody.velocity.y < 0 && !_isGrappling)
         {
             if (IsOnWall)
             {
@@ -190,7 +191,7 @@ public class PlayerMovement : MonoBehaviour
                 }
                 break;
         }
-        
+
         _isJumpInput = false;
     }
 
@@ -262,6 +263,20 @@ public class PlayerMovement : MonoBehaviour
         _isBlockMovementRoutineStillWorking = false;
         _canMove = true;
     }
+
+    public void ChangeMovementParamsOnStartGrappling()
+    {
+        _isGrappling = true;
+        //_rigidbody.drag = 0.5f;
+    }
+
+    public void RestoreMovementParamsOnStartGrappling()
+    {
+        _isGrappling = false;
+        _rigidbody.drag = 0f;
+    }
+
+
 
     private void OnDrawGizmos()
     {

@@ -8,6 +8,7 @@ public class StringConsts
     public const string HORIZONTAL_AXIS = "Horizontal";
     public const string VERTICAL_AXIS = "Vertical";
     public const string JUMP = "Jump";
+    public const string GRAPPLE_HOOK = "Q";         // Change after joystick adding
 
     // Currently unused
     public const string ATTACK = "Fire1";
