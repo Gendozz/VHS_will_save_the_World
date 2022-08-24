@@ -37,8 +37,19 @@ public class PlayerMovement : MonoBehaviour
     [Header("Сила прыжка вверх от стены")]
     [SerializeField] private float _wallJumpUpForce;
 
-    [Header("Продолжительность блокировки после рыжка от стены")]
+    [Header("Продолжительность блокировки после прыжка от стены")]
     [SerializeField] private float _afterWallJumpBlockMovementDuration;
+    
+    [Space]
+    [Header("-----      Взаимодействие с ловушкой      -----")]
+    [Header("Продолжительность блокировки после контакта с ловушкой")]
+    [SerializeField] private float _afterGotTrappedBlockMovementDuration;
+
+    [Header("Сила отталкивания вверх при контакте с ловушкой")]
+    [SerializeField] private float _forceYOnTrapContact;
+    
+    [Header("Сила отталкивания вбок при контакте с ловушкой")]
+    [SerializeField] private float _forceXOnTrapContact;
 
     [Space]
     [Header("-----      Компоненты и системные     -----")]
@@ -267,16 +278,20 @@ public class PlayerMovement : MonoBehaviour
     public void ChangeMovementParamsOnStartGrappling()
     {
         _isGrappling = true;
-        //_rigidbody.drag = 0.5f;
     }
 
     public void RestoreMovementParamsOnStartGrappling()
     {
         _isGrappling = false;
-        _rigidbody.drag = 0f;
     }
 
-
+    public void ApplyExternalForce(Vector3 fromPosition)
+    {
+        StartCoroutine(BlockMovementOnSeconds(_afterGotTrappedBlockMovementDuration));
+        _rigidbody.velocity = Vector3.zero;
+        float forceDirection = Mathf.Sign(transform.position.x - fromPosition.x);
+        _rigidbody.velocity = new Vector3(forceDirection * _forceXOnTrapContact, _forceYOnTrapContact, _rigidbody.velocity.z);
+    }
 
     private void OnDrawGizmos()
     {

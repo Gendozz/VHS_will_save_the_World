@@ -2,7 +2,7 @@ using System;
 using System.Collections;
 using UnityEngine;
 
-public class MoveBetweenTwoDots : MonoBehaviour, IMovingPlatform, IActivated
+public class MoveBetweenTwoDots : MonoBehaviour, IMovingPlatform, IActivatable
 {
     [Header("Двигаемый объект")]
     [SerializeField] private Transform _transformToMove;
@@ -21,7 +21,15 @@ public class MoveBetweenTwoDots : MonoBehaviour, IMovingPlatform, IActivated
     [Header("Активировать при старте?")]
     [SerializeField] private bool _toActivateOnStart = true;
 
-    private bool isActive;
+    [Header("Ограничить количество повторений движения?")]
+    [SerializeField] private bool _toLimitAmountOfIterations;
+
+    [Header("Количество движений в 1 сторону (если включено ограничение)")]
+    [SerializeField] private int _amountOfItereations;
+
+    private int _currentAmountOfIterations;
+
+    private bool _isActive;
 
     private void Start()
     {
@@ -33,8 +41,10 @@ public class MoveBetweenTwoDots : MonoBehaviour, IMovingPlatform, IActivated
 
     private IEnumerator Move()
     {
+        _isActive = true;
         Vector3 currentStart = _firstPoint.position;
         Vector3 currentFinish = _secondPoint.position;
+        _currentAmountOfIterations = _amountOfItereations;
 
         while (true)
         {
@@ -53,12 +63,27 @@ public class MoveBetweenTwoDots : MonoBehaviour, IMovingPlatform, IActivated
             currentStart = currentFinish;
             currentFinish = temp;
 
+            
+            if (_toLimitAmountOfIterations)
+            {
+                _currentAmountOfIterations--;
+            }
+
+            if(_currentAmountOfIterations <= 0)
+            {
+                _isActive = false;
+                yield break;
+            }
             yield return new WaitForSeconds(_delayWhenPointReached);
+
         }       
     }
 
     public void Activate()
     {
-        StartCoroutine(Move());
+        if (!_isActive)
+        {
+            StartCoroutine(Move()); 
+        }
     }
 }
