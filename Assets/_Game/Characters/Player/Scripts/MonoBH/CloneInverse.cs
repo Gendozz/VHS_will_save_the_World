@@ -27,7 +27,6 @@ public class CloneInverse : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.E) && _isAbleToActivateClone && _isAbilityReady)
         {
-            Debug.Log("E pressed, able to activate true, ability ready");
             SwapPlayerClone(); // TODO: Temp. Make public method in Player to visualise disactivness
             _isAbilityReady = false;
             StartCoroutine(RestoreAbility());
@@ -40,7 +39,6 @@ public class CloneInverse : MonoBehaviour
         if(other.gameObject.TryGetComponent<PlayerMovement>(out PlayerMovement playerMovement))
         {
             _isAbleToActivateClone = true;
-            Debug.Log("OnTriggerEnter");
         }
     }
 
@@ -50,7 +48,6 @@ public class CloneInverse : MonoBehaviour
         if(other.gameObject.TryGetComponent<PlayerMovement>(out PlayerMovement playerMovement))
         {
             _isAbleToActivateClone = false;
-            Debug.Log("OnTriggerExit");
         }
     }
 

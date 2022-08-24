@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 6697493781531628344}
   - component: {fileID: 6697493781531628350}
   - component: {fileID: 6697493781531628346}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: PlayerClone
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -153,6 +153,9 @@ MonoBehaviour:
   _wallJumpSideForce: 6
   _wallJumpUpForce: 9
   _afterWallJumpBlockMovementDuration: 0.2
+  _afterGotTrappedBlockMovementDuration: 0
+  _forceYOnTrapContact: 0
+  _forceXOnTrapContact: 0
   _rigidbody: {fileID: 6697493781531628351}
   _playerInput: {fileID: 6697493781531628344}
   _groundCheckRadius: 0.3
@@ -181,7 +184,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6697493781961809624}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: FirePoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -214,7 +217,7 @@ GameObject:
   - component: {fileID: 6697493782515596761}
   - component: {fileID: 6697493782515596763}
   - component: {fileID: 6697493782515596762}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: GrapplingHook
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -370,7 +373,7 @@ GameObject:
   - component: {fileID: 6697493782807486925}
   - component: {fileID: 6697493782807486924}
   - component: {fileID: 6697493782807486963}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: GrapplingHookModel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -468,7 +471,7 @@ GameObject:
   - component: {fileID: 6697493783197700173}
   - component: {fileID: 6697493783197700172}
   - component: {fileID: 6697493783197700211}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Model
   m_TagString: Untagged
   m_Icon: {fileID: 0}

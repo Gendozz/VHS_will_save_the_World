@@ -42,8 +42,6 @@ public class PlayerInput : MonoBehaviour
                     HorizontalDirection = -Input.GetAxis(StringConsts.HORIZONTAL_AXIS);
                     IsGrappleButtonPressed = Input.GetKeyDown(KeyCode.R);
                     break;
-                default:
-                    break;
             }
 
         }

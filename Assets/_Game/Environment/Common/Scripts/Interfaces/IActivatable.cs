@@ -1,4 +1,4 @@
-public interface IActivated
+public interface IActivatable
 {
     public void Activate();
 }
