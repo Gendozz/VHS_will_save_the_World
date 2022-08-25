@@ -3,14 +3,18 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(BoxCollider))]
-public class CloneInverse : MonoBehaviour
+public class SwapZone : MonoBehaviour, IActivatable
 {
+    [Header("Объект игрока на сцене")]
     [SerializeField] private GameObject _player;
 
+    [Header("Объект клона на сцене")]
     [SerializeField] private GameObject _clone;
 
+    [Header("Главная камера")]
     [SerializeField] private CameraFollowPlayer _camera;
 
+    [Header("Задержка для перемены местами игрока и клона")]
     [SerializeField] private float _cooldownDelay;
 
     private bool _isAbleToActivateClone = false;
@@ -52,21 +56,21 @@ public class CloneInverse : MonoBehaviour
     }
 
     // Hard Collider represented a lever to unblock everything
-    private void OnCollisionEnter(Collision collision)
-    {
-        if(collision.gameObject.TryGetComponent<PlayerMovement>(out PlayerMovement playerMovement))
-        {
-            SwapPlayerClone();
-            Invoke(nameof(UnblockEverythingInZone), 0.1f);
-        }
-    }
+    //private void OnCollisionEnter(Collision collision)
+    //{
+    //    if(collision.gameObject.TryGetComponent<PlayerMovement>(out PlayerMovement playerMovement))
+    //    {
+    //        SwapPlayerClone();
+    //        Invoke(nameof(UnblockEverythingInZone), 0.1f);
+    //    }
+    //}
 
-    private void UnblockEverythingInZone()
-    {
-        print("Everything is unblocked");
+    //private void UnblockEverythingInZone()
+    //{
+    //    print("Everything is unblocked");
 
-        gameObject.SetActive(false);
-    }
+    //    gameObject.SetActive(false);
+    //}
 
     private void SwapPlayerClone()
     {
@@ -81,5 +85,8 @@ public class CloneInverse : MonoBehaviour
         _isAbilityReady = true;
     }
 
-
+    public void Activate()
+    {
+        SwapPlayerClone();
+    }
 }

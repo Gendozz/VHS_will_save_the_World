@@ -12,7 +12,7 @@ public class MoveBetweenTwoDots : MonoBehaviour, IMovingPlatform, IActivatable
     [SerializeField] private Transform _secondPoint;
 
     [Header("Время полного пути между точками")]
-    [Range(0,10)]
+    [Range(0, 10)]
     [SerializeField] private float _moveDuration;
 
     [Header("На сколько объект задерживается при достижении точки")]
@@ -36,7 +36,7 @@ public class MoveBetweenTwoDots : MonoBehaviour, IMovingPlatform, IActivatable
         if (_toActivateOnStart)
         {
             StartCoroutine(Move());
-        }        
+        }
     }
 
     private IEnumerator Move()
@@ -63,27 +63,25 @@ public class MoveBetweenTwoDots : MonoBehaviour, IMovingPlatform, IActivatable
             currentStart = currentFinish;
             currentFinish = temp;
 
-            
             if (_toLimitAmountOfIterations)
             {
                 _currentAmountOfIterations--;
+                if (_currentAmountOfIterations <= 0)
+                {
+                    _isActive = false;
+                    yield break;
+                }
             }
 
-            if(_currentAmountOfIterations <= 0)
-            {
-                _isActive = false;
-                yield break;
-            }
             yield return new WaitForSeconds(_delayWhenPointReached);
-
-        }       
+        }
     }
 
     public void Activate()
     {
         if (!_isActive)
         {
-            StartCoroutine(Move()); 
+            StartCoroutine(Move());
         }
     }
 }

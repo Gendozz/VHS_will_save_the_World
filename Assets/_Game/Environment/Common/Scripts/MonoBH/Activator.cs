@@ -5,8 +5,8 @@ public class Activator : MonoBehaviour
 {
     [Header("Размер зоны детекта \nнастраивается коллайдером")]
 
-    [Header("Объект, который нужно активировать")]
-    [SerializeField] private Component _iActivatedComponent;
+    [Header("Список объектов, которые нужно активировать")]
+    [SerializeField] private Component[] _iActivatedComponents;
 
     [Header("Задержка активации")]
     [SerializeField] private float _activationDelay;
@@ -19,12 +19,12 @@ public class Activator : MonoBehaviour
 
     private bool _isReady = true;
 
-    private IActivatable _activatable;
+    private IActivatable[] _activatables;
 
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.TryGetComponent<PlayerMovement>(out PlayerMovement playerMovement))
+        if (other.TryGetComponent<PlayerMovement>(out PlayerMovement playerMovement))
         {
             StartCoroutine(Activate());
         }
@@ -32,17 +32,24 @@ public class Activator : MonoBehaviour
 
     private void OnValidate()
     {
-        _activatable = _iActivatedComponent.GetComponent<IActivatable>();
-        if (_activatable == null) _iActivatedComponent = null;
+        _activatables = new IActivatable[_iActivatedComponents.Length];
+        for (int i = 0; i < _iActivatedComponents.Length; i++)
+        {
+            _activatables[i] = _iActivatedComponents[i].GetComponent<IActivatable>();
+            if (_activatables[i] == null) _iActivatedComponents[i] = null;
+        }
     }
 
     private IEnumerator Activate()
     {
         yield return new WaitForSeconds(_activationDelay);
-        _activatable.Activate();
+        foreach (var activatable in _activatables)
+        {
+            activatable.Activate();
+        }
         if (_isOneTimeUse)
         {
-            TurnOffActivator(); 
+            TurnOffActivator();
         }
     }
 
