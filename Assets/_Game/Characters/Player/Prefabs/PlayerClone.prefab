@@ -153,9 +153,9 @@ MonoBehaviour:
   _wallJumpSideForce: 6
   _wallJumpUpForce: 9
   _afterWallJumpBlockMovementDuration: 0.2
-  _afterGotTrappedBlockMovementDuration: 0
-  _forceYOnTrapContact: 0
-  _forceXOnTrapContact: 0
+  _afterGotTrappedBlockMovementDuration: 0.5
+  _forceYOnTrapContact: 6
+  _forceXOnTrapContact: 5
   _rigidbody: {fileID: 6697493781531628351}
   _playerInput: {fileID: 6697493781531628344}
   _groundCheckRadius: 0.3
