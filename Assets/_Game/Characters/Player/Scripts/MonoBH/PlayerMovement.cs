@@ -22,7 +22,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private bool _haveDoubleJumpAbility = false;            // Temp imitation of switching-on/off double jump ability
 
     [Header("Сила прыжка вверх от земли")]
-    [Range(5, 10)]
+    [Range(5, 20)]
     [SerializeField] private float _jumpForce;
 
     [Header("Слой, который считать стеной")]
