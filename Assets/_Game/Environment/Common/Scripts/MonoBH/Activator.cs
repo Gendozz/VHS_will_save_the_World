@@ -4,9 +4,9 @@ using UnityEngine;
 public class Activator : MonoBehaviour
 {
     [Header("Размер зоны детекта \nнастраивается коллайдером")]
-
+    
     [Header("Список объектов, которые нужно активировать")]
-    [SerializeField] private Component[] _iActivatedComponents;
+    [SerializeField] private GameObject[] _iActivatedComponents;
 
     [Header("Задержка активации")]
     [SerializeField] private float _activationDelay;
@@ -17,9 +17,14 @@ public class Activator : MonoBehaviour
     [Header("Активатор одноразового использования?")]
     [SerializeField] private bool _isOneTimeUse;
 
-    private bool _isReady = true;
+    //private bool _isReady = true;
 
     private IActivatable[] _activatables;
+
+    private void Awake()
+    {
+        GrabActivatables();
+    }
 
 
     private void OnTriggerEnter(Collider other)
@@ -32,12 +37,7 @@ public class Activator : MonoBehaviour
 
     private void OnValidate()
     {
-        _activatables = new IActivatable[_iActivatedComponents.Length];
-        for (int i = 0; i < _iActivatedComponents.Length; i++)
-        {
-            _activatables[i] = _iActivatedComponents[i].GetComponent<IActivatable>();
-            if (_activatables[i] == null) _iActivatedComponents[i] = null;
-        }
+        GrabActivatables();
     }
 
     private IEnumerator Activate()
@@ -56,5 +56,19 @@ public class Activator : MonoBehaviour
     private void TurnOffActivator()
     {
         gameObject.SetActive(false);
+    }
+
+    private void GrabActivatables() 
+    {
+        _activatables = new IActivatable[_iActivatedComponents.Length];
+        for (int i = 0; i < _iActivatedComponents.Length; i++)
+        {
+            _activatables[i] = _iActivatedComponents[i].GetComponent<IActivatable>();
+            if (_activatables[i] == null)
+            {
+                _iActivatedComponents[i] = null;
+                Debug.LogError("Добавленный объект не может быть активирован. Добавь другой объект");
+            }
+        }
     }
 }

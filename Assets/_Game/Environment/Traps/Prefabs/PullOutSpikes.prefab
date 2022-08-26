@@ -45,7 +45,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b3e73b70925f7dd4faa2560db2662fe2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _iActivatedComponent: {fileID: 2515418075951878214}
+  _iActivatedComponents: []
   _activationDelay: 0.2
   _cooldownDelay: 0
   _isOneTimeUse: 0
@@ -87,7 +87,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2515418075951878212}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4.2, y: 22.71, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
