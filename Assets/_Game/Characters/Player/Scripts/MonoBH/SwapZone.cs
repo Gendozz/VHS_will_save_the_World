@@ -55,23 +55,6 @@ public class SwapZone : MonoBehaviour, IActivatable
         }
     }
 
-    // Hard Collider represented a lever to unblock everything
-    //private void OnCollisionEnter(Collision collision)
-    //{
-    //    if(collision.gameObject.TryGetComponent<PlayerMovement>(out PlayerMovement playerMovement))
-    //    {
-    //        SwapPlayerClone();
-    //        Invoke(nameof(UnblockEverythingInZone), 0.1f);
-    //    }
-    //}
-
-    //private void UnblockEverythingInZone()
-    //{
-    //    print("Everything is unblocked");
-
-    //    gameObject.SetActive(false);
-    //}
-
     private void SwapPlayerClone()
     {
         _player.SetActive(!_player.activeSelf);
@@ -88,5 +71,6 @@ public class SwapZone : MonoBehaviour, IActivatable
     public void Activate()
     {
         SwapPlayerClone();
+        gameObject.SetActive(false);
     }
 }
