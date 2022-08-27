@@ -399,6 +399,7 @@ GameObject:
   - component: {fileID: 5987480786865510303}
   - component: {fileID: 5987480786865510299}
   - component: {fileID: 533797386109943541}
+  - component: {fileID: 1053100847}
   m_Layer: 9
   m_Name: PlayerMain
   m_TagString: Untagged
@@ -447,7 +448,7 @@ CapsuleCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   m_Radius: 0.55
-  m_Height: 1.35
+  m_Height: 1.4
   m_Direction: 1
   m_Center: {x: 0, y: 1, z: 0}
 --- !u!54 &5987480786865510302
@@ -495,8 +496,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
-      time: -0.5
-      value: -5
+      time: -1
+      value: -7
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -513,8 +514,8 @@ MonoBehaviour:
       inWeight: 0
       outWeight: 0
     - serializedVersion: 3
-      time: 0.5
-      value: 5
+      time: 1
+      value: 7
       inSlope: 2
       outSlope: 2
       tangentMode: 0
@@ -527,7 +528,9 @@ MonoBehaviour:
   _groundLayer:
     serializedVersion: 2
     m_Bits: 128
-  _fallGravityMultiplier: 5.2
+  _fallGravityMultiplier: 3.74
+  _fallGravityVelocityYStart: 2.77
+  _backForceOnJump: 15
   _haveDoubleJumpAbility: 0
   _jumpForce: 7
   _wallLayer:
@@ -537,9 +540,9 @@ MonoBehaviour:
   _wallJumpSideForce: 6
   _wallJumpUpForce: 9
   _afterWallJumpBlockMovementDuration: 0.2
-  _afterGotTrappedBlockMovementDuration: 0
-  _forceYOnTrapContact: 0
-  _forceXOnTrapContact: 0
+  _afterGotTrappedBlockMovementDuration: 0.3
+  _forceYOnTrapContact: 5
+  _forceXOnTrapContact: 5
   _rigidbody: {fileID: 5987480786865510302}
   _playerInput: {fileID: 5987480786865510297}
   _groundCheckRadius: 0.3
@@ -572,3 +575,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxLives: 5
+--- !u!114 &1053100847
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5987480786865510301}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e5634fde8127f404aa1bb84db01de736, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _health: {fileID: 0}
