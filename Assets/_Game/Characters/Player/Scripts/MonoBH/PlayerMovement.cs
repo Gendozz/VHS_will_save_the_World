@@ -259,7 +259,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void CheckWall()
     {
-        IsOnWall = Physics.OverlapBoxNonAlloc(transform.position + transform.up, _wallCheckBoxHalfSize, _wallCollider, Quaternion.identity, _wallLayer) > 0;
+        IsOnWall = Physics.OverlapBoxNonAlloc(transform.position + _checkBoxCenterOffset, _wallCheckBoxHalfSize, _wallCollider, Quaternion.identity, _wallLayer) > 0;
 
         if (IsOnWall)
         {
@@ -319,7 +319,7 @@ public class PlayerMovement : MonoBehaviour
 
         // Box that detects walls
         Gizmos.color = Color.blue;
-        Gizmos.DrawWireCube(transform.position + transform.up, _wallCheckBoxHalfSize * 2);
+        Gizmos.DrawWireCube(transform.position + _checkBoxCenterOffset, _wallCheckBoxHalfSize * 2);
     }
 }
 
