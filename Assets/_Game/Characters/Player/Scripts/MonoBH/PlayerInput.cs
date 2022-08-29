@@ -15,11 +15,11 @@ public class PlayerInput : MonoBehaviour
     private bool shouldDetectInput = true;
 
 
-    private void BlockInput()
-    {
-        shouldDetectInput = false;
-        HorizontalDirection = 0;
-    }
+    //private void BlockInput()
+    //{
+    //    shouldDetectInput = false;
+    //    HorizontalDirection = 0;
+    //}
 
 
     void Update()

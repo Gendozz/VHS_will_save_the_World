@@ -15,14 +15,18 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private LayerMask _groundLayer;
 
     [Header("Модификатор гравитации при падении")]
-    [Range(1, 8)]
     [SerializeField] private float _fallGravityMultiplier;
+
+    [Header("С какой скорости по Y применять модификатор гравитации")]
+    [SerializeField] private float _fallGravityVelocityYStart;
+
+    [Header("Сила замедления смены направления в воздухе")]
+    [SerializeField] private float _backForceOnJump;
 
     [Header("ДЛЯ ТЕСТА --- Есть ли способность ко второму прыжку?")]
     [SerializeField] private bool _haveDoubleJumpAbility = false;            // Temp imitation of switching-on/off double jump ability
 
     [Header("Сила прыжка вверх от земли")]
-    [Range(5, 10)]
     [SerializeField] private float _jumpForce;
 
     [Header("Слой, который считать стеной")]
@@ -39,7 +43,7 @@ public class PlayerMovement : MonoBehaviour
 
     [Header("Продолжительность блокировки после прыжка от стены")]
     [SerializeField] private float _afterWallJumpBlockMovementDuration;
-    
+
     [Space]
     [Header("-----      Взаимодействие с ловушкой      -----")]
     [Header("Продолжительность блокировки после контакта с ловушкой")]
@@ -47,7 +51,7 @@ public class PlayerMovement : MonoBehaviour
 
     [Header("Сила отталкивания вверх при контакте с ловушкой")]
     [SerializeField] private float _forceYOnTrapContact;
-    
+
     [Header("Сила отталкивания вбок при контакте с ловушкой")]
     [SerializeField] private float _forceXOnTrapContact;
 
@@ -65,6 +69,9 @@ public class PlayerMovement : MonoBehaviour
 
     [Header("Расстояние вбок от пивота персонажа, в которой детектятся стены")]
     [SerializeField] private Vector3 _wallCheckBoxHalfSize;
+
+    [Header("Оффсет центра детекта стен")]
+    [SerializeField] private Vector3 _checkBoxCenterOffset;
 
     [Header("Длительность блокировки детекта стен после прыжка от стены")]
     [SerializeField] private float _blockWallDetectionDuration;
@@ -123,7 +130,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void ModifyGravityDependingOnPlayerStatus()
     {
-        if (_rigidbody.velocity.y < 0 && !_isGrappling)
+        if (_rigidbody.velocity.y < _fallGravityVelocityYStart && !_isGrappling)
         {
             if (IsOnWall)
             {
@@ -210,13 +217,21 @@ public class PlayerMovement : MonoBehaviour
     {
         if (Mathf.Abs(_playerInput.HorizontalDirection) > _horizontalInputTreshold)
         {
-            _rigidbody.velocity = new Vector3(_speedCurve.Evaluate(_playerInput.HorizontalDirection), _rigidbody.velocity.y, _rigidbody.velocity.z);
+            if (IsGrounded)
+            {
+                _rigidbody.velocity = new Vector3(_speedCurve.Evaluate(_playerInput.HorizontalDirection), _rigidbody.velocity.y, _rigidbody.velocity.z); 
+            }
+            else
+            {
+                _rigidbody.velocity += _backForceOnJump * Time.deltaTime * new Vector3(Mathf.Sign(_playerInput.HorizontalDirection), 0, 0);
+                _rigidbody.velocity = new Vector3(Mathf.Clamp(_rigidbody.velocity.x, _speedCurve.Evaluate(-1), _speedCurve.Evaluate(1)), _rigidbody.velocity.y, _rigidbody.velocity.z);
+            }
         }
     }
 
     private void Jump()
     {
-        _rigidbody.velocity = transform.up * _jumpForce;
+        _rigidbody.velocity = new Vector3(_rigidbody.velocity.x, _jumpForce, 0);
     }
 
     private void WallJump()
@@ -241,7 +256,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void CheckWall()
     {
-        IsOnWall = Physics.OverlapBoxNonAlloc(transform.position + transform.up, _wallCheckBoxHalfSize, _wallCollider, Quaternion.identity, _wallLayer) > 0;
+        IsOnWall = Physics.OverlapBoxNonAlloc(transform.position + _checkBoxCenterOffset, _wallCheckBoxHalfSize, _wallCollider, Quaternion.identity, _wallLayer) > 0;
 
         if (IsOnWall)
         {
@@ -301,7 +316,7 @@ public class PlayerMovement : MonoBehaviour
 
         // Box that detects walls
         Gizmos.color = Color.blue;
-        Gizmos.DrawWireCube(transform.position + transform.up, _wallCheckBoxHalfSize * 2);
+        Gizmos.DrawWireCube(transform.position + _checkBoxCenterOffset, _wallCheckBoxHalfSize * 2);
     }
 }
 
