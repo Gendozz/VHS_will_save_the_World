@@ -497,7 +497,7 @@ MonoBehaviour:
     m_Curve:
     - serializedVersion: 3
       time: -1
-      value: -7
+      value: -8
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -515,7 +515,7 @@ MonoBehaviour:
       outWeight: 0
     - serializedVersion: 3
       time: 1
-      value: 7
+      value: 8
       inSlope: 2
       outSlope: 2
       tangentMode: 0
@@ -529,16 +529,16 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   _fallGravityMultiplier: 3.74
-  _fallGravityVelocityYStart: 2.77
+  _fallGravityVelocityYStart: 15
   _backForceOnJump: 15
   _haveDoubleJumpAbility: 0
-  _jumpForce: 7
+  _jumpForce: 13.6
   _wallLayer:
     serializedVersion: 2
     m_Bits: 64
   _wallSlideGravityVelocity: 2
-  _wallJumpSideForce: 6
-  _wallJumpUpForce: 9
+  _wallJumpSideForce: 8.02
+  _wallJumpUpForce: 14.6
   _afterWallJumpBlockMovementDuration: 0.2
   _afterGotTrappedBlockMovementDuration: 0.3
   _forceYOnTrapContact: 5
