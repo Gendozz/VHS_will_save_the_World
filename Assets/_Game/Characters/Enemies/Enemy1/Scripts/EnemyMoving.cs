@@ -33,6 +33,9 @@ public class EnemyMoving : MonoBehaviour
 
     private void Start()
     {
+        _rigidbody.useGravity = true;
+        _rigidbody.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationZ;
+
         _leftPointTransformPositionX = _leftPointTransform.position.x;
         _rightPointTransformPositoinX = _rightPointTransform.position.x;
     }
