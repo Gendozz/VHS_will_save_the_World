@@ -73,6 +73,9 @@ public class PlayerMovement : MonoBehaviour
     [Header("Расстояние вбок от пивота персонажа, в которой детектятся стены")]
     [SerializeField] private Vector3 _wallCheckBoxHalfSize;
 
+    [Header("Оффсет центра детекта стен")]
+    [SerializeField] private Vector3 _checkBoxCenterOffset;
+
     [Header("Длительность блокировки детекта стен после прыжка от стены")]
     [SerializeField] private float _blockWallDetectionDuration;
 
