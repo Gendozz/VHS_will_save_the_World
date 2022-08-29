@@ -15,11 +15,9 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private LayerMask _groundLayer;
 
     [Header("Модификатор гравитации при падении")]
-    [Range(1, 20)]
     [SerializeField] private float _fallGravityMultiplier;
 
     [Header("С какой скорости по Y применять модификатор гравитации")]
-    [Range(0, 15)]
     [SerializeField] private float _fallGravityVelocityYStart;
 
     [Header("Сила замедления смены направления в воздухе")]
@@ -29,7 +27,6 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private bool _haveDoubleJumpAbility = false;            // Temp imitation of switching-on/off double jump ability
 
     [Header("Сила прыжка вверх от земли")]
-    [Range(5, 30)]
     [SerializeField] private float _jumpForce;
 
     [Header("Слой, который считать стеной")]
