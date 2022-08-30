@@ -41,6 +41,9 @@ public class PlayerMovement : MonoBehaviour
     [Header("Сила прыжка вверх от стены")]
     [SerializeField] private float _wallJumpUpForce;
 
+    [Header("Максимальный вертикальная скорость по инерции на стене")]
+    [SerializeField] private float _limitOnWallUpInertion;
+
     [Header("Продолжительность блокировки после прыжка от стены")]
     [SerializeField] private float _afterWallJumpBlockMovementDuration;
 
@@ -261,6 +264,11 @@ public class PlayerMovement : MonoBehaviour
         if (IsOnWall)
         {
             _offTheWallDirection = MathF.Sign(transform.position.x - _wallCollider[0].transform.position.x);
+
+            if(_rigidbody.velocity.y > _limitOnWallUpInertion)
+            {
+                _rigidbody.velocity = new Vector3(_rigidbody.velocity.x, _limitOnWallUpInertion, _rigidbody.velocity.z);
+            }
 
             // For the case when jump from another wall and still blocking moving
             if (_isBlockMovementRoutineStillWorking)

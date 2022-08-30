@@ -416,7 +416,7 @@ Transform:
   m_GameObject: {fileID: 5987480786865510301}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 5.7, y: 24.2, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5987480785210184915}
@@ -497,7 +497,7 @@ MonoBehaviour:
     m_Curve:
     - serializedVersion: 3
       time: -1
-      value: -8
+      value: -5.5
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -514,13 +514,22 @@ MonoBehaviour:
       inWeight: 0
       outWeight: 0
     - serializedVersion: 3
-      time: 1
-      value: 8
-      inSlope: 2
-      outSlope: 2
+      time: 0.5647973
+      value: 1.6782736
+      inSlope: 6.7440414
+      outSlope: 6.7440414
       tangentMode: 0
       weightedMode: 0
-      inWeight: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 5.5
+      inSlope: 1.5237038
+      outSlope: 1.5237038
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.37665784
       outWeight: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
@@ -529,24 +538,26 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   _fallGravityMultiplier: 3.74
-  _fallGravityVelocityYStart: 15
-  _backForceOnJump: 15
+  _fallGravityVelocityYStart: 16
+  _backForceOnJump: 13.1
   _haveDoubleJumpAbility: 0
-  _jumpForce: 13.6
+  _jumpForce: 16
   _wallLayer:
     serializedVersion: 2
     m_Bits: 64
   _wallSlideGravityVelocity: 2
-  _wallJumpSideForce: 8.02
-  _wallJumpUpForce: 14.6
+  _wallJumpSideForce: 4.55
+  _wallJumpUpForce: 13
+  _limitOnWallUpInertion: 1.2
   _afterWallJumpBlockMovementDuration: 0.2
   _afterGotTrappedBlockMovementDuration: 0.3
   _forceYOnTrapContact: 5
   _forceXOnTrapContact: 5
   _rigidbody: {fileID: 5987480786865510302}
   _playerInput: {fileID: 5987480786865510297}
-  _groundCheckRadius: 0.3
-  _wallCheckBoxHalfSize: {x: 0.6, y: 0.8, z: 0.2}
+  _groundCheckRadius: 0.15
+  _wallCheckBoxHalfSize: {x: 0.3, y: 0.4, z: 0.2}
+  _checkBoxCenterOffset: {x: 0, y: 0.5, z: 0}
   _blockWallDetectionDuration: 0.1
 --- !u!114 &5987480786865510299
 MonoBehaviour:
