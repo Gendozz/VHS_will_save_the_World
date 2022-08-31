@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1891625516395102658}
-  m_Layer: 7
+  m_Layer: 10
   m_Name: SlipperyPlatform_3_05_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -44,7 +44,7 @@ GameObject:
   - component: {fileID: 1891625516781918495}
   - component: {fileID: 1891625516781918494}
   - component: {fileID: 1891625516781918481}
-  m_Layer: 7
+  m_Layer: 10
   m_Name: Model
   m_TagString: Untagged
   m_Icon: {fileID: 0}

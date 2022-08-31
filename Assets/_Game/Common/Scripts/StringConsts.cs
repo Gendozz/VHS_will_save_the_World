@@ -16,6 +16,10 @@ public class StringConsts
     public const string ESC = "Cancel";
     #endregion
 
+    #region LayersNames
+    public const string TRAMPOLINE = "Trampoline";
+    #endregion
+
     #region Pooler Tags
     public const string SHOT = "Shot";
     public const string COIN = "Coin";
