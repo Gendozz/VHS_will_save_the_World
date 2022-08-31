@@ -29,6 +29,9 @@ public class PlayerMovement : MonoBehaviour
     [Header("Сила прыжка вверх от земли")]
     [SerializeField] private float _jumpForce;
 
+    [Header("Сила прыжка вверх на батуте")]
+    [SerializeField] private float _trampolineJumpForce;
+
     [Header("Слой, который считать стеной")]
     [SerializeField] private LayerMask _wallLayer;
 
@@ -46,6 +49,16 @@ public class PlayerMovement : MonoBehaviour
 
     [Header("Продолжительность блокировки после прыжка от стены")]
     [SerializeField] private float _afterWallJumpBlockMovementDuration;
+
+    [Space]
+    [Header("-----      Взаимодействия со скользкой платформой      -----")]
+    [Header("Динамика изменения горизонтальной скорости от времени нажатия клавиши")]
+    [SerializeField] private AnimationCurve _slipperySpeedCurve;
+
+    [Header("Слой, который считать скользкой платформой")]
+    [SerializeField] private LayerMask _slipperyLayer;
+
+    [SerializeField] private LayerMask _trampolineLayer;
 
     [Space]
     [Header("-----      Взаимодействие с ловушкой      -----")]
@@ -70,6 +83,8 @@ public class PlayerMovement : MonoBehaviour
     [Header("Радиус от пивота персонажа, в котором детектится земля")]
     [SerializeField] private float _groundCheckRadius;
 
+    [SerializeField] private CapsuleCollider _mainCollider;
+
     [Header("Расстояние вбок от пивота персонажа, в которой детектятся стены")]
     [SerializeField] private Vector3 _wallCheckBoxHalfSize;
 
@@ -83,6 +98,10 @@ public class PlayerMovement : MonoBehaviour
     public bool IsGrounded { get; private set; } = false;
 
     private Collider[] _groundCollider = new Collider[1];
+
+    private Collider[] _slipperyCollider = new Collider[1];
+    
+    private Collider[] _trampolineCollider = new Collider[1];
 
     // Horizontal movement relative
 
@@ -116,6 +135,11 @@ public class PlayerMovement : MonoBehaviour
 
     private bool _isGrappling = false;
 
+    private bool _isOnSlippery = false;
+
+    private bool _isOnTrampoline = false;
+
+    private bool _isInTrampolineTrigger = false;
 
     private void Awake()
     {
@@ -171,6 +195,11 @@ public class PlayerMovement : MonoBehaviour
 
             ApplyInputToJump();
         }
+
+        if (_isOnTrampoline)
+        {
+            Jump(_jumpForce);
+        }
     }
 
 
@@ -181,9 +210,13 @@ public class PlayerMovement : MonoBehaviour
             case false:
                 if (_isJumpInput)
                 {
-                    if (IsGrounded)
+                    if (_isInTrampolineTrigger)
                     {
-                        Jump();
+                        Jump(_trampolineJumpForce);
+                    }
+                    else if (IsGrounded || _isOnSlippery)
+                    {
+                        Jump(_jumpForce);
                     }
                     else if (IsOnWall)
                     {
@@ -194,9 +227,13 @@ public class PlayerMovement : MonoBehaviour
             case true:
                 if (_isJumpInput)
                 {
-                    if (IsGrounded)
+                    if (_isInTrampolineTrigger)
                     {
-                        Jump();
+                        Jump(_trampolineJumpForce);
+                    }
+                    else if (IsGrounded || _isOnSlippery)
+                    {
+                        Jump(_jumpForce);
                         _canDoubleJump = true;
                     }
                     else if (IsOnWall)
@@ -206,7 +243,7 @@ public class PlayerMovement : MonoBehaviour
                     }
                     else if (_canDoubleJump)
                     {
-                        Jump();
+                        Jump(_jumpForce);
                         _canDoubleJump = false;
                     }
                 }
@@ -222,7 +259,14 @@ public class PlayerMovement : MonoBehaviour
         {
             if (IsGrounded)
             {
-                _rigidbody.velocity = new Vector3(_speedCurve.Evaluate(_playerInput.HorizontalDirection), _rigidbody.velocity.y, _rigidbody.velocity.z); 
+                if (!_isOnSlippery)
+                {
+                    _rigidbody.velocity = new Vector3(_speedCurve.Evaluate(_playerInput.HorizontalDirection), _rigidbody.velocity.y, _rigidbody.velocity.z);
+                }
+                else
+                {
+                    _rigidbody.velocity = new Vector3(_speedCurve.Evaluate(_playerInput.HorizontalDirection), _rigidbody.velocity.y, _rigidbody.velocity.z);
+                }
             }
             else
             {
@@ -232,9 +276,9 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    private void Jump()
+    private void Jump(float jumpForce)
     {
-        _rigidbody.velocity = new Vector3(_rigidbody.velocity.x, _jumpForce, 0);
+        _rigidbody.velocity = new Vector3(_rigidbody.velocity.x, jumpForce, 0);
     }
 
     private void WallJump()
@@ -255,6 +299,8 @@ public class PlayerMovement : MonoBehaviour
     private void CheckGround()
     {
         IsGrounded = Physics.OverlapSphereNonAlloc(transform.position, _groundCheckRadius, _groundCollider, _groundLayer) > 0;
+        _isOnSlippery = Physics.OverlapSphereNonAlloc(transform.position, _groundCheckRadius, _slipperyCollider, _slipperyLayer) > 0;
+        _isOnTrampoline = Physics.OverlapSphereNonAlloc(transform.position, _groundCheckRadius, _trampolineCollider, _trampolineLayer) > 0;
     }
 
     private void CheckWall()
@@ -314,6 +360,22 @@ public class PlayerMovement : MonoBehaviour
         _rigidbody.velocity = Vector3.zero;
         float forceDirection = Mathf.Sign(transform.position.x - fromPosition.x);
         _rigidbody.velocity = new Vector3(forceDirection * _forceXOnTrapContact, _forceYOnTrapContact, _rigidbody.velocity.z);
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag(StringConsts.TRAMPOLINE))
+        {
+            _isInTrampolineTrigger = true;
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject.CompareTag(StringConsts.TRAMPOLINE))
+        {
+            _isInTrampolineTrigger = false;
+        }
     }
 
     private void OnDrawGizmos()
