@@ -41,9 +41,9 @@ Shader "Custom/SphericalMask"
         half _ColorStrength, _EmissionStrength;
 
         // Spherical Mask
-        uniform float4 GLOBALmask_Position;
-        uniform half GLOBALmask_Radius;
-        uniform half GLOBALmask_Softness;
+        float4 GLOBALmask_Position;
+        half GLOBALmask_Radius;
+        half GLOBALmask_Softness;
 
         // Add instancing support for this shader. You need to check 'Enable Instancing' on materials that use the shader.
         // See https://docs.unity3d.com/Manual/GPUInstancing.html for more information about instancing.

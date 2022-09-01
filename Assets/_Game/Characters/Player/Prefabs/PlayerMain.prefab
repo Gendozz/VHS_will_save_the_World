@@ -581,6 +581,8 @@ MonoBehaviour:
   _afterGotTrappedBlockMovementDuration: 0.3
   _forceYOnTrapContact: 5
   _forceXOnTrapContact: 5
+  _springTrapForceY: 12
+  _springTrepForceX: 10
   _rigidbody: {fileID: 5987480786865510302}
   _playerInput: {fileID: 5987480786865510297}
   _groundCheckRadius: 0.15

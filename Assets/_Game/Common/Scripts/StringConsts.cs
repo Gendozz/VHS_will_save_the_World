@@ -18,6 +18,7 @@ public class StringConsts
 
     #region LayersNames
     public const string TRAMPOLINE = "Trampoline";
+    public const string SPRINGTRAP = "Springtrap";
     #endregion
 
     #region Pooler Tags
