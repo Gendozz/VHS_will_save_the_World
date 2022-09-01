@@ -61,7 +61,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private LayerMask _trampolineLayer;
 
     [Space]
-    [Header("-----      Взаимодействие с ловушкой      -----")]
+    [Header("-----      Взаимодействие с ловушками      -----")]
     [Header("Продолжительность блокировки после контакта с ловушкой")]
     [SerializeField] private float _afterGotTrappedBlockMovementDuration;
 
@@ -70,6 +70,12 @@ public class PlayerMovement : MonoBehaviour
 
     [Header("Сила отталкивания вбок при контакте с ловушкой")]
     [SerializeField] private float _forceXOnTrapContact;
+
+    [Header("Сила отталкивания вверх при контакте с ловушкой-пружиной")]
+    [SerializeField] private float _springTrapForceY;
+
+    [Header("Сила отталкивания вбок при контакте с ловушкой-пружиной")]
+    [SerializeField] private float _springTrepForceX;
 
     [Space]
     [Header("-----      Компоненты и системные     -----")]
@@ -368,6 +374,11 @@ public class PlayerMovement : MonoBehaviour
         {
             _isInTrampolineTrigger = true;
         }
+        if (other.gameObject.CompareTag(StringConsts.SPRINGTRAP))
+        {
+            _rigidbody.velocity = Vector3.zero;
+            StartCoroutine(BlockMovementOnSeconds(.8f));
+        }
     }
 
     private void OnTriggerExit(Collider other)
@@ -375,6 +386,11 @@ public class PlayerMovement : MonoBehaviour
         if (other.gameObject.CompareTag(StringConsts.TRAMPOLINE))
         {
             _isInTrampolineTrigger = false;
+        }
+        if (other.gameObject.CompareTag(StringConsts.SPRINGTRAP))
+        {
+            float forceDirection = Mathf.Sign(transform.position.x - other.transform.position.x);
+            _rigidbody.velocity = _rigidbody.velocity = new Vector3(forceDirection * _springTrepForceX, _springTrapForceY, _rigidbody.velocity.z);
         }
     }
 
