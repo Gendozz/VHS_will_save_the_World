@@ -132,6 +132,3 @@ MonoBehaviour:
   _damage: 1
   _timeLife: 2
   _rigidbody: {fileID: 4666476306034487945}
-  _layerWall:
-    serializedVersion: 2
-    m_Bits: 64
