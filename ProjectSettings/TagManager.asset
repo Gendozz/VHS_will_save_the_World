@@ -3,7 +3,9 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Trampoline
+  - Springtrap
   layers:
   - Default
   - TransparentFX
@@ -15,8 +17,13 @@ TagManager:
   - Ground
   - Grapplable
   - Player
+<<<<<<< HEAD
   - Trap
   - 
+=======
+  - Slippery
+  - Trampoline
+>>>>>>> main
   - 
   - 
   - 

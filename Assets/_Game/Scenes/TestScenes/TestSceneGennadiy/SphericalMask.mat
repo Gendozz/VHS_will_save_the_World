@@ -29,14 +29,14 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _ColorStrength: 1.62
-    - _EmissionStrength: 0
-    - _Glossiness: 0
+    - _ColorStrength: 2.12
+    - _EmissionStrength: 1.14
+    - _Glossiness: 0.16
     - _Metallic: 0
     - _Radius: 4
-    - _Softness: 1.4
+    - _Softness: 0
     m_Colors:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
-    - _EmissionColor: {r: 0.8679245, g: 0.109924994, b: 0.08597365, a: 1}
-    - _Position: {r: -3.66, g: 5.5, b: -5.96, a: 0}
+    - _EmissionColor: {r: 0.91456556, g: 0.9245283, b: 0.30962977, a: 1}
+    - _Position: {r: 0, g: 0, b: 0, a: 0}
   m_BuildTextureStacks: []

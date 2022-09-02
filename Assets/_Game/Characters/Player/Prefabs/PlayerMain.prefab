@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 5987480785210184915}
   - component: {fileID: 5987480785210184940}
   - component: {fileID: 5987480785210184941}
-  - component: {fileID: 5987480785210184914}
   m_Layer: 9
   m_Name: Model
   m_TagString: Untagged
@@ -85,20 +84,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!136 &5987480785210184914
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5987480785210184912}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 0
-  m_Radius: 0.5
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &5987480785591756112
 GameObject:
   m_ObjectHideFlags: 0
@@ -110,7 +95,6 @@ GameObject:
   - component: {fileID: 5987480785591756115}
   - component: {fileID: 5987480785591756140}
   - component: {fileID: 5987480785591756141}
-  - component: {fileID: 5987480785591756114}
   m_Layer: 9
   m_Name: GrapplingHookModel
   m_TagString: Untagged
@@ -183,20 +167,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!136 &5987480785591756114
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5987480785591756112}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 0
-  m_Radius: 0.5000001
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
 --- !u!1 &5987480785869240697
 GameObject:
   m_ObjectHideFlags: 0
@@ -416,7 +386,7 @@ Transform:
   m_GameObject: {fileID: 5987480786865510301}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 5.7, y: 24.2, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5987480785210184915}
@@ -497,7 +467,7 @@ MonoBehaviour:
     m_Curve:
     - serializedVersion: 3
       time: -1
-      value: -7
+      value: -5.5
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -514,13 +484,22 @@ MonoBehaviour:
       inWeight: 0
       outWeight: 0
     - serializedVersion: 3
-      time: 1
-      value: 7
-      inSlope: 2
-      outSlope: 2
+      time: 0.5647973
+      value: 1.6782736
+      inSlope: 6.7440414
+      outSlope: 6.7440414
       tangentMode: 0
       weightedMode: 0
-      inWeight: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 5.5
+      inSlope: 1.5237038
+      outSlope: 1.5237038
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.37665784
       outWeight: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
@@ -529,29 +508,95 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   _fallGravityMultiplier: 3.74
-  _fallGravityVelocityYStart: 2.77
-  _backForceOnJump: 15
+  _fallGravityVelocityYStart: 16
+  _backForceOnJump: 13.1
   _haveDoubleJumpAbility: 0
-  _jumpForce: 7
+  _jumpForce: 16
+  _trampolineJumpForce: 20
   _wallLayer:
     serializedVersion: 2
     m_Bits: 64
   _wallSlideGravityVelocity: 2
-  _wallJumpSideForce: 6
-  _wallJumpUpForce: 9
+  _wallJumpSideForce: 4.55
+  _wallJumpUpForce: 13
+  _limitOnWallUpInertion: 1.2
   _afterWallJumpBlockMovementDuration: 0.2
+<<<<<<< HEAD
 <<<<<<< HEAD
   _afterGotTrappedBlockMovementDuration: 0.5
   _forceYOnTrapContact: 6
 =======
+=======
+  _slipperySpeedCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: -1
+      value: -5.5
+      inSlope: 20.000002
+      outSlope: 20.000002
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: -0.8
+      value: -1.5
+      inSlope: 5.5
+      outSlope: 5.5
+      tangentMode: 136
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: -0.06646174
+      outSlope: -0.06646174
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.3582031
+    - serializedVersion: 3
+      time: 0.8
+      value: 1.5
+      inSlope: 5.5
+      outSlope: 5.5
+      tangentMode: 136
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 5.5
+      inSlope: 20.000002
+      outSlope: 20.000002
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  _slipperyLayer:
+    serializedVersion: 2
+    m_Bits: 1024
+  _trampolineLayer:
+    serializedVersion: 2
+    m_Bits: 2048
+>>>>>>> main
   _afterGotTrappedBlockMovementDuration: 0.3
   _forceYOnTrapContact: 5
 >>>>>>> main
   _forceXOnTrapContact: 5
+  _springTrapForceY: 12
+  _springTrepForceX: 10
   _rigidbody: {fileID: 5987480786865510302}
   _playerInput: {fileID: 5987480786865510297}
-  _groundCheckRadius: 0.3
-  _wallCheckBoxHalfSize: {x: 0.6, y: 0.8, z: 0.2}
+  _groundCheckRadius: 0.15
+  _mainCollider: {fileID: 5987480786865510296}
+  _wallCheckBoxHalfSize: {x: 0.3, y: 0.4, z: 0.2}
+  _checkBoxCenterOffset: {x: 0, y: 0.5, z: 0}
   _blockWallDetectionDuration: 0.1
 --- !u!114 &5987480786865510299
 MonoBehaviour:

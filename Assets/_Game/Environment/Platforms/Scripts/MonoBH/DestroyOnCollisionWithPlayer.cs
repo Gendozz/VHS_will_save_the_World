@@ -23,8 +23,11 @@ public class DestroyOnCollisionWithPlayer : MonoBehaviour
     {
         if (collision.gameObject.TryGetComponent<PlayerMovement>(out PlayerMovement playerMovement))
         {
-            StartCoroutine(DestroySelfAfterDelay(destroyDelay));
-            StartCoroutine(RespawnAfterDestroyAfterDelay(destroyDelay + respawnDelay));
+            if (transform.position.y < collision.transform.position.y)
+            {
+                StartCoroutine(DestroySelfAfterDelay(destroyDelay));
+                StartCoroutine(RespawnAfterDestroyAfterDelay(destroyDelay + respawnDelay)); 
+            }
         }
     }
 

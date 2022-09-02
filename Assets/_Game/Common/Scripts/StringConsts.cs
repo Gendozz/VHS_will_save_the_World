@@ -16,6 +16,18 @@ public class StringConsts
     public const string ESC = "Cancel";
     #endregion
 
+    #region LayersNames
+    public const string TRAMPOLINE = "Trampoline";
+    public const string SPRINGTRAP = "Springtrap";
+    public const string WALL = "Wall";
+    public const string GROUND = "Ground";
+    public const string GRAPPLABLE = "Grapplable";
+    public const string PLAYER = "Player";
+    public const string SLIPPERY = "Slippery";
+
+
+    #endregion
+
     #region Pooler Tags
     public const string SHOT = "Shot";
     public const string COIN = "Coin";

@@ -15,11 +15,9 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private LayerMask _groundLayer;
 
     [Header("Модификатор гравитации при падении")]
-    [Range(1, 8)]
     [SerializeField] private float _fallGravityMultiplier;
 
     [Header("С какой скорости по Y применять модификатор гравитации")]
-    [Range(0, 4)]
     [SerializeField] private float _fallGravityVelocityYStart;
 
     [Header("Сила замедления смены направления в воздухе")]
@@ -29,8 +27,10 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private bool _haveDoubleJumpAbility = false;            // Temp imitation of switching-on/off double jump ability
 
     [Header("Сила прыжка вверх от земли")]
-    [Range(5, 20)]
     [SerializeField] private float _jumpForce;
+
+    [Header("Сила прыжка вверх на батуте")]
+    [SerializeField] private float _trampolineJumpForce;
 
     [Header("Слой, который считать стеной")]
     [SerializeField] private LayerMask _wallLayer;
@@ -44,11 +44,24 @@ public class PlayerMovement : MonoBehaviour
     [Header("Сила прыжка вверх от стены")]
     [SerializeField] private float _wallJumpUpForce;
 
+    [Header("Максимальный вертикальная скорость по инерции на стене")]
+    [SerializeField] private float _limitOnWallUpInertion;
+
     [Header("Продолжительность блокировки после прыжка от стены")]
     [SerializeField] private float _afterWallJumpBlockMovementDuration;
 
     [Space]
-    [Header("-----      Взаимодействие с ловушкой      -----")]
+    [Header("-----      Взаимодействия со скользкой платформой      -----")]
+    [Header("Динамика изменения горизонтальной скорости от времени нажатия клавиши")]
+    [SerializeField] private AnimationCurve _slipperySpeedCurve;
+
+    [Header("Слой, который считать скользкой платформой")]
+    [SerializeField] private LayerMask _slipperyLayer;
+
+    [SerializeField] private LayerMask _trampolineLayer;
+
+    [Space]
+    [Header("-----      Взаимодействие с ловушками      -----")]
     [Header("Продолжительность блокировки после контакта с ловушкой")]
     [SerializeField] private float _afterGotTrappedBlockMovementDuration;
 
@@ -57,6 +70,12 @@ public class PlayerMovement : MonoBehaviour
 
     [Header("Сила отталкивания вбок при контакте с ловушкой")]
     [SerializeField] private float _forceXOnTrapContact;
+
+    [Header("Сила отталкивания вверх при контакте с ловушкой-пружиной")]
+    [SerializeField] private float _springTrapForceY;
+
+    [Header("Сила отталкивания вбок при контакте с ловушкой-пружиной")]
+    [SerializeField] private float _springTrepForceX;
 
     [Space]
     [Header("-----      Компоненты и системные     -----")]
@@ -70,8 +89,13 @@ public class PlayerMovement : MonoBehaviour
     [Header("Радиус от пивота персонажа, в котором детектится земля")]
     [SerializeField] private float _groundCheckRadius;
 
+    [SerializeField] private CapsuleCollider _mainCollider;
+
     [Header("Расстояние вбок от пивота персонажа, в которой детектятся стены")]
     [SerializeField] private Vector3 _wallCheckBoxHalfSize;
+
+    [Header("Оффсет центра детекта стен")]
+    [SerializeField] private Vector3 _checkBoxCenterOffset;
 
     [Header("Длительность блокировки детекта стен после прыжка от стены")]
     [SerializeField] private float _blockWallDetectionDuration;
@@ -80,6 +104,10 @@ public class PlayerMovement : MonoBehaviour
     public bool IsGrounded { get; private set; } = false;
 
     private Collider[] _groundCollider = new Collider[1];
+
+    private Collider[] _slipperyCollider = new Collider[1];
+    
+    private Collider[] _trampolineCollider = new Collider[1];
 
     // Horizontal movement relative
 
@@ -113,6 +141,11 @@ public class PlayerMovement : MonoBehaviour
 
     private bool _isGrappling = false;
 
+    private bool _isOnSlippery = false;
+
+    private bool _isOnTrampoline = false;
+
+    private bool _isInTrampolineTrigger = false;
 
     private void Awake()
     {
@@ -168,6 +201,11 @@ public class PlayerMovement : MonoBehaviour
 
             ApplyInputToJump();
         }
+
+        if (_isOnTrampoline)
+        {
+            Jump(_jumpForce);
+        }
     }
 
 
@@ -178,9 +216,13 @@ public class PlayerMovement : MonoBehaviour
             case false:
                 if (_isJumpInput)
                 {
-                    if (IsGrounded)
+                    if (_isInTrampolineTrigger)
                     {
-                        Jump();
+                        Jump(_trampolineJumpForce);
+                    }
+                    else if (IsGrounded || _isOnSlippery)
+                    {
+                        Jump(_jumpForce);
                     }
                     else if (IsOnWall)
                     {
@@ -191,9 +233,13 @@ public class PlayerMovement : MonoBehaviour
             case true:
                 if (_isJumpInput)
                 {
-                    if (IsGrounded)
+                    if (_isInTrampolineTrigger)
                     {
-                        Jump();
+                        Jump(_trampolineJumpForce);
+                    }
+                    else if (IsGrounded || _isOnSlippery)
+                    {
+                        Jump(_jumpForce);
                         _canDoubleJump = true;
                     }
                     else if (IsOnWall)
@@ -203,7 +249,7 @@ public class PlayerMovement : MonoBehaviour
                     }
                     else if (_canDoubleJump)
                     {
-                        Jump();
+                        Jump(_jumpForce);
                         _canDoubleJump = false;
                     }
                 }
@@ -219,7 +265,14 @@ public class PlayerMovement : MonoBehaviour
         {
             if (IsGrounded)
             {
-                _rigidbody.velocity = new Vector3(_speedCurve.Evaluate(_playerInput.HorizontalDirection), _rigidbody.velocity.y, _rigidbody.velocity.z); 
+                if (!_isOnSlippery)
+                {
+                    _rigidbody.velocity = new Vector3(_speedCurve.Evaluate(_playerInput.HorizontalDirection), _rigidbody.velocity.y, _rigidbody.velocity.z);
+                }
+                else
+                {
+                    _rigidbody.velocity = new Vector3(_speedCurve.Evaluate(_playerInput.HorizontalDirection), _rigidbody.velocity.y, _rigidbody.velocity.z);
+                }
             }
             else
             {
@@ -229,9 +282,9 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    private void Jump()
+    private void Jump(float jumpForce)
     {
-        _rigidbody.velocity = new Vector3(_rigidbody.velocity.x, _jumpForce, 0);
+        _rigidbody.velocity = new Vector3(_rigidbody.velocity.x, jumpForce, 0);
     }
 
     private void WallJump()
@@ -252,15 +305,22 @@ public class PlayerMovement : MonoBehaviour
     private void CheckGround()
     {
         IsGrounded = Physics.OverlapSphereNonAlloc(transform.position, _groundCheckRadius, _groundCollider, _groundLayer) > 0;
+        _isOnSlippery = Physics.OverlapSphereNonAlloc(transform.position, _groundCheckRadius, _slipperyCollider, _slipperyLayer) > 0;
+        _isOnTrampoline = Physics.OverlapSphereNonAlloc(transform.position, _groundCheckRadius, _trampolineCollider, _trampolineLayer) > 0;
     }
 
     private void CheckWall()
     {
-        IsOnWall = Physics.OverlapBoxNonAlloc(transform.position + transform.up, _wallCheckBoxHalfSize, _wallCollider, Quaternion.identity, _wallLayer) > 0;
+        IsOnWall = Physics.OverlapBoxNonAlloc(transform.position + _checkBoxCenterOffset, _wallCheckBoxHalfSize, _wallCollider, Quaternion.identity, _wallLayer) > 0;
 
         if (IsOnWall)
         {
             _offTheWallDirection = MathF.Sign(transform.position.x - _wallCollider[0].transform.position.x);
+
+            if(_rigidbody.velocity.y > _limitOnWallUpInertion)
+            {
+                _rigidbody.velocity = new Vector3(_rigidbody.velocity.x, _limitOnWallUpInertion, _rigidbody.velocity.z);
+            }
 
             // For the case when jump from another wall and still blocking moving
             if (_isBlockMovementRoutineStillWorking)
@@ -308,6 +368,32 @@ public class PlayerMovement : MonoBehaviour
         _rigidbody.velocity = new Vector3(forceDirection * _forceXOnTrapContact, _forceYOnTrapContact, _rigidbody.velocity.z);
     }
 
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag(StringConsts.TRAMPOLINE))
+        {
+            _isInTrampolineTrigger = true;
+        }
+        if (other.gameObject.CompareTag(StringConsts.SPRINGTRAP))
+        {
+            _rigidbody.velocity = Vector3.zero;
+            StartCoroutine(BlockMovementOnSeconds(.8f));
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject.CompareTag(StringConsts.TRAMPOLINE))
+        {
+            _isInTrampolineTrigger = false;
+        }
+        if (other.gameObject.CompareTag(StringConsts.SPRINGTRAP))
+        {
+            float forceDirection = Mathf.Sign(transform.position.x - other.transform.position.x);
+            _rigidbody.velocity = _rigidbody.velocity = new Vector3(forceDirection * _springTrepForceX, _springTrapForceY, _rigidbody.velocity.z);
+        }
+    }
+
     private void OnDrawGizmos()
     {
         // Sphere that detects ground
@@ -316,7 +402,7 @@ public class PlayerMovement : MonoBehaviour
 
         // Box that detects walls
         Gizmos.color = Color.blue;
-        Gizmos.DrawWireCube(transform.position + transform.up, _wallCheckBoxHalfSize * 2);
+        Gizmos.DrawWireCube(transform.position + _checkBoxCenterOffset, _wallCheckBoxHalfSize * 2);
     }
 }
 

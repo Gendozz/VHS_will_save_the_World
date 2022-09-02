@@ -12,8 +12,8 @@ public class Enemy1Attack : MonoBehaviour
     [Header("Точка выстрела")]
     [SerializeField] private Transform _firePoint;
 
-    [Header("Время между выстрелами")]
-    [SerializeField] private float _delayShoot = 2f;
+    [Header("Время между аттаками")]
+    [SerializeField] private float _delayAttack = 2f;
 
     private float _time;
     private float errorAngleWhichEnemyShoot = 10;
@@ -21,12 +21,12 @@ public class Enemy1Attack : MonoBehaviour
 
     private void Start()
     {
-        _time = _delayShoot;
+        _time = _delayAttack;
     }
 
     private void Update()
     {
-        if (_delayShoot <= _time && _isSees)
+        if (_delayAttack <= _time && _isSees)
         {
             if (transform.rotation.eulerAngles.y > 180 - errorAngleWhichEnemyShoot)
             {
