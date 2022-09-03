@@ -498,7 +498,11 @@ PrefabInstance:
     - target: {fileID: 5886153763299294200, guid: ad95c797f6822b147af5d9893b4bafbd, type: 3}
       propertyPath: _iActivatedComponents.Array.data[0]
       value: 
+<<<<<<< HEAD
+      objectReference: {fileID: 7608929932567665425}
+=======
       objectReference: {fileID: 7608929932567665430}
+>>>>>>> main
     - target: {fileID: 5886153763299294201, guid: ad95c797f6822b147af5d9893b4bafbd, type: 3}
       propertyPath: m_RootOrder
       value: 3

@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2515418075232829477}
   - component: {fileID: 2515418075232829479}
   - component: {fileID: 2515418075232829478}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Activator
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -72,7 +72,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2515418075951878214}
   - component: {fileID: 2515418075951878213}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: PullOutSpikes
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -127,7 +127,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2515418076176056186}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: FirstPoint
   m_TagString: Untagged
   m_Icon: {fileID: 7422848464349959988, guid: 0000000000000000d000000000000000, type: 0}
@@ -158,7 +158,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2515418076533547929}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: SecondPoint
   m_TagString: Untagged
   m_Icon: {fileID: 7422848464349959988, guid: 0000000000000000d000000000000000, type: 0}
