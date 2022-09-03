@@ -5,15 +5,8 @@ using UnityEngine;
 [RequireComponent(typeof(Shooter), typeof(BoxCollider))]
 public class ShootingTrap : MonoBehaviour
 {
+    [Header("—сылка на коампнент Shooter")]
     [SerializeField] private Shooter shooter;
-
-    //private void OnTriggerEnter(Collider other)
-    //{
-    //    if(other.TryGetComponent<PlayerMovement>(out PlayerMovement playerMovement))
-    //    {
-    //        shooter.Shoot(transform.rotation.eulerAngles);
-    //    }
-    //}
 
     private void OnTriggerStay(Collider other)
     {

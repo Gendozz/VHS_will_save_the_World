@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: e036bd93c2d716c448a11664c19e2657
+guid: 5b3b54291fd99794890c456ab42d0b16
 ModelImporter:
   serializedVersion: 21202
   internalIDToNameTable:
@@ -10,13 +10,13 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: lapki_move_1x_mat
-    second: {fileID: 2100000, guid: 42eeb54c278d1a54bb2083deabe8b4bc, type: 2}
+      name: lapki_4x_mat
+    second: {fileID: 2100000, guid: 50e68f94a21e5044e9eddac596c2a93a, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: move_main_mat
-    second: {fileID: 2100000, guid: 466b14e8035b46e439b4f2db61fd51b2, type: 2}
+      name: mov_main_4x_mat
+    second: {fileID: 2100000, guid: b705e763967440f4e80b8352ae829a06, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

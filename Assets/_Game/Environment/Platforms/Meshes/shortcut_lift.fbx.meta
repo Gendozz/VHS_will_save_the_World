@@ -1,22 +1,24 @@
 fileFormatVersion: 2
-guid: e036bd93c2d716c448a11664c19e2657
+guid: c632492a525269e43ba9c7a9f2c294c2
 ModelImporter:
   serializedVersion: 21202
-  internalIDToNameTable:
-  - first:
-      74: 1827226128182048838
-    second: Take 001
+  internalIDToNameTable: []
   externalObjects:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: lapki_move_1x_mat
-    second: {fileID: 2100000, guid: 42eeb54c278d1a54bb2083deabe8b4bc, type: 2}
+      name: perila_mat
+    second: {fileID: 2100000, guid: f27c76c29bcda90469b5483e2bfac8f0, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: move_main_mat
-    second: {fileID: 2100000, guid: 466b14e8035b46e439b4f2db61fd51b2, type: 2}
+      name: shortcut_floor_mat
+    second: {fileID: 2100000, guid: c28409f355ac075419d6b29dfd4962de, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: shortcut_opora_mat
+    second: {fileID: 2100000, guid: a3f979b185ae51240b2133f21fc43075, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
