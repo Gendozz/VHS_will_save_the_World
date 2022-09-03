@@ -521,12 +521,6 @@ MonoBehaviour:
   _wallJumpUpForce: 13
   _limitOnWallUpInertion: 1.2
   _afterWallJumpBlockMovementDuration: 0.2
-<<<<<<< HEAD
-<<<<<<< HEAD
-  _afterGotTrappedBlockMovementDuration: 0.5
-  _forceYOnTrapContact: 6
-=======
-=======
   _slipperySpeedCurve:
     serializedVersion: 2
     m_Curve:
@@ -584,10 +578,8 @@ MonoBehaviour:
   _trampolineLayer:
     serializedVersion: 2
     m_Bits: 2048
->>>>>>> main
   _afterGotTrappedBlockMovementDuration: 0.3
   _forceYOnTrapContact: 5
->>>>>>> main
   _forceXOnTrapContact: 5
   _springTrapForceY: 12
   _springTrepForceX: 10
