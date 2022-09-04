@@ -16,6 +16,14 @@ public class CameraFollowPlayer : MonoBehaviour
     [Header("Скорость слежения")]
     [SerializeField] private float followSpeed;
 
+    [SerializeField] private float minX;
+
+    [SerializeField] private float maxX;
+
+    [SerializeField] private float minY;
+
+    [SerializeField] private float maxY;
+
     private Vector3 _currentTargetPosition;
 
     void Update()
@@ -26,7 +34,11 @@ public class CameraFollowPlayer : MonoBehaviour
 
         _currentTargetPosition.y += yOffset;
 
-        transform.position = Vector3.Lerp(transform.position, _currentTargetPosition, Time.deltaTime * followSpeed);
+        Vector3 clampedPosition = new Vector3(Mathf.Clamp(_currentTargetPosition.x, minX, maxX),
+                                              Mathf.Clamp(_currentTargetPosition.y, minY, maxY), 
+                                              transform.position.z);
+
+        transform.position = Vector3.Lerp(transform.position, clampedPosition, Time.deltaTime * followSpeed);        
     }
 
     public void ChangeTarget(Transform newTarget)

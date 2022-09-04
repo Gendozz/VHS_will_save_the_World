@@ -4,7 +4,7 @@ public class Health : MonoBehaviour, IDamagable, IHealable
 {
     [SerializeField] private int maxLives;
 
-    private int currentLives;
+    [SerializeField] private int currentLives; // TODO: hide from inspector after tests
 
     private IHealthDisplayer healthDisplayer;
 
@@ -15,13 +15,13 @@ public class Health : MonoBehaviour, IDamagable, IHealable
         {
             healthDisplayer = GetComponentInChildren<IHealthDisplayer>();
         }
-        if (healthDisplayer != null) healthDisplayer.ShowActualHealth(currentLives, maxLives);
+        ChangeHealthDisplayer();
     }
 
     public void TakeDamage(int damage)
     {
         currentLives -= damage;
-        if (healthDisplayer != null) healthDisplayer.ShowActualHealth(currentLives, maxLives);
+        ChangeHealthDisplayer();
         if (currentLives <= 0) Die();
     }
 
@@ -36,13 +36,24 @@ public class Health : MonoBehaviour, IDamagable, IHealable
         gameObject.SetActive(false);
     }
 
-    public void RestoreHealth(int healthAmountToRestore)
+    public bool RestoreHealth(int healthAmountToRestore)
     {
-        currentLives += healthAmountToRestore;
-        if (healthAmountToRestore + currentLives > maxLives)
+        if (currentLives + healthAmountToRestore  > maxLives)
         {
             currentLives = maxLives;
+            ChangeHealthDisplayer();
+            return false;
         }
+        else
+        {
+            currentLives += healthAmountToRestore;
+            ChangeHealthDisplayer();
+            return true;
+        }
+    }
+
+    private void ChangeHealthDisplayer()
+    {
         if (healthDisplayer != null) healthDisplayer.ShowActualHealth(currentLives, maxLives);
     }
 }

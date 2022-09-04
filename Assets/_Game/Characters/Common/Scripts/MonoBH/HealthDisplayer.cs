@@ -7,6 +7,14 @@ public class HealthDisplayer : MonoBehaviour, IHealthDisplayer
 
     public void ShowActualHealth(int currentHealth, int maxHealth)
     {
-        _health.text = currentHealth.ToString();
+        // TODO: delete if/else after all levels are ready
+        if (_health != null)
+        {
+            _health.text = currentHealth.ToString();
+        }
+        else
+        {
+            Debug.Log("Current health " + currentHealth.ToString());
+        }
     }
 }

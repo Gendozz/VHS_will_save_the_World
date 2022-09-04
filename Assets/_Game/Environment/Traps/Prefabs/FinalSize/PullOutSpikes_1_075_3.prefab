@@ -335,6 +335,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: StaticSpikes_1_075_3
       objectReference: {fileID: 0}
+    - target: {fileID: 8029513862779631809, guid: f35024a5c73710e478d6b15fcd892f55, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f35024a5c73710e478d6b15fcd892f55, type: 3}
 --- !u!1 &7127496473265173401 stripped

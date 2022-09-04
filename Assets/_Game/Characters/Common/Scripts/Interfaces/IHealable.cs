@@ -1,5 +1,8 @@
 public interface IHealable
 {
-    public void RestoreHealth(int healthAmountToRestore);
+    /// <summary>
+    /// Returns true - if health was succesfully restored, false - if not (lives are full)
+    /// </summary>
+    public bool RestoreHealth(int healthAmountToRestore);
 
 }
