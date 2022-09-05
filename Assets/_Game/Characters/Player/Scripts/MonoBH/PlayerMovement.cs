@@ -106,7 +106,7 @@ public class PlayerMovement : MonoBehaviour
     private Collider[] _groundCollider = new Collider[1];
 
     private Collider[] _slipperyCollider = new Collider[1];
-    
+
     private Collider[] _trampolineCollider = new Collider[1];
 
     // Horizontal movement relative
@@ -317,7 +317,7 @@ public class PlayerMovement : MonoBehaviour
         {
             _offTheWallDirection = MathF.Sign(transform.position.x - _wallCollider[0].transform.position.x);
 
-            if(_rigidbody.velocity.y > _limitOnWallUpInertion)
+            if (_rigidbody.velocity.y > _limitOnWallUpInertion)
             {
                 _rigidbody.velocity = new Vector3(_rigidbody.velocity.x, _limitOnWallUpInertion, _rigidbody.velocity.z);
             }
@@ -367,6 +367,12 @@ public class PlayerMovement : MonoBehaviour
         float forceDirection = Mathf.Sign(transform.position.x - fromPosition.x);
         _rigidbody.velocity = new Vector3(forceDirection * _forceXOnTrapContact, _forceYOnTrapContact, _rigidbody.velocity.z);
     }
+
+    public void SetDoubleJumpAbility(bool haveDoubleJumpAbilty)
+    {
+        _haveDoubleJumpAbility = haveDoubleJumpAbilty;
+    }
+
 
     private void OnTriggerEnter(Collider other)
     {
