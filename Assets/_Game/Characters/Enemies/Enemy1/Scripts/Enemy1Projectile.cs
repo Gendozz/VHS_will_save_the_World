@@ -17,7 +17,6 @@ public class Enemy1Projectile : MonoBehaviour
     [SerializeField] private Rigidbody _rigidbody;
 
     private float _time;
-    private string _nameLayer = "Wall";
 
     private void Start()
     {
@@ -41,7 +40,7 @@ public class Enemy1Projectile : MonoBehaviour
         {
             other.GetComponent<IDamagable>().TakeDamage(_damage);
         }
-        else if (other.gameObject.layer == LayerMask.NameToLayer(_nameLayer))
+        else if (other.gameObject.layer == LayerMask.NameToLayer(StringConsts.WALL))
         {
             Destroy(gameObject);
         }
