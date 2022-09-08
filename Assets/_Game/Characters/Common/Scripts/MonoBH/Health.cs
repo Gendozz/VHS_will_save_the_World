@@ -8,6 +8,8 @@ public class Health : MonoBehaviour, IDamagable, IHealable
 
     private IHealthDisplayer healthDisplayer;
 
+    public bool IsOutOfLifes => currentLives <= 0;
+
     void Start()
     {
         currentLives = maxLives;
@@ -33,7 +35,7 @@ public class Health : MonoBehaviour, IDamagable, IHealable
             return;
         }
         Debug.Log($"GameObject {gameObject.name} doesn't have specified Die behaviour and just deactivated");
-        gameObject.SetActive(false);
+        //gameObject.SetActive(false);
     }
 
     public bool RestoreHealth(int healthAmountToRestore)

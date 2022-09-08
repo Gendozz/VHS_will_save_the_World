@@ -14,6 +14,7 @@ public class PlayerInput : MonoBehaviour
 
     private bool shouldDetectInput = true;
 
+    public bool isHorizontalInput { get; private set; }
 
     //private void BlockInput()
     //{
@@ -28,6 +29,7 @@ public class PlayerInput : MonoBehaviour
         {
             IsJumpButtonPressed = Input.GetButtonDown(StringConsts.JUMP);
             IsCloneActivationButtonPressed = Input.GetKeyDown(KeyCode.E);
+            isHorizontalInput = Input.GetButton(StringConsts.HORIZONTAL_AXIS);
 
             switch (_isInputInversed)
             {

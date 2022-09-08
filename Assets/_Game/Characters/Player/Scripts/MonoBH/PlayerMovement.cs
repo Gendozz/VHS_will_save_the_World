@@ -109,9 +109,11 @@ public class PlayerMovement : MonoBehaviour
 
     private Collider[] _trampolineCollider = new Collider[1];
 
+    private bool _shouldDetectGround = true;
+
     // Horizontal movement relative
 
-    private float _horizontalInputTreshold = 0.1f;
+    private float _horizontalInputTreshold = 0.15f;
 
     // Jump relative
 
@@ -146,6 +148,11 @@ public class PlayerMovement : MonoBehaviour
     private bool _isOnTrampoline = false;
 
     private bool _isInTrampolineTrigger = false;
+    
+
+    // For animation
+
+    public float VelocityY => _rigidbody.velocity.y;
 
     private void Awake()
     {
@@ -188,7 +195,10 @@ public class PlayerMovement : MonoBehaviour
     private void FixedUpdate()
     {
 
-        CheckGround();
+        if (_shouldDetectGround)
+        {
+            CheckGround(); 
+        }
 
         if (_shoudDetectWall)
         {
@@ -261,7 +271,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void ApplyInputToHorizontalMovement()
     {
-        if (Mathf.Abs(_playerInput.HorizontalDirection) > _horizontalInputTreshold)
+        if (ShouldApplyHorizontalMovement())
         {
             if (IsGrounded)
             {
@@ -282,9 +292,17 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
+    public bool ShouldApplyHorizontalMovement()
+    {
+        return Mathf.Abs(_playerInput.HorizontalDirection) > _horizontalInputTreshold;
+    }
+
     private void Jump(float jumpForce)
     {
         _rigidbody.velocity = new Vector3(_rigidbody.velocity.x, jumpForce, 0);
+        _shouldDetectGround = false;
+        IsGrounded = false;
+        StartCoroutine(RestoreGroundDetection(0.5f));
     }
 
     private void WallJump()
@@ -300,6 +318,12 @@ public class PlayerMovement : MonoBehaviour
     {
         yield return new WaitForSeconds(delay);
         _shoudDetectWall = true;
+    }
+
+    private IEnumerator RestoreGroundDetection(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        _shouldDetectGround = true;
     }
 
     private void CheckGround()
