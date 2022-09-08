@@ -22,11 +22,7 @@ public class StringConsts
     public const string PLAYER = "Player";
     public const string SLIPPERY = "Slippery";
     #endregion
-<<<<<<< Updated upstream
-=======
 
-
->>>>>>> Stashed changes
 
     #region Pooler Tags
     public const string SHOT = "Shot";
