@@ -11,7 +11,7 @@ public class Enemy3LookAtPlayer : MonoBehaviour
     [SerializeField] private float _delayTimeState;
     [SerializeField] private float _visionTimeAbroad;
     [SerializeField] private float _timeAgroWhenPlayerLeft;
-    [SerializeField] private float _additionalVisibilityHeight;
+    [SerializeField] private float _additionalVisibility;
 
     private Transform _playerTransform;
     private float _lowerLimitFieldView;
@@ -26,8 +26,8 @@ public class Enemy3LookAtPlayer : MonoBehaviour
 
     private void Start()
     {
-        _lowerLimitFieldView = transform.position.y - transform.localScale.y;
-        _upperLimitFieldView = transform.position.y + transform.localScale.y + _additionalVisibilityHeight;
+        _lowerLimitFieldView = transform.position.y - transform.localScale.y - _additionalVisibility;
+        _upperLimitFieldView = transform.position.y + transform.localScale.y + _additionalVisibility;
         _timerAgroWhenPlayerLeft = _timeAgroWhenPlayerLeft;
         _startIlde = true;
 
