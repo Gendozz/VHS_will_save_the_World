@@ -10,14 +10,13 @@ public class Enemy3LookAtPlayer : MonoBehaviour
     [SerializeField] private float _speedRotationAgro;
     [SerializeField] private float _delayTimeState;
     [SerializeField] private float _visionTimeAbroad;
-    [SerializeField] private float _agroTimeIfPlayerFled;
+    [SerializeField] private float _timeAgroWhenPlayerLeft;
     [SerializeField] private float _additionalVisibilityHeight;
 
     private Transform _playerTransform;
-
     private float _lowerLimitFieldView;
     private float _upperLimitFieldView;
-    private float _countTime;
+    private float _timerAgroWhenPlayerLeft;
     private float _angleRotation = 89.9f;
     private bool _onScreen;
     private bool _startIlde;
@@ -29,7 +28,7 @@ public class Enemy3LookAtPlayer : MonoBehaviour
     {
         _lowerLimitFieldView = transform.position.y - transform.localScale.y;
         _upperLimitFieldView = transform.position.y + transform.localScale.y + _additionalVisibilityHeight;
-        _countTime = _agroTimeIfPlayerFled;
+        _timerAgroWhenPlayerLeft = _timeAgroWhenPlayerLeft;
         _startIlde = true;
 
         _playerTransform = GameObject.Find(_playerName).transform;
@@ -41,16 +40,16 @@ public class Enemy3LookAtPlayer : MonoBehaviour
         StandingRightLeft();
 
         if ((_onScreen && _playerInZone && _isSight) || 
-            (_countTime < _agroTimeIfPlayerFled && _countTime != 0))
+            (_timerAgroWhenPlayerLeft < _timeAgroWhenPlayerLeft && _timerAgroWhenPlayerLeft != 0))
         {
             IsSees = true;
-            _countTime += Time.deltaTime;
+            _timerAgroWhenPlayerLeft += Time.deltaTime;
             ToAgro(); 
         }
         else if (_startIlde)
         {
             IsSees = false;
-            _countTime = 0;
+            _timerAgroWhenPlayerLeft = 0;
             _startIlde = false;
             StartCoroutine(ToIdle());
         }

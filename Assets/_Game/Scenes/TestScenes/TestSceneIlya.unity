@@ -499,6 +499,51 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &391157639
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 391157640}
+  - component: {fileID: 391157641}
+  m_Layer: 0
+  m_Name: DeathCollider
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &391157640
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 391157639}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 1.057, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1265222765}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &391157641
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 391157639}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 0.2, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &621941738
 GameObject:
   m_ObjectHideFlags: 0
@@ -1059,6 +1104,7 @@ Transform:
   m_Children:
   - {fileID: 116406257}
   - {fileID: 621941739}
+  - {fileID: 391157640}
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 179.9, z: 0}
@@ -1074,15 +1120,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b1383d57003868145a8d7e5504903227, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  IsSees: 0
   _leftPointTransform: {fileID: 996348304}
   _rightPointTransform: {fileID: 1043126439}
   _speedPosition: 5
   _speedRotation: 1.2
-  angleWhichEnemyChangesDirection: 70
+  angleWhichEnemyChangesDirection: 20
+  _additionalVisibilityHeight: 3
   _rigidbody: {fileID: 1265222761}
-  _minDistanseBetweenPlayerAndEnemy: 1
   _playerTransform: {fileID: 1757396712}
-  _isSees: 0
+  _minDistanseBetweenPlayerAndEnemy: 2
 --- !u!114 &1265222767
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1095,10 +1142,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7fee18c4b0040994191fc3c0cb626a36, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _enemy1Moving: {fileID: 1265222766}
   _projectile: {fileID: 6545901775446846957, guid: 1f40dd89a1b0ef647aab83c1cdb6a60a, type: 3}
   _firePoint: {fileID: 621941739}
   _delayAttack: 2
-  _isSees: 0
 --- !u!1 &1329101439
 GameObject:
   m_ObjectHideFlags: 0
@@ -1331,7 +1378,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1757396711}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 43.46, y: 8.15, z: 7.660509}
+  m_LocalPosition: {x: -5.79, y: 7.46, z: 7.660509}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
