@@ -13,7 +13,7 @@ public class Enemy3AgroInteractionWithPlayer : MonoBehaviour
         {
             if (_enemy3LookAtPlayer.IsSees)
             {
-                _abilityStealing.StartTimerBreakingDoors();
+                _abilityStealing.StartTimerDoubleJump();
                 Destroy(_enemy3Objs);
             }
         }
