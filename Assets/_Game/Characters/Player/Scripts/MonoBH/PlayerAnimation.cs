@@ -18,8 +18,6 @@ public class PlayerAnimation : MonoBehaviour
 
     private bool isJumping = false;
 
-    RaycastHit hit;
-
     private void Update()
     {
         ApplyInputToAnimator();
