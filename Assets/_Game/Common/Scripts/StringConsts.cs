@@ -23,6 +23,7 @@ public class StringConsts
     public const string SLIPPERY = "Slippery";
     #endregion
 
+
     #region Pooler Tags
     public const string SHOT = "Shot";
     public const string COIN = "Coin";
