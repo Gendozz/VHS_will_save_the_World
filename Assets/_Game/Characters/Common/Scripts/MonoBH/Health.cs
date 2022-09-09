@@ -1,7 +1,9 @@
+using System;
 using UnityEngine;
 
 public class Health : MonoBehaviour, IDamagable, IHealable
 {
+    [Header("Максимальное количество жизней")]
     [SerializeField] private int maxLives;
 
     [SerializeField] private int currentLives; // TODO: hide from inspector after tests
@@ -9,6 +11,9 @@ public class Health : MonoBehaviour, IDamagable, IHealable
     private IHealthDisplayer healthDisplayer;
 
     public bool IsOutOfLifes => currentLives <= 0;
+
+    public Action onTakeDamage;
+    public Action onOutOfLifes;
 
     void Start()
     {
@@ -24,7 +29,12 @@ public class Health : MonoBehaviour, IDamagable, IHealable
     {
         currentLives -= damage;
         ChangeHealthDisplayer();
-        if (currentLives <= 0) Die();
+        if (currentLives <= 0)
+        {
+            Die();
+            return;
+        }
+        onTakeDamage?.Invoke();
     }
 
     private void Die()
@@ -34,13 +44,13 @@ public class Health : MonoBehaviour, IDamagable, IHealable
             canDieObject.Die();
             return;
         }
-        Debug.Log($"GameObject {gameObject.name} doesn't have specified Die behaviour and just deactivated");
-        //gameObject.SetActive(false);
+        Debug.Log($"GameObject {gameObject.name} is died. Didn't you see?");
+        onOutOfLifes?.Invoke();
     }
 
     public bool RestoreHealth(int healthAmountToRestore)
     {
-        if (currentLives + healthAmountToRestore  > maxLives)
+        if (currentLives + healthAmountToRestore > maxLives)
         {
             currentLives = maxLives;
             ChangeHealthDisplayer();

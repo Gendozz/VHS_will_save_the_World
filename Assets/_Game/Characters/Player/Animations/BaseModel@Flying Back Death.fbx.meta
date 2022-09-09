@@ -1,11 +1,11 @@
 fileFormatVersion: 2
-guid: 987c2abcd4455e840abaf69c2e333a74
+guid: a1189c60c8d97704d85b7fb35b4d4d05
 ModelImporter:
   serializedVersion: 21202
   internalIDToNameTable:
   - first:
       74: -203655887218126122
-    second: Kick
+    second: Flying Back Death
   externalObjects: {}
   materials:
     materialImportMode: 2
@@ -20,7 +20,13 @@ ModelImporter:
     removeConstantScaleCurves: 1
     motionNodeName: 
     rigImportErrors: 
-    rigImportWarnings: 
+    rigImportWarnings: "Copied Avatar Rig Configuration mis-match. Bone length in
+      copied configuration does not match position in animation file:\n\t'mixamorig:LeftUpLeg'
+      : position error = 15.736729 mm\n\t'mixamorig:LeftLeg' : position error = 30.634996
+      mm\n\t'mixamorig:LeftFoot' : position error = 123.443253 mm\n\t'mixamorig:LeftToeBase'
+      : position error = 2.535375 mm\n\t'mixamorig:RightUpLeg' : position error =
+      15.567778 mm\n\t'mixamorig:RightLeg' : position error = 30.620689 mm\n\t'mixamorig:RightFoot'
+      : position error = 123.046677 mm\n"
     animationImportErrors: 
     animationImportWarnings: 
     animationRetargetingWarnings: 
@@ -36,11 +42,11 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: Kick
+      name: Flying Back Death
       takeName: mixamo.com
       internalID: 0
-      firstFrame: 46
-      lastFrame: 101
+      firstFrame: 0
+      lastFrame: 181
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
