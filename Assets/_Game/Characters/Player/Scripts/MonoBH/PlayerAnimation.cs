@@ -1,9 +1,9 @@
 using System;
+using System.Collections;
 using UnityEngine;
 
 public class PlayerAnimation : MonoBehaviour
 {
-
     [SerializeField] private Animator _animator;
 
     [SerializeField] private PlayerInput _playerInput;
@@ -16,41 +16,76 @@ public class PlayerAnimation : MonoBehaviour
 
     [SerializeField] private Health _playerHealth;
 
-    private bool isJumping = false;
+    [SerializeField] private ColorLerp _colorLerp;
 
-    private void Update()
+    private bool _isJumping = false;
+
+    private float _kickAnimationDuration;
+
+
+    private void OnEnable()
     {
-        ApplyInputToAnimator();
-
-        WatchHealth();
+        _playerHealth.onTakeDamage += AnimateDamage;
+        _playerHealth.onOutOfLifes += AnimateDeath;
     }
 
-    private void WatchHealth()
+    private void AnimateDeath()
     {
-        if (_playerHealth.IsOutOfLifes)
+        _animator.SetTrigger("isDead");
+    }
+
+    private void OnDisable()
+    {
+        _playerHealth.onTakeDamage -= AnimateDamage;
+        _playerHealth.onOutOfLifes -= AnimateDeath;
+
+    }
+
+    private void Start()
+    {
+        RuntimeAnimatorController runtimeAnimatorController = _animator.runtimeAnimatorController;
+        foreach (var clip in runtimeAnimatorController.animationClips)
         {
-            _animator.SetTrigger("isDead");
+            if (clip.name.Equals("Kick"))
+            {
+                _kickAnimationDuration = clip.length;
+            }
         }
     }
 
-    private void ApplyInputToAnimator()
+    private void Update()
+    {
+        ApplyKickAnimation();
+
+        ApplyMovementAnimations();
+    }
+
+    private void ApplyKickAnimation()
+    {
+        if (_playerInput.IsAttackButtonPressed)
+        {
+            _animator.SetTrigger("Kick");
+        }
+    }
+
+
+    private void ApplyMovementAnimations()
     {
         if (_playerMovement.IsGrounded)
         {
             _animator.SetBool("isGrounded", true);
             _animator.SetBool("isFalling", false);
             _animator.SetBool("isJumping", false);
-            isJumping = false;
+            _isJumping = false;
             if (_playerInput.IsJumpButtonPressed)
             {
                 _animator.SetBool("isJumping", true);
-                isJumping = true;
+                _isJumping = true;
             }
 
             if (_playerMovement.ShouldApplyHorizontalMovement())
             {
                 _animator.SetBool("isMoving", true);
-
             }
             else
             {
@@ -65,41 +100,33 @@ public class PlayerAnimation : MonoBehaviour
             {
                 _animator.SetBool("isOnWall", true);
                 _animator.SetBool("isFalling", false);
-                
+
                 if (_playerInput.IsJumpButtonPressed)
                 {
-                    //_animator.SetBool("isOnWall", false);
                     _animator.SetBool("isJumping", true);
                 }
-
             }
             else
             {
                 _animator.SetBool("isOnWall", false);
             }
-
-
-
-
         }
 
-        if (isJumping && _playerMovement.VelocityY < 0 || _playerMovement.VelocityY < -2 && !_playerMovement.IsOnWall)
+        if (_isJumping && _playerMovement.VelocityY < 0 || _playerMovement.VelocityY < -2 && !_playerMovement.IsOnWall)
         {
             _animator.SetBool("isJumping", false);
-            isJumping = false;
+            _isJumping = false;
             _animator.SetBool("isFalling", true);
         }
-
-    }
-
-
-    private void FixedUpdate()
-    {
-
     }
 
     private void OnDrawGizmos()
     {
         Gizmos.DrawLine(transform.position, transform.position - transform.up * 2);
+    }
+
+    private void AnimateDamage()
+    {
+        _colorLerp.StartLerp();
     }
 }

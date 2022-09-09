@@ -12,23 +12,23 @@ public class PlayerInput : MonoBehaviour
     public bool IsGrappleButtonPressed { get; private set; }
     public bool IsCloneActivationButtonPressed { get; private set; }
 
-    private bool shouldDetectInput = true;
+    private bool _shouldDetectInput = true;
 
     public bool isHorizontalInput { get; private set; }
 
-    //private void BlockInput()
-    //{
-    //    shouldDetectInput = false;
-    //    HorizontalDirection = 0;
-    //}
-
+    public void SwitchInput(bool shouldDetectInput)
+    {
+        HorizontalDirection = 0;
+        _shouldDetectInput = shouldDetectInput;
+    }
 
     void Update()
     {
-        if (shouldDetectInput)
+        if (_shouldDetectInput)
         {
             IsJumpButtonPressed = Input.GetButtonDown(StringConsts.JUMP);
             IsCloneActivationButtonPressed = Input.GetKeyDown(KeyCode.E);
+            IsAttackButtonPressed = Input.GetKeyDown(KeyCode.R);
             isHorizontalInput = Input.GetButton(StringConsts.HORIZONTAL_AXIS);
 
             switch (_isInputInversed)

@@ -1,15 +1,14 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(BoxCollider))]
 public class SwapZone : MonoBehaviour, IActivatable
 {
     [Header("Объект игрока на сцене")]
-    [SerializeField] private GameObject _player;
+    [SerializeField] private PlayerInput _playerInput;
 
     [Header("Объект клона на сцене")]
-    [SerializeField] private GameObject _clone;
+    [SerializeField] private PlayerInput _cloneInput;
 
     [Header("Главная камера")]
     [SerializeField] private CameraFollowPlayer _camera;
@@ -22,9 +21,11 @@ public class SwapZone : MonoBehaviour, IActivatable
     // For cooldown
     private bool _isAbilityReady = true;
 
+    private bool _isPlayerActive = true;
+
     void Start()
     {
-        _clone.SetActive(false);    // TODO: Maybe change after
+        _cloneInput.SwitchInput(false);    
     }
 
     void Update()
@@ -57,9 +58,10 @@ public class SwapZone : MonoBehaviour, IActivatable
 
     private void SwapPlayerClone()
     {
-        _player.SetActive(!_player.activeSelf);
-        _clone.SetActive(!_clone.activeSelf);
-        _camera.ChangeTarget(_player.activeSelf ? _player.transform : _clone.transform);
+        _isPlayerActive = !_isPlayerActive;
+        _playerInput.SwitchInput(_isPlayerActive);
+        _cloneInput.SwitchInput(!_isPlayerActive);
+        _camera.ChangeTarget(_isPlayerActive ? _playerInput.transform : _cloneInput.transform);
     }
 
     private IEnumerator RestoreAbility()
@@ -71,6 +73,7 @@ public class SwapZone : MonoBehaviour, IActivatable
     public void Activate()
     {
         SwapPlayerClone();
+        _cloneInput.gameObject.SetActive(false);
         gameObject.SetActive(false);
     }
 }

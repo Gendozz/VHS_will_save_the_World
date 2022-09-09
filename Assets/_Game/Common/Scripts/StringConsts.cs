@@ -6,11 +6,11 @@ public class StringConsts
     public const string JUMP = "Jump";
     public const string GRAPPLE_HOOK = "Q";         // Change after joystick adding
     public const string BREAK_DOOR = "R";
+    public const string ESC = "Cancel";
 
     // Currently unused
     public const string ATTACK = "Fire1";
     public const string DOWN = "down";
-    public const string ESC = "Cancel";
     #endregion
 
     #region LayersNames
