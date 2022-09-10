@@ -2791,7 +2791,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 568637191}
   serializedVersion: 2
-  m_Mass: 1
+  m_Mass: 500
   m_Drag: 0
   m_AngularDrag: 0.05
   m_UseGravity: 1
@@ -2811,7 +2811,7 @@ HingeJoint:
   m_Anchor: {x: 0, y: 0, z: 8.02}
   m_Axis: {x: 1, y: 0, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: 0, y: 0, z: 0}
+  m_ConnectedAnchor: {x: 19.19714, y: -24.128994, z: 0.9248779}
   m_UseSpring: 0
   m_Spring:
     spring: 0
@@ -2842,12 +2842,32 @@ BoxCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 568637191}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 727e8f0439f77754b9295bde121ed8a7, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 3.46, y: 10.659999, z: 1.781055}
   m_Center: {x: 3.3817121e-15, y: -0.0000013562309, z: -7.4044724}
+--- !u!114 &568637196
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 568637191}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6492eed194500c84c9eecabbcd5a1335, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _transformToMove: {fileID: 0}
+  _firstPoint: {fileID: 0}
+  _secondPoint: {fileID: 0}
+  _moveDuration: 0
+  _delayWhenPointReached: 0
+  _toActivateOnStart: 1
+  _toLimitAmountOfIterations: 0
+  _amountOfItereations: 0
 --- !u!1001 &574436828
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2925,7 +2945,7 @@ GameObject:
   m_Component:
   - component: {fileID: 586812351}
   - component: {fileID: 586812352}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Fasteners
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6323,7 +6343,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1313242691}
   - component: {fileID: 1313242690}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: PendulumPlatform
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6354,7 +6374,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1313242689}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 15.81, y: -24.15, z: 0.9248781}
+  m_LocalPosition: {x: 19.19, y: -24.15, z: 0.9248781}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -7280,11 +7300,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5987480786865510300, guid: 9332198de8928ce418fad1c876476546, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -5.53
+      value: 23.34
       objectReference: {fileID: 0}
     - target: {fileID: 5987480786865510300, guid: 9332198de8928ce418fad1c876476546, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -8.55
+      value: -28.1
       objectReference: {fileID: 0}
     - target: {fileID: 5987480786865510300, guid: 9332198de8928ce418fad1c876476546, type: 3}
       propertyPath: m_LocalPosition.z
@@ -11075,7 +11095,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: c9904fc8bb8668845b9848737a79712c, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.8
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: c9904fc8bb8668845b9848737a79712c, type: 3}
       propertyPath: m_LocalScale.y
@@ -11125,9 +11145,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 823298642921980662, guid: c9904fc8bb8668845b9848737a79712c, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: c9904fc8bb8668845b9848737a79712c, type: 3}
       propertyPath: m_Name
       value: shipment
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: c9904fc8bb8668845b9848737a79712c, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 8389346082688711933, guid: c9904fc8bb8668845b9848737a79712c, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c9904fc8bb8668845b9848737a79712c, type: 3}

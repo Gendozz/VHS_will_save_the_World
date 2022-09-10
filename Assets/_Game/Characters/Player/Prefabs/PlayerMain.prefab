@@ -489,6 +489,7 @@ GameObject:
   - component: {fileID: 81582886}
   - component: {fileID: 81582893}
   - component: {fileID: 871622685}
+  - component: {fileID: 3568743226998430310}
   m_Layer: 9
   m_Name: PlayerMain
   m_TagString: Untagged
@@ -820,6 +821,22 @@ MonoBehaviour:
   _lerpDuration: 0.1
   _amountOfItereations: 3
   _meshRenderer: {fileID: 2667930730072025161}
+--- !u!114 &3568743226998430310
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5987480786865510301}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5ef6b4274fe626a4c9c44480247eaa51, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  IsStartTimerBreakDoors: 0
+  _timeDoubleJump: 5
+  _timeBreakingDoors: 5
+  _playerMovement: {fileID: 5987480786865510303}
 --- !u!1001 &1581912150
 PrefabInstance:
   m_ObjectHideFlags: 0
