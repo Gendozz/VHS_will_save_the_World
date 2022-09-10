@@ -16,14 +16,13 @@ public class GameFlowController : MonoBehaviour
     private void OnEnable()
     {
         _playerHealth.onOutOfLifes += DoAfterPlayerDieActions;
-        //_menuController.onPauseCanvasSwitchedOff += SwitchPauseState;
+        LevelEnd.onPlyerGotToLevelEnd += DoPlayerWinActions;
     }
 
     private void OnDisable()
     {
         _playerHealth.onOutOfLifes -= DoAfterPlayerDieActions;
-        //_menuController.onPauseCanvasSwitchedOff -= SwitchPauseState;
-
+        LevelEnd.onPlyerGotToLevelEnd -= DoPlayerWinActions;
     }
 
     private void Update()
@@ -38,6 +37,13 @@ public class GameFlowController : MonoBehaviour
     {
         _isGamePaused = true;
         _menuController.ShowFailCanvas();
+        SwitchMotions(!_isGamePaused);
+    }
+
+    private void DoPlayerWinActions()
+    {
+        _isGamePaused = true;
+        _menuController.ShowWinCanvas();
         SwitchMotions(!_isGamePaused);
     }
 

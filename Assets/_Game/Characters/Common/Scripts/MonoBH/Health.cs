@@ -10,11 +10,12 @@ public class Health : MonoBehaviour, IDamagable, IHealable
     [Header("--- Для тестов ---")]
     [SerializeField] private int currentLives; // TODO: hide from inspector after tests
 
+    [SerializeField] private float _invulnerabilityDuration;
+
     private IHealthDisplayer healthDisplayer;
 
     private bool _canTakeDamage = true;
 
-    private float _invulnerabilityDuration = 0.2f;
 
     public bool IsOutOfLifes => currentLives <= 0;
 
