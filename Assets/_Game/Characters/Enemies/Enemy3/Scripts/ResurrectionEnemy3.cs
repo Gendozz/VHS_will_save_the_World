@@ -6,18 +6,23 @@ public class ResurrectionEnemy3 : MonoBehaviour
     [SerializeField] private float _timeUntilRes;
     [Space]
     [Header("-----      Компоненты и системные      -----")]
-    [SerializeField] private GameObject _door;
-    [SerializeField] private GameObject _Enemy3Objs;
+    [SerializeField] private Animator _animator;
+    [SerializeField] private Behaviour[] _components;
 
     private float _timerRes = 0;
 
     private void Update()
     {
-        if (transform.childCount == 0 && _door != null)
+        if (_components[0].enabled == false)
         {
             if (_timerRes >= _timeUntilRes)
             {
-                var enemy3 = Instantiate(_Enemy3Objs, transform.position, transform.rotation, transform);
+                _animator.SetTrigger("Res");
+
+                for (int i = 0; i < _components.Length; i++)
+                {
+                    _components[i].enabled = true;
+                }
 
                 _timerRes = 0;
             }

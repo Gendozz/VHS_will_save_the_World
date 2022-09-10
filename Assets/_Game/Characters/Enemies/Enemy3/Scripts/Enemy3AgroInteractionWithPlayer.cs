@@ -4,8 +4,9 @@ public class Enemy3AgroInteractionWithPlayer : MonoBehaviour
 {
     [Header("-----      Компоненты и системные      -----")]
     [SerializeField] private Enemy3LookAtPlayer _enemy3LookAtPlayer;
-    [SerializeField] private GameObject _enemy3Objs;
     [SerializeField] private AbilityStealing _abilityStealing;
+    [SerializeField] private Animator _animator;
+    [SerializeField] private Behaviour[] _components;
 
     private void OnTriggerEnter(Collider other)
     {
@@ -14,7 +15,12 @@ public class Enemy3AgroInteractionWithPlayer : MonoBehaviour
             if (_enemy3LookAtPlayer.IsSees)
             {
                 _abilityStealing.StartTimerDoubleJump();
-                Destroy(_enemy3Objs);
+                _animator.SetTrigger("Death");
+
+                for (int i = 0; i < _components.Length; i++)
+                {
+                    _components[i].enabled = false;
+                }
             }
         }
     }

@@ -12,8 +12,11 @@ public class Enemy3LookAtPlayer : MonoBehaviour
     [SerializeField] private float _visionTimeAbroad;
     [SerializeField] private float _timeAgroWhenPlayerLeft;
     [SerializeField] private float _additionalVisibility;
+    [Space]
+    [Header("-----      Компоненты и системное      -----")]
+    [SerializeField] private Animator _animator;
+    [SerializeField] private Transform _playerTransform;
 
-    private Transform _playerTransform;
     private float _lowerLimitFieldView;
     private float _upperLimitFieldView;
     private float _timerAgroWhenPlayerLeft;
@@ -22,32 +25,32 @@ public class Enemy3LookAtPlayer : MonoBehaviour
     private bool _startIlde;
     private bool _playerInZone;
     private bool _isSight;
-    private string _playerName = "PlayerMain";
 
     private void Start()
     {
-        _lowerLimitFieldView = transform.position.y - transform.localScale.y - _additionalVisibility;
+        _lowerLimitFieldView = transform.position.y - transform.localScale.y;
         _upperLimitFieldView = transform.position.y + transform.localScale.y + _additionalVisibility;
         _timerAgroWhenPlayerLeft = _timeAgroWhenPlayerLeft;
         _startIlde = true;
-
-        _playerTransform = GameObject.Find(_playerName).transform;
     }
 
     private void Update()
     {
-        ToSight();
+        PlayerInZone();
         StandingRightLeft();
 
         if ((_onScreen && _playerInZone && _isSight) || 
             (_timerAgroWhenPlayerLeft < _timeAgroWhenPlayerLeft && _timerAgroWhenPlayerLeft != 0))
         {
+            _animator.SetBool("ToAgro", true);
             IsSees = true;
             _timerAgroWhenPlayerLeft += Time.deltaTime;
             ToAgro(); 
         }
         else if (_startIlde)
         {
+            Debug.Log("testik");
+            _animator.SetBool("ToAgro", false);
             IsSees = false;
             _timerAgroWhenPlayerLeft = 0;
             _startIlde = false;
@@ -55,7 +58,7 @@ public class Enemy3LookAtPlayer : MonoBehaviour
         }
     }
 
-    private void ToSight()
+    private void PlayerInZone()
     {
         if (_playerTransform.position.y - _playerTransform.localScale.y < _upperLimitFieldView &&
             _playerTransform.position.y + _playerTransform.localScale.y > _lowerLimitFieldView)
@@ -83,7 +86,7 @@ public class Enemy3LookAtPlayer : MonoBehaviour
 
     private void ToAgro()
     {
-        StopAllCoroutines();
+        StopAllCor();
         _startIlde = true;
 
         if (_playerTransform.position.x > transform.position.x)
@@ -126,5 +129,10 @@ public class Enemy3LookAtPlayer : MonoBehaviour
     private void OnBecameInvisible()
     {
         _onScreen = false;
-    }  
+    }
+
+    public void StopAllCor()
+    {
+        StopAllCoroutines();
+    }
 }

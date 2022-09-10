@@ -15,17 +15,14 @@ public class Enemy3AttackAoeDisplay : MonoBehaviour
     [Header("-----      Компоненты и системные      -----")]
     [SerializeField] private GameObject _objAoe;
     [SerializeField] private Enemy3LookAtPlayer _enemy3LookAtPlayer;
+    [SerializeField] private Transform _playerTransform;
 
-    private Transform _playerTransform;
     private Vector3 _startScaleAOE;
     private Vector3 _radiusAoe;
     private bool _isDelayAttackPassed;
-    private string _playerName = "PlayerMain";
 
     private void Start()
     {
-        _playerTransform = GameObject.Find(_playerName).transform;
-
         _isDelayAttackPassed = true;
         _startScaleAOE = _objAoe.transform.localScale;
         _radiusAoe = _startScaleAOE * _scaleMaxAoeMultiply;
@@ -57,7 +54,7 @@ public class Enemy3AttackAoeDisplay : MonoBehaviour
 
         while ((elapsedTime += Time.deltaTime) <= _timeToMaxAoe)
         {
-            _objAoe.transform.localScale = Vector3.Lerp(startScale, _radiusAoe, elapsedTime / _timeToMaxAoe);
+            _objAoe.transform.localScale = Vector3.Lerp(startScale, _radiusAoe * 2, elapsedTime / _timeToMaxAoe);
 
             yield return null;
         }

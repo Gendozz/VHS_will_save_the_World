@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class Enemy3IdleInteractionWithPlayer : MonoBehaviour
@@ -9,28 +10,36 @@ public class Enemy3IdleInteractionWithPlayer : MonoBehaviour
     [Space]
     [Header("-----      Компоненты и системные      -----")]
     [SerializeField] private Enemy3LookAtPlayer _enemy3LookAtPlayer;
-    [SerializeField] private GameObject _enemy3Objs;
     [SerializeField] private AbilityStealing _abilityStealing;
+    [SerializeField] private Animator _animator;
+    [SerializeField] private Behaviour[] _components;
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider other)
     {
-        if (collision.collider.GetComponent<PlayerInput>() != null)
+        if (other.GetComponent<PlayerInput>() != null)
         {
             if (_enemy3LookAtPlayer.IsSees)
             {
-                if (collision.collider.transform.position.x > transform.position.x)
+                if (other.transform.position.x > transform.position.x)
                 {
-                    collision.collider.GetComponent<Rigidbody>().AddForce(new Vector3(_horizontally, _vertically, 0), ForceMode.Impulse);
+                    other.GetComponent<Rigidbody>().AddForce(new Vector3(_horizontally, _vertically, 0), ForceMode.Impulse);
                 }
                 else
                 {
-                    collision.collider.GetComponent<Rigidbody>().AddForce(new Vector3(-_horizontally, _vertically, 0), ForceMode.Impulse);
+                    other.GetComponent<Rigidbody>().AddForce(new Vector3(-_horizontally, _vertically, 0), ForceMode.Impulse);
                 }
             }
             else
             {
                 _abilityStealing.StartTimerBreakingDoors();
-                Destroy(_enemy3Objs);
+                _animator.SetTrigger("Death");
+
+                _enemy3LookAtPlayer.StopAllCor();
+
+                for (int i = 0; i < _components.Length; i++)
+                {
+                    _components[i].enabled = false;
+                }
             }
         }
     }
