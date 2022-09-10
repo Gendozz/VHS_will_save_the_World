@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -7,6 +8,10 @@ public class UIMenuController : MonoBehaviour
     [SerializeField] private CanvasGroup winCanvasGroup;
     [SerializeField] private CanvasGroup pauseCanvasGroup;
 
+    private bool _isPauseCanvasDisplayed = false;
+
+    public Action onPauseCanvasSwitchedOff;
+
     private void Awake()
     {
         winCanvasGroup.gameObject.SetActive(true);
@@ -15,14 +20,6 @@ public class UIMenuController : MonoBehaviour
         SetUpCanvasGroup(winCanvasGroup, 0, false, false);
         SetUpCanvasGroup(failCanvasGroup, 0, false, false);
         SetUpCanvasGroup(pauseCanvasGroup, 0, false, false);
-    }
-
-    private void Update()
-    {
-        if (Input.GetButtonDown(StringConsts.ESC))
-        {
-            ShowPauseCanvas(true);
-        }
     }
 
     public void ShowFailCanvas()
@@ -35,10 +32,16 @@ public class UIMenuController : MonoBehaviour
         SetUpCanvasGroup(winCanvasGroup, 1, true, true);
     }
 
-    private void ShowPauseCanvas(bool toShow)
-    {
-        float canvasAlpha = toShow ? 1 : 0;
-        SetUpCanvasGroup(pauseCanvasGroup, canvasAlpha, toShow, toShow);
+    public void SwitchPauseCanvas()
+    {            
+        _isPauseCanvasDisplayed = !_isPauseCanvasDisplayed;
+        float canvasAlpha = _isPauseCanvasDisplayed ? 1 : 0;
+        SetUpCanvasGroup(pauseCanvasGroup, canvasAlpha, _isPauseCanvasDisplayed, _isPauseCanvasDisplayed);
+        
+        if (!_isPauseCanvasDisplayed)
+        {
+            onPauseCanvasSwitchedOff?.Invoke();
+        }
     }
 
     public void SetUpCanvasGroup(CanvasGroup canvasGroup, float alpha, bool blocksRaycasts, bool interactable)

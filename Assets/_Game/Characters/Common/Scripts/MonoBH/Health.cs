@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using UnityEngine;
 
 public class Health : MonoBehaviour, IDamagable, IHealable
@@ -6,9 +7,14 @@ public class Health : MonoBehaviour, IDamagable, IHealable
     [Header("Максимальное количество жизней")]
     [SerializeField] private int maxLives;
 
+    [Header("--- Для тестов ---")]
     [SerializeField] private int currentLives; // TODO: hide from inspector after tests
 
     private IHealthDisplayer healthDisplayer;
+
+    private bool _canTakeDamage = true;
+
+    private float _invulnerabilityDuration = 0.2f;
 
     public bool IsOutOfLifes => currentLives <= 0;
 
@@ -27,14 +33,25 @@ public class Health : MonoBehaviour, IDamagable, IHealable
 
     public void TakeDamage(int damage)
     {
-        currentLives -= damage;
-        ChangeHealthDisplayer();
-        if (currentLives <= 0)
+        if (_canTakeDamage)
         {
-            Die();
-            return;
+            _canTakeDamage = false;
+            StartCoroutine(RestoreCanTakeDamage());
+            currentLives -= damage;
+            ChangeHealthDisplayer();
+            if (currentLives <= 0)
+            {
+                Die();
+                return;
+            }
+            onTakeDamage?.Invoke(); 
         }
-        onTakeDamage?.Invoke();
+    }
+
+    private IEnumerator RestoreCanTakeDamage()
+    {
+        yield return new WaitForSeconds(_invulnerabilityDuration);
+        _canTakeDamage = true;
     }
 
     private void Die()

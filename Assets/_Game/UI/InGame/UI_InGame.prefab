@@ -325,7 +325,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1290534963383417210}
         m_TargetAssemblyTypeName: UIMenuController, Assembly-CSharp
-        m_MethodName: NextLevel
+        m_MethodName: SwitchPauseCanvas
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

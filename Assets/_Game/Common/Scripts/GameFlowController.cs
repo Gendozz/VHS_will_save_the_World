@@ -9,37 +9,48 @@ public class GameFlowController : MonoBehaviour
 
     [SerializeField] private PlayerModelRotation _playerModelRotation;
 
-    private bool _gameIsPaused;
+    [SerializeField] private UIMenuController _menuController;
+
+    private bool _isGamePaused = false;
 
     private void OnEnable()
     {
         _playerHealth.onOutOfLifes += DoAfterPlayerDieActions;
+        //_menuController.onPauseCanvasSwitchedOff += SwitchPauseState;
     }
 
     private void OnDisable()
     {
         _playerHealth.onOutOfLifes -= DoAfterPlayerDieActions;
+        //_menuController.onPauseCanvasSwitchedOff -= SwitchPauseState;
+
     }
 
     private void Update()
     {
         if (Input.GetButtonDown(StringConsts.ESC))
         {
-
+            SwitchPauseState();
         }
     }
 
     private void DoAfterPlayerDieActions()
     {
-        _playerInput.SwitchInput(false);
-        _playerModelRotation.enabled = false;
-        _gameIsPaused = true;
+        _isGamePaused = true;
+        _menuController.ShowFailCanvas();
+        SwitchMotions(!_isGamePaused);
     }
 
-    private void ShowPauseMenu()
+    public void SwitchPauseState()
     {
-
+        _isGamePaused = !_isGamePaused;
+        _menuController.SwitchPauseCanvas();
+        SwitchMotions(!_isGamePaused);
     }
 
-
+    private void SwitchMotions(bool needMotions)
+    {
+        _playerInput.SwitchInput(needMotions);
+        _playerModelRotation.enabled = needMotions;
+    }
 }

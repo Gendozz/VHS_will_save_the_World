@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 8954947309107273162}
   - component: {fileID: 2171419064361317946}
   - component: {fileID: 3109032914383621077}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: spring
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -97,7 +97,7 @@ GameObject:
   - component: {fileID: 1781793377799308597}
   - component: {fileID: 3667302584594958187}
   - component: {fileID: 4523936010061412358}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Model
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -225,7 +225,7 @@ GameObject:
   - component: {fileID: 1781793378220560046}
   - component: {fileID: 1781793378220560041}
   - component: {fileID: 1781793378220560040}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: RotiationBase
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -312,7 +312,7 @@ GameObject:
   - component: {fileID: 1781793379097391961}
   - component: {fileID: 1781793379097391966}
   - component: {fileID: 1781793379097391967}
-  m_Layer: 7
+  m_Layer: 12
   m_Name: Activator
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -425,7 +425,7 @@ GameObject:
   - component: {fileID: 1781793379384664955}
   - component: {fileID: 1781793379384664954}
   - component: {fileID: 1781793379384664933}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: PushBase
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -498,7 +498,7 @@ GameObject:
   - component: {fileID: 1781793379770335152}
   - component: {fileID: 1781793379770335155}
   - component: {fileID: 1781793379770335154}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: SpringTrap_1_1_3
   m_TagString: Springtrap
   m_Icon: {fileID: 0}
@@ -563,7 +563,7 @@ GameObject:
   - component: {fileID: 3003358977712164218}
   - component: {fileID: 4123802377890927450}
   - component: {fileID: 3103724140079213051}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Corps
   m_TagString: Untagged
   m_Icon: {fileID: 0}
