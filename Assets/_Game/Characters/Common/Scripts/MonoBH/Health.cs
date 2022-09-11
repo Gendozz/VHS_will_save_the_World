@@ -7,15 +7,14 @@ public class Health : MonoBehaviour, IDamagable, IHealable
     [Header("Максимальное количество жизней")]
     [SerializeField] private int maxLives;
 
-    [Header("--- Для тестов ---")]
-    [SerializeField] private int currentLives; // TODO: hide from inspector after tests
-
+    [Header("Продолжительность неуязвимости после получения урона")]
     [SerializeField] private float _invulnerabilityDuration;
 
+    private int currentLives;
+    
     private IHealthDisplayer healthDisplayer;
 
     private bool _canTakeDamage = true;
-
 
     public bool IsOutOfLifes => currentLives <= 0;
 
@@ -37,14 +36,16 @@ public class Health : MonoBehaviour, IDamagable, IHealable
         if (_canTakeDamage)
         {
             _canTakeDamage = false;
-            StartCoroutine(RestoreCanTakeDamage());
             currentLives -= damage;
             ChangeHealthDisplayer();
             if (currentLives <= 0)
             {
+
                 Die();
                 return;
-            }
+            }            
+            StartCoroutine(RestoreCanTakeDamage());
+
             onTakeDamage?.Invoke(); 
         }
     }

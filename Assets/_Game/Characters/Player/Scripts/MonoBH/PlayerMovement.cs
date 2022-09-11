@@ -424,6 +424,13 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
+    public void MoveToCoords(Vector3 coords)
+    {
+        _rigidbody.velocity = Vector3.zero;
+        StartCoroutine(BlockMovementOnSeconds(.2f));
+        _rigidbody.MovePosition(coords);
+    }
+
     private void OnDrawGizmos()
     {
         // Sphere that detects ground

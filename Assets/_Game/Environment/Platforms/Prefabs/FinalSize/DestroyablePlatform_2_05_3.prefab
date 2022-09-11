@@ -96,6 +96,7 @@ GameObject:
   - component: {fileID: 550378349455487316}
   - component: {fileID: 550378349455487319}
   - component: {fileID: 550378349455487318}
+  - component: {fileID: 3160320956763789086}
   m_Layer: 7
   m_Name: DestroyablePlatform_2_05_3
   m_TagString: Untagged
@@ -148,3 +149,20 @@ MonoBehaviour:
   respawnDelay: 3
   modelPlatform: {fileID: 550378348648054616}
   collider: {fileID: 550378349455487319}
+  _colorLerp: {fileID: 3160320956763789086}
+--- !u!114 &3160320956763789086
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 550378349455487313}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3999f293c8fd9b84ea5826a48fd395f8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _colorToLerpTo: {r: 1, g: 1, b: 1, a: 1}
+  _animationDuration: 3
+  _amountOfItereations: 6
+  _meshRenderer: {fileID: 550378348648054623}

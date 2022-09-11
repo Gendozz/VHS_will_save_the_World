@@ -120,10 +120,6 @@ public class PlayerAnimation : MonoBehaviour
         }
     }
 
-    private void OnDrawGizmos()
-    {
-        Gizmos.DrawLine(transform.position, transform.position - transform.up * 2);
-    }
 
     private void AnimateDamage()
     {

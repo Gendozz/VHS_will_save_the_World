@@ -738,7 +738,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxLives: 5
-  currentLives: 0
+  _invulnerabilityDuration: 1
 --- !u!114 &1053100847
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -817,8 +817,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3999f293c8fd9b84ea5826a48fd395f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _colorToLerpTo: {r: 0.7169812, g: 0.04073758, b: 0, a: 0.33333334}
-  _lerpDuration: 0.1
+  _colorToLerpTo: {r: 1, g: 0.05464481, b: 0, a: 1}
+  _animationDuration: 1
   _amountOfItereations: 3
   _meshRenderer: {fileID: 2667930730072025161}
 --- !u!114 &3568743226998430310

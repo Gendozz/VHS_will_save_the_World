@@ -11,22 +11,20 @@ public class LerpAlpha : MonoBehaviour
 
     [SerializeField] private float _changeAlphaDuration;
 
-    [SerializeField] private Color _colorOnStart;
+     private Color _colorOnStart;
     
-    void Start()
-    {
-        _colorOnStart = _planeRenderer.material.color;
-    }
+
 
     private void OnEnable()
     {
         _colorOnStart = _planeRenderer.material.color;
-        StartChangingAlpha();
+        //StartChangingAlpha();
         
     }
 
     public void StartChangingAlpha()
     {
+        //_colorOnStart = _planeRenderer.material.color;
         StartCoroutine(ChangeAlpha());
     }
 

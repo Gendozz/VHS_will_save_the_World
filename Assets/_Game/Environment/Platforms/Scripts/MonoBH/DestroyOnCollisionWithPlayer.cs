@@ -19,12 +19,16 @@ public class DestroyOnCollisionWithPlayer : MonoBehaviour
     [Header("Коллайдер платформы")]
     [SerializeField] private Collider collider;
 
+    [Header("Ссылка на ColorLerp")]
+    [SerializeField] private ColorLerp _colorLerp;
+
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.TryGetComponent<PlayerMovement>(out PlayerMovement playerMovement))
         {
             if (transform.position.y < collision.transform.position.y)
             {
+                _colorLerp.StartLerp(destroyDelay);
                 StartCoroutine(DestroySelfAfterDelay(destroyDelay));
                 StartCoroutine(RespawnAfterDestroyAfterDelay(destroyDelay + respawnDelay)); 
             }
