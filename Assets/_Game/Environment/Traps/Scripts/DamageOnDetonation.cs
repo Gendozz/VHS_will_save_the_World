@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class DamageOnDetonation : MonoBehaviour, IActivatable
@@ -16,9 +15,12 @@ public class DamageOnDetonation : MonoBehaviour, IActivatable
     [Header("Размер урона")]
     [SerializeField] private int _damageAmount;
 
-    private Collider[] _playerCollider = new Collider[1];
+    [Header("Ссылка на ColorLerp")]
+    [SerializeField] private ColorLerp _colorLerp;
 
-    private bool _isActivated = false;
+    private bool _isActivated;
+
+    private Collider[] _playerCollider = new Collider[1];
 
     private bool _isIntoDamageRadius = false;
 
@@ -47,6 +49,7 @@ public class DamageOnDetonation : MonoBehaviour, IActivatable
 
     private IEnumerator Detonate()
     {
+        _colorLerp.StartLerp();
         yield return new WaitForSeconds(_delayBeforeExplosion);
 
         if (_isIntoDamageRadius)
