@@ -44,7 +44,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a68b5d737a90c8409e99c34dabec006, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _lerpAlphas: []
+  _lerpAlphas:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!1 &3392539552179925712
 GameObject:
   m_ObjectHideFlags: 0
@@ -285,7 +289,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 5886153763299294200, guid: ad95c797f6822b147af5d9893b4bafbd, type: 3}
       propertyPath: _iActivatedComponents.Array.size
-      value: 2
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 5886153763299294200, guid: ad95c797f6822b147af5d9893b4bafbd, type: 3}
       propertyPath: _iActivatedComponents.Array.data[0]
@@ -294,6 +298,10 @@ PrefabInstance:
     - target: {fileID: 5886153763299294200, guid: ad95c797f6822b147af5d9893b4bafbd, type: 3}
       propertyPath: _iActivatedComponents.Array.data[1]
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5886153763299294200, guid: ad95c797f6822b147af5d9893b4bafbd, type: 3}
+      propertyPath: _iActivatedComponents.Array.data[3]
+      value: 
       objectReference: {fileID: 1315240797545571453}
     - target: {fileID: 5886153763299294201, guid: ad95c797f6822b147af5d9893b4bafbd, type: 3}
       propertyPath: m_RootOrder
@@ -301,11 +309,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5886153763299294201, guid: ad95c797f6822b147af5d9893b4bafbd, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 4.29
+      value: 9.77
       objectReference: {fileID: 0}
     - target: {fileID: 5886153763299294201, guid: ad95c797f6822b147af5d9893b4bafbd, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.31
+      value: 8.82
       objectReference: {fileID: 0}
     - target: {fileID: 5886153763299294201, guid: ad95c797f6822b147af5d9893b4bafbd, type: 3}
       propertyPath: m_LocalPosition.z

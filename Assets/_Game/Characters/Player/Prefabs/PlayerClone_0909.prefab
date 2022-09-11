@@ -587,7 +587,7 @@ MonoBehaviour:
     m_Curve:
     - serializedVersion: 3
       time: -1
-      value: -5.5
+      value: -5
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -614,7 +614,7 @@ MonoBehaviour:
       outWeight: 0.33333334
     - serializedVersion: 3
       time: 1
-      value: 5.5
+      value: 5
       inSlope: 1.5237038
       outSlope: 1.5237038
       tangentMode: 0
@@ -737,7 +737,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxLives: 5
-  currentLives: 0
+  _invulnerabilityDuration: 0
 --- !u!114 &1053100847
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -817,7 +817,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _colorToLerpTo: {r: 0.7169812, g: 0.04073758, b: 0, a: 0.33333334}
-  _lerpDuration: 0.1
+  _animationDuration: 0
   _amountOfItereations: 3
   _meshRenderer: {fileID: 2667930730072025161}
 --- !u!1001 &1581912150
