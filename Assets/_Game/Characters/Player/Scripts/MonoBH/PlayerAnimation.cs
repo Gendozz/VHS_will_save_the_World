@@ -68,7 +68,6 @@ public class PlayerAnimation : MonoBehaviour
         }
     }
 
-
     private void ApplyMovementAnimations()
     {
         if (_playerMovement.IsGrounded)
