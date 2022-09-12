@@ -1,4 +1,5 @@
 using System.Collections;
+using TMPro;
 using UnityEngine;
 
 [RequireComponent(typeof(BoxCollider))]
@@ -15,6 +16,9 @@ public class SwapZone : MonoBehaviour, IActivatable
 
     [Header("Задержка для перемены местами игрока и клона")]
     [SerializeField] private float _cooldownDelay;
+
+    [Header("Объект, показывающий здоровье игрока")]
+    [SerializeField] private TMP_Text _playerHealth;
 
     private bool _isAbleToActivateClone = false;
 
@@ -62,6 +66,7 @@ public class SwapZone : MonoBehaviour, IActivatable
         _playerInput.SwitchInput(_isPlayerActive);
         _cloneInput.SwitchInput(!_isPlayerActive);
         _camera.ChangeTarget(_isPlayerActive ? _playerInput.transform : _cloneInput.transform);
+        _playerHealth.gameObject.SetActive(!_playerHealth.gameObject.activeSelf);
     }
 
     private IEnumerator RestoreAbility()
