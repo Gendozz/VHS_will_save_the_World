@@ -154,6 +154,12 @@ public class PlayerMovement : MonoBehaviour
 
     public float VelocityY => _rigidbody.velocity.y;
 
+    // For pause
+
+    private Vector3 onPauseVelocity;
+
+    private Vector3 onPauseAngularVelocity;
+
     private void Awake()
     {
         _rigidbody.sleepThreshold = 0f;
@@ -429,6 +435,22 @@ public class PlayerMovement : MonoBehaviour
         _rigidbody.velocity = Vector3.zero;
         StartCoroutine(BlockMovementOnSeconds(.2f));
         _rigidbody.MovePosition(coords);
+    }
+
+    public void PauseUnpauseActions(bool doPausing)
+    {
+        if (doPausing)
+        {
+            onPauseVelocity = _rigidbody.velocity;
+            onPauseAngularVelocity = _rigidbody.angularVelocity;
+            _rigidbody.isKinematic = true;
+        }
+        else
+        {
+            _rigidbody.isKinematic = false;
+            _rigidbody.velocity = onPauseVelocity;
+            _rigidbody.angularVelocity = onPauseAngularVelocity;
+        }
     }
 
     private void OnDrawGizmos()

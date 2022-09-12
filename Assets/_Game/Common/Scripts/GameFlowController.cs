@@ -2,12 +2,26 @@ using UnityEngine;
 
 public class GameFlowController : MonoBehaviour
 {
-
+    [Header("—сылка на Health игрока")]
     [SerializeField] private Health _playerHealth;
 
-    [SerializeField] private PlayerInput _playerInput;
+    [Header("ƒл€ паузы игрока и клонов")]
+    [Header("—сылки на все PlayerInput (игрок и все клоны)")]
+    [SerializeField] private PlayerInput[] _playerInputs;
+    
+    [Header("—сылки на все PlayerModelRotation (игрок и все клоны)")]
+    [SerializeField] private PlayerModelRotation[] _playerModelRotations;
 
-    [SerializeField] private PlayerModelRotation _playerModelRotation;
+    [Header("—сылки на все PlayerMovement (игрок и все клоны)")]
+    [SerializeField] private PlayerMovement[] _playerMovements;
+
+    [Header("ƒл€ паузы Enemy3")]
+    [Header("—сылки на все Enemy3LookAtPlayer")]
+    [SerializeField] private Enemy3LookAtPlayer[] _enemy3LookAtPlayer;
+
+    [Header("—сылки на все Enemy3AttackAoeDisplay")]
+    [SerializeField] private Enemy3AttackAoeDisplay[] _enemy3AttackAoeDisplay;
+
 
     [SerializeField] private UIMenuController _menuController;
 
@@ -56,7 +70,17 @@ public class GameFlowController : MonoBehaviour
 
     private void SwitchMotions(bool needMotions)
     {
-        _playerInput.SwitchInput(needMotions);
-        _playerModelRotation.enabled = needMotions;
+        for (int i = 0; i < _playerInputs.Length; i++)
+        {
+            _playerInputs[i].enabled = needMotions;
+            _playerModelRotations[i].enabled = needMotions;
+            _playerMovements[i].PauseUnpauseActions(!needMotions);
+        }
+
+        for (int i = 0; i < _enemy3LookAtPlayer.Length; i++)
+        {
+            _enemy3LookAtPlayer[i].enabled = needMotions;
+            _enemy3AttackAoeDisplay[i].enabled = needMotions;
+        }
     }
 }
