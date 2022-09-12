@@ -11,7 +11,7 @@ public class SwapZone : MonoBehaviour, IActivatable
     [SerializeField] private PlayerInput _cloneInput;
 
     [Header("Главная камера")]
-    [SerializeField] private CameraFollowPlayer _camera;
+    [SerializeField] private CinemachineMainCamera _camera;
 
     [Header("Задержка для перемены местами игрока и клона")]
     [SerializeField] private float _cooldownDelay;
