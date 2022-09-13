@@ -58,7 +58,6 @@ public class ColorLerp : MonoBehaviour
                 _meshRenderer.material.color = Color.Lerp(_startColor, _colorToLerpTo, elapsedTime / halfTimeDuration);
                 yield return null;
             }
-            Debug.Log("Lerped To color " + _meshRenderer.material.color);
 
             elapsedTime = 0;
 
@@ -68,12 +67,6 @@ public class ColorLerp : MonoBehaviour
                 _meshRenderer.material.color = Color.Lerp(_colorToLerpTo, _startColor, elapsedTime / halfTimeDuration);
                 yield return null;
             }
-
-            Debug.Log("Lerped To color " + _meshRenderer.material.color);
         }
-
-
     }
-
-
 }

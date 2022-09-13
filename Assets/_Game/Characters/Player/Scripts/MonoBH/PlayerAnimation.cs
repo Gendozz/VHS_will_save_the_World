@@ -1,6 +1,5 @@
-using System;
-using System.Collections;
 using UnityEngine;
+
 
 public class PlayerAnimation : MonoBehaviour
 {
@@ -9,6 +8,8 @@ public class PlayerAnimation : MonoBehaviour
     [SerializeField] private PlayerInput _playerInput;
 
     [SerializeField] private PlayerMovement _playerMovement;
+
+    [SerializeField] private AbilityStealing _abilityStealing;
 
     [SerializeField] private float _rotationDuration;
 
@@ -20,13 +21,24 @@ public class PlayerAnimation : MonoBehaviour
 
     private bool _isJumping = false;
 
-    private float _kickAnimationDuration;
-
+    private bool _canKick = false;
 
     private void OnEnable()
     {
         _playerHealth.onTakeDamage += AnimateDamage;
         _playerHealth.onOutOfLifes += AnimateDeath;
+        _abilityStealing.onStartBreakDoorAbility += SwitchCanKick;
+        _abilityStealing.onEndBreakDoorAbility += SwitchCanKick;
+    }
+
+
+
+    private void OnDisable()
+    {
+        _playerHealth.onTakeDamage -= AnimateDamage;
+        _playerHealth.onOutOfLifes -= AnimateDeath;
+        _abilityStealing.onStartBreakDoorAbility -= SwitchCanKick;
+        _abilityStealing.onEndBreakDoorAbility -= SwitchCanKick;
     }
 
     private void AnimateDeath()
@@ -34,30 +46,20 @@ public class PlayerAnimation : MonoBehaviour
         _animator.SetTrigger("isDead");
     }
 
-    private void OnDisable()
-    {
-        _playerHealth.onTakeDamage -= AnimateDamage;
-        _playerHealth.onOutOfLifes -= AnimateDeath;
-
-    }
-
-    private void Start()
-    {
-        RuntimeAnimatorController runtimeAnimatorController = _animator.runtimeAnimatorController;
-        foreach (var clip in runtimeAnimatorController.animationClips)
-        {
-            if (clip.name.Equals("Kick"))
-            {
-                _kickAnimationDuration = clip.length;
-            }
-        }
-    }
-
     private void Update()
     {
-        ApplyKickAnimation();
+        if (_canKick)
+        {
+            ApplyKickAnimation(); 
+        }
 
         ApplyMovementAnimations();
+    }
+
+    private void SwitchCanKick()
+    {
+        _canKick = !_canKick;
+        Debug.Log("canKick switched");
     }
 
     private void ApplyKickAnimation()
@@ -118,7 +120,6 @@ public class PlayerAnimation : MonoBehaviour
             _animator.SetBool("isFalling", true);
         }
     }
-
 
     private void AnimateDamage()
     {

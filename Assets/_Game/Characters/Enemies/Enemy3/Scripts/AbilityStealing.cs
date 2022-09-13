@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class AbilityStealing : MonoBehaviour
@@ -10,6 +11,9 @@ public class AbilityStealing : MonoBehaviour
 
     private float _timer = 0;
     private bool _isStartTimerJump = false;
+
+    public Action onStartBreakDoorAbility;
+    public Action onEndBreakDoorAbility;
 
     private void Update()
     {
@@ -28,6 +32,7 @@ public class AbilityStealing : MonoBehaviour
             if (_timer > _timeBreakingDoors)
             {
                 IsStartTimerBreakDoors = false;
+                onEndBreakDoorAbility?.Invoke();
             }
             _timer += Time.deltaTime;
         }
@@ -46,5 +51,6 @@ public class AbilityStealing : MonoBehaviour
         _timer = 0;
         IsStartTimerBreakDoors = true;
         _isStartTimerJump = false;
+        onStartBreakDoorAbility?.Invoke();
     }
 }

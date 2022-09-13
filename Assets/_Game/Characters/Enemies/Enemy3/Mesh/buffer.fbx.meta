@@ -3,7 +3,27 @@ guid: 4950828cbd7c6164592a3ca2a8727ebc
 ModelImporter:
   serializedVersion: 21202
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: audio_center_map
+    second: {fileID: 2100000, guid: dfe48902a2c004a4e95f81ee4fcef93b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: buffer1_map
+    second: {fileID: 2100000, guid: 48277d14025879f4bbc3b2ce0861765a, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: buffer_map
+    second: {fileID: 2100000, guid: 62c1a596a0c69264eb28964fff4ccc2b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: corps_map
+    second: {fileID: 2100000, guid: 710150895329ff44a91dffe7dc398384, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
