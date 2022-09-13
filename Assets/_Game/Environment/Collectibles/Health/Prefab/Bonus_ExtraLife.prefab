@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 5870241409439604175}
   - component: {fileID: 5870241409439604160}
   - component: {fileID: 5870241409439604161}
+  - component: {fileID: 2677801868170030214}
   m_Layer: 0
   m_Name: Bonus_ExtraLife
   m_TagString: Untagged
@@ -42,7 +43,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5870241409439604162}
-  m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+  m_Mesh: {fileID: 3176849438372335897, guid: 613584fa0e87bb84fa0aaed12efdc282, type: 3}
 --- !u!23 &5870241409439604175
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -63,7 +64,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: f4ed90159a815c949b962c5412ca3bd8, type: 2}
+  - {fileID: 2100000, guid: 5d058bd8079accf4ab31271560dfa248, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -96,8 +97,8 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Radius: 0.3
+  m_Center: {x: 0, y: 0.3, z: 0}
 --- !u!114 &5870241409439604161
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -111,3 +112,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _healthAmount: 1
+--- !u!114 &2677801868170030214
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5870241409439604162}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e935c7ea0c42b074780f2a4cee3b9338, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _rotaionSpeed: 60
