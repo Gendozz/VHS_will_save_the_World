@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 
@@ -17,9 +18,12 @@ public class Activator : MonoBehaviour
     [Header("Активатор одноразового использования?")]
     [SerializeField] private bool _isOneTimeUse;
 
-    //private bool _isReady = true;
+    private bool _isReady = true;
 
     private IActivatable[] _activatables;
+
+    public Action onActivate;
+    public Action onActivatorRestored;
 
     private void Awake()
     {
@@ -29,7 +33,7 @@ public class Activator : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.TryGetComponent<PlayerMovement>(out PlayerMovement playerMovement))
+        if (other.TryGetComponent<PlayerMovement>(out PlayerMovement playerMovement) && _isReady)
         {
             StartCoroutine(Activate());
         }
@@ -42,7 +46,9 @@ public class Activator : MonoBehaviour
 
     private IEnumerator Activate()
     {
+        onActivate?.Invoke();
         yield return new WaitForSeconds(_activationDelay);
+        
         foreach (var activatable in _activatables)
         {
             activatable.Activate();
@@ -51,11 +57,23 @@ public class Activator : MonoBehaviour
         {
             TurnOffActivator();
         }
+        else
+        {
+            _isReady = false;
+            StartCoroutine(RestoreActivator());
+        }
     }
 
     private void TurnOffActivator()
     {
         gameObject.SetActive(false);
+    }
+
+    private IEnumerator RestoreActivator()
+    {
+        yield return new WaitForSeconds(_cooldownDelay);
+        _isReady = true;
+        onActivatorRestored?.Invoke();
     }
 
     private void GrabActivatables() 
