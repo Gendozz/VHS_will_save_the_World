@@ -869,7 +869,7 @@ Animator:
   m_Controller: {fileID: 9100000, guid: 5c5e4d1ca4c06fc40a449394c48a46e0, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
-  m_ApplyRootMotion: 0
+  m_ApplyRootMotion: 1
   m_LinearVelocityBlending: 0
   m_StabilizeFeet: 0
   m_WarningMessage: 
@@ -973,7 +973,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 3fee7a9f4407fb248a59cfe14f6a21a1, type: 3}
       propertyPath: m_Layer
-      value: 0
+      value: 4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3fee7a9f4407fb248a59cfe14f6a21a1, type: 3}
