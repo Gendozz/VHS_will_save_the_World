@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 1941397804242823328}
   - component: {fileID: 1941397804242823331}
   - component: {fileID: 1941397804242823330}
+  - component: {fileID: 1338693487}
   m_Layer: 15
   m_Name: V-Light Spot 0
   m_TagString: Untagged
@@ -34,7 +35,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
 --- !u!20 &1941397804242823329
 Camera:
   m_ObjectHideFlags: 0
@@ -44,8 +45,8 @@ Camera:
   m_GameObject: {fileID: 1941397804242823333}
   m_Enabled: 0
   serializedVersion: 2
-  m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0.019607844}
+  m_ClearFlags: 2
+  m_BackGroundColor: {r: 1, g: 0, b: 0, a: 1}
   m_projectionMatrixMode: 0
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -59,7 +60,7 @@ Camera:
     width: 1
     height: 1
   near clip plane: 0.1
-  far clip plane: 1
+  far clip plane: 3.58
   field of view: 45
   orthographic: 0
   orthographic size: 2.5
@@ -143,33 +144,33 @@ MonoBehaviour:
   lockTransforms: 0
   renderWireFrame: 0
   lightType: 0
-  lightMultiplier: 1
+  lightMultiplier: 2.93
   spotExponent: 1
   constantAttenuation: 1
   linearAttenuation: 10
   quadraticAttenuation: 100
   aspect: 1
   slices: 30
-  colorTint: {r: 1, g: 1, b: 1, a: 1}
-  noiseSpeed: {x: 0, y: 0, z: 0}
-  useDithering: 1
-  ditherAmount: 0.5
+  colorTint: {r: 0.8679245, g: 0.6908049, b: 0.12691349, a: 1}
+  noiseSpeed: {x: 0, y: 0.52, z: 0}
+  useDithering: 0
+  ditherAmount: -18
   useSoftBlend: 0
   useCurves: 0
   worldScrollAmount: 0
-  shadowMode: 0
+  shadowMode: 2
   shadowMapRes: 256
   shadowBlurPasses: 0
   shadowBlurSize: 0
   renderFullShadows: 0
   _renderShadowMapInUpdate: 0
-  spotRange: 1
+  spotRange: 3.58
   spotNear: 0.1
-  spotAngle: 45
-  orthoSize: 0.5
+  spotAngle: 46.9
+  orthoSize: 7.4
   spotEmission: {fileID: 0}
   spotNoise: {fileID: 0}
-  spotShadow: {fileID: 0}
+  spotShadow: {fileID: 2800000, guid: 352668b03dae0e446b10fdb778d7e0c8, type: 2}
   pointLightRadius: 1
   pointEmission: {fileID: 0}
   pointNoise: {fileID: 0}
@@ -240,3 +241,22 @@ MonoBehaviour:
   orthoMaterial: {fileID: 2100000, guid: 5c70705a1fd5647609ad8326ef5e2024, type: 2}
   renderDepthShader: {fileID: 4800000, guid: 26c171c785261784f8909aae5f3697e4, type: 3}
   meshContainer: {fileID: 0}
+--- !u!114 &1338693487
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1941397804242823333}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b5e9786381584c943a2e46adb2433612, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _vLight: {fileID: 1941397804242823330}
+  _minBlinkDuration: 0.02
+  _maxBlinkDuration: 0.38
+  _minLightDuration: 0.21
+  _maxLightDuration: 1.42
+  _onLightStateSpotExponent: 1
+  _onBlinkStateSpotExponent: 20

@@ -20,6 +20,12 @@ public class SwapZone : MonoBehaviour, IActivatable
     [Header("Объект, показывающий здоровье игрока")]
     [SerializeField] private TMP_Text _playerHealth;
 
+    [Header("Канвас, отображающий возможность нажатия специальной кнопки")]
+    [SerializeField] private GameObject _specialButtonLabelCanvas;
+
+    [Header("Объект с объёмом постпроцессинга, удаляемый после прохождения зоны клона")]
+    [SerializeField] private GameObject _postProcessingVolumeToDelete;
+
     private bool _isAbleToActivateClone = false;
 
     // For cooldown
@@ -48,6 +54,7 @@ public class SwapZone : MonoBehaviour, IActivatable
         if(other.gameObject.TryGetComponent<PlayerMovement>(out PlayerMovement playerMovement))
         {
             _isAbleToActivateClone = true;
+            _specialButtonLabelCanvas.SetActive(true);
         }
     }
 
@@ -57,6 +64,8 @@ public class SwapZone : MonoBehaviour, IActivatable
         if(other.gameObject.TryGetComponent<PlayerMovement>(out PlayerMovement playerMovement))
         {
             _isAbleToActivateClone = false;
+            _specialButtonLabelCanvas.SetActive(false);
+
         }
     }
 
@@ -79,6 +88,8 @@ public class SwapZone : MonoBehaviour, IActivatable
     {
         SwapPlayerClone();
         _cloneInput.gameObject.SetActive(false);
+        _postProcessingVolumeToDelete.SetActive(false);
+        _specialButtonLabelCanvas.SetActive(false);
         gameObject.SetActive(false);
     }
 }

@@ -7,6 +7,9 @@ public class Health : MonoBehaviour, IDamagable, IHealable
     [Header("Максимальное количество жизней")]
     [SerializeField] private int maxLives;
 
+    [Header("Количество жизней на старте")]
+    [SerializeField] private int _livesOnStart;
+
     [Header("Продолжительность неуязвимости после получения урона")]
     [SerializeField] private float _invulnerabilityDuration;
 
@@ -23,7 +26,7 @@ public class Health : MonoBehaviour, IDamagable, IHealable
 
     void Start()
     {
-        currentLives = maxLives;
+        currentLives = _livesOnStart;
         if (!TryGetComponent(out healthDisplayer))
         {
             healthDisplayer = GetComponentInChildren<IHealthDisplayer>();

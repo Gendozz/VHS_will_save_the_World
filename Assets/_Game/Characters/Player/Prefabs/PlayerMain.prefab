@@ -738,6 +738,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxLives: 194
+  _livesOnStart: 5
   _invulnerabilityDuration: 1
 --- !u!114 &1053100847
 MonoBehaviour:
