@@ -51,7 +51,11 @@ public class GameFlowController : MonoBehaviour
     {
         _isGamePaused = true;
         _menuController.ShowFailCanvas();
-        SwitchMotions(!_isGamePaused);
+        for (int i = 0; i < _playerInputs.Length; i++)
+        {
+            _playerInputs[i].SwitchInput(false);
+            _playerModelRotations[i].enabled = false;
+        }
     }
 
     private void DoPlayerWinActions()
