@@ -24,7 +24,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3447655605868576216}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 66.568, y: -18.675, z: -0.979}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -39,6 +39,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3447655605868576217}
     m_Modifications:
+    - target: {fileID: 1719586601879046602, guid: c0ec71121e9d95c4aa4d5b5202ef0957, type: 3}
+      propertyPath: m_PresetInfoIsWorld
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1935365628181683173, guid: c0ec71121e9d95c4aa4d5b5202ef0957, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -133,7 +137,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2846635518916455990, guid: c0ec71121e9d95c4aa4d5b5202ef0957, type: 3}
       propertyPath: m_fontSize
-      value: 3.35
+      value: 3.05
       objectReference: {fileID: 0}
     - target: {fileID: 2846635518916455990, guid: c0ec71121e9d95c4aa4d5b5202ef0957, type: 3}
       propertyPath: m_fontSizeMin

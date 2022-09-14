@@ -8,11 +8,26 @@ public class WalkOnSpikes : MonoBehaviour
 
     [SerializeField] private float _abilytyDuration;
 
+    [SerializeField] private Health _playerHealth;
+
     private void OnEnable()
     {
+        _playerHealth.onTakeDamage += TurnAbilityOff;
         SwitchAbilty(true);
         StartCoroutine(TurnOffAbilityInSeconds(_abilytyDuration));
         Debug.Log("Ability is enabled");
+    }
+
+    private void OnDisable()
+    {
+        _playerHealth.onTakeDamage -= TurnAbilityOff;
+    }
+
+    private void TurnAbilityOff()
+    {
+        StopAllCoroutines();
+        SwitchAbilty(false);
+        this.enabled = false;
     }
 
     private void SwitchAbilty(bool isAbilityOn)
