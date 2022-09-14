@@ -171,7 +171,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb163a16561d00e4aba800f47a98588e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _timeUntilRes: 2
+  _timeUntilRes: 10
   _animator: {fileID: 0}
   _components:
   - {fileID: 0}
