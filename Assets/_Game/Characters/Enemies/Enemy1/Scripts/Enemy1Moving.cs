@@ -23,7 +23,7 @@ public class Enemy1Moving : MonoBehaviour
     private float _rightPointTransformPositoinX;
     private float _lowerLimitFieldView;
     private float _upperLimitFieldView;
-    private float _angleЕrror = 0.1f;
+    private float _angleError = 0.1f;
     private bool _onScreen;
     private bool _playerInZone;
 
@@ -112,7 +112,7 @@ public class Enemy1Moving : MonoBehaviour
         if (leftPositon > _rigidbody.position.x)
         {
             _directionMoving = Vector3.zero;
-            _rigidbody.rotation = Quaternion.RotateTowards(_rigidbody.rotation, Quaternion.Euler(0, _angleЕrror, 0), _speedRotation);
+            _rigidbody.rotation = Quaternion.RotateTowards(_rigidbody.rotation, Quaternion.Euler(0, _angleError, 0), _speedRotation);
             if (transform.eulerAngles.y < angleWhichEnemyChangesDirection)
             {
                 _directionMoving = Vector3.right;
@@ -121,7 +121,7 @@ public class Enemy1Moving : MonoBehaviour
         else if (rightPosition < _rigidbody.position.x)
         {
             _directionMoving = Vector3.zero;
-            _rigidbody.rotation = Quaternion.RotateTowards(_rigidbody.rotation, Quaternion.Euler(0, 180 - _angleЕrror, 0), _speedRotation);
+            _rigidbody.rotation = Quaternion.RotateTowards(_rigidbody.rotation, Quaternion.Euler(0, 180 - _angleError, 0), _speedRotation);
             if (transform.eulerAngles.y > 180 - angleWhichEnemyChangesDirection)
             {
                 _directionMoving = Vector3.left;
@@ -130,11 +130,11 @@ public class Enemy1Moving : MonoBehaviour
 
         if (_directionMoving == Vector3.right)
         {
-            _rigidbody.rotation = Quaternion.RotateTowards(_rigidbody.rotation, Quaternion.Euler(0, _angleЕrror, 0), _speedRotation);
+            _rigidbody.rotation = Quaternion.RotateTowards(_rigidbody.rotation, Quaternion.Euler(0, _angleError, 0), _speedRotation);
         }
         else if (_directionMoving == Vector3.left)
         {
-            _rigidbody.rotation = Quaternion.RotateTowards(_rigidbody.rotation, Quaternion.Euler(0, 180 - _angleЕrror, 0), _speedRotation);
+            _rigidbody.rotation = Quaternion.RotateTowards(_rigidbody.rotation, Quaternion.Euler(0, 180 - _angleError, 0), _speedRotation);
         }
     }
 
