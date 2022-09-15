@@ -14,10 +14,13 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/_Game/Scenes/Level2.unity
     guid: 696aa44c31a3bd24a82aa49690a79bcc
+  - enabled: 0
+    path: Assets/_Game/Scenes/TestScenes/TestSceneGennadiy/TestLevel1_new.unity
+    guid: 84af8c369d9db474fa20e59e353d7d83
+  - enabled: 1
+    path: Assets/_Game/Scenes/TestScenes/TestSceneGennadiy/TestLevel2_new.unity
+    guid: 791213dc434b0c6469ddfacb9acc1292
   - enabled: 1
     path: Assets/_Game/Scenes/EndScene.unity
     guid: 2e5dd2c76fc2b554ca6e0355974fef10
-  - enabled: 0
-    path: Assets/_Game/Scenes/TestScenes/TestLevel1_new.unity
-    guid: 84af8c369d9db474fa20e59e353d7d83
   m_configObjects: {}

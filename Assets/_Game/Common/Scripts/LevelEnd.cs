@@ -6,7 +6,7 @@ public class LevelEnd : MonoBehaviour
 {
     public static Action onPlayerGotToLevelEnd;
 
-    private bool _wasOneTriggerWithPlayer;
+    private bool _wasOneTriggerWithPlayer = false;
 
     private void OnTriggerEnter(Collider other)
     {
