@@ -938,6 +938,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: vent_mine (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 1395096809574151191, guid: d7c72ff1344de994aad2ea90ce1b1d59, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 9146560341435545087, guid: d7c72ff1344de994aad2ea90ce1b1d59, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -2001,8 +2005,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 1, y: 1.1947219, z: 1}
+  m_Center: {x: 0, y: 0.09736089, z: 0}
 --- !u!1001 &172806658
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3377,7 +3381,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 268838254}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: LevelStart
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4382,6 +4386,51 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7646019559414788144, guid: eb88391af9de9524bb030411dae905cb, type: 3}
   m_PrefabInstance: {fileID: 314570647}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &322415528
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 322415529}
+  - component: {fileID: 322415530}
+  m_Layer: 0
+  m_Name: RightBorder (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &322415529
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 322415528}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 86.44, y: -11.33, z: 0}
+  m_LocalScale: {x: 1, y: 26.464216, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1029114586}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &322415530
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 322415528}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 0.37557018, z: 1}
+  m_Center: {x: 0, y: 0.45974037, z: 0}
 --- !u!1001 &323434371
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -13163,6 +13212,7 @@ Transform:
   m_Children:
   - {fileID: 167048750}
   - {fileID: 1240734645}
+  - {fileID: 322415529}
   m_Father: {fileID: 1235829803}
   m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -15778,8 +15828,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 1, y: 1.1475253, z: 1}
+  m_Center: {x: 0, y: 0.07376249, z: 0}
 --- !u!4 &1244691730 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3588350257612552148, guid: 9332198de8928ce418fad1c876476546, type: 3}
@@ -21841,6 +21891,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: vent_mine
       objectReference: {fileID: 0}
+    - target: {fileID: 1395096809574151191, guid: d7c72ff1344de994aad2ea90ce1b1d59, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 9146560341435545087, guid: d7c72ff1344de994aad2ea90ce1b1d59, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -24694,6 +24748,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6208485885404839, guid: 610d36f69c1882b46a184af651de82cb, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6208486608845610, guid: 610d36f69c1882b46a184af651de82cb, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.5
+      objectReference: {fileID: 0}
     - target: {fileID: 6208486608845611, guid: 610d36f69c1882b46a184af651de82cb, type: 3}
       propertyPath: _moveDuration
       value: 5
@@ -26762,7 +26824,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1395096809574151191, guid: d7c72ff1344de994aad2ea90ce1b1d59, type: 3}
       propertyPath: m_Layer
-      value: 6
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 9146560341435545087, guid: d7c72ff1344de994aad2ea90ce1b1d59, type: 3}
       propertyPath: m_RootOrder
