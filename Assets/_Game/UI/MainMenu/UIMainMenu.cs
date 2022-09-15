@@ -3,6 +3,43 @@ using UnityEngine.SceneManagement;
 
 public class UIMainMenu : MonoBehaviour
 {
+    [SerializeField] private CanvasGroup _settingsCanvasGroup;
+    [SerializeField] private CanvasGroup _authorsCanvasGroup;
+
+    private void Awake()
+    {
+        _settingsCanvasGroup.gameObject.SetActive(true);
+        _authorsCanvasGroup.gameObject.SetActive(true);
+        SetUpCanvasGroup(_settingsCanvasGroup, 0, false, false);
+        SetUpCanvasGroup(_authorsCanvasGroup, 0, false, false);
+    }
+
+    public void SetUpCanvasGroup(CanvasGroup canvasGroup, float alpha, bool blocksRaycasts, bool interactable)
+    {
+        canvasGroup.alpha = alpha;
+        canvasGroup.blocksRaycasts = blocksRaycasts;
+        canvasGroup.interactable = interactable;
+    }
+
+    public void ShowSettingsCanvas()
+    {
+        SetUpCanvasGroup(_settingsCanvasGroup, 1, true, true);
+    }
+
+    public void CloseSettingsCanvas()
+    {
+        SetUpCanvasGroup(_settingsCanvasGroup, 0, false, false);
+    }
+
+    public void ShowAuthorsCanvas()
+    {
+        SetUpCanvasGroup(_authorsCanvasGroup, 1, true, true);
+    }
+
+    public void CloseAuthorsCanvas()
+    {
+        SetUpCanvasGroup(_authorsCanvasGroup, 0, false, false);
+    }
 
     public void StartGame()
     {

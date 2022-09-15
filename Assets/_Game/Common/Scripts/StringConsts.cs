@@ -28,4 +28,7 @@ public class StringConsts
     public const string SHOT = "Shot";
     public const string COIN = "Coin";
     #endregion
+
+    public const string MUSIC_VOLUME = "MusicVolume";
+    public const string SOUNDS_VOLUME = "SoundsVolume";
 }
