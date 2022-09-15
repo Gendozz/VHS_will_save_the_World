@@ -5,20 +5,20 @@ using UnityEngine;
 
 public class GrapplingHook : MonoBehaviour
 {
-    [Header("-----     Настройки     -----")]
-    [Header("Точка на герое, откуда стреляет крюк")]
+    [Header("-----     РќР°СЃС‚СЂРѕР№РєРё     -----")]
+    [Header("РўРѕС‡РєР° РЅР° РіРµСЂРѕРµ, РѕС‚РєСѓРґР° СЃС‚СЂРµР»СЏРµС‚ РєСЂСЋРє")]
     [SerializeField] private Transform _firePoint;
 
-    [Header("Рендерер верёвки")]
+    [Header("Р РµРЅРґРµСЂРµСЂ РІРµСЂС‘РІРєРё")]
     [SerializeField] private LineRenderer _lineRenderer;
 
-    [Header("Слой, за который можно зацепиться")]
+    [Header("РЎР»РѕР№, Р·Р° РєРѕС‚РѕСЂС‹Р№ РјРѕР¶РЅРѕ Р·Р°С†РµРїРёС‚СЊСЃСЏ")]
     [SerializeField] private LayerMask _grappableLayer;
 
-    [Header("Радиус, в котором работает детект зацепляемых объектов")]
+    [Header("Р Р°РґРёСѓСЃ, РІ РєРѕС‚РѕСЂРѕРј СЂР°Р±РѕС‚Р°РµС‚ РґРµС‚РµРєС‚ Р·Р°С†РµРїР»СЏРµРјС‹С… РѕР±СЉРµРєС‚РѕРІ")]
     [SerializeField] private float _detectGrapplablePointRadius;
 
-    [Header("-----     Компоненты и системные     -----")]
+    [Header("-----     РљРѕРјРїРѕРЅРµРЅС‚С‹ Рё СЃРёСЃС‚РµРјРЅС‹Рµ     -----")]
     [SerializeField] private PlayerInput _playerInput;
 
     [SerializeField] private PlayerMovement _playerMovement;

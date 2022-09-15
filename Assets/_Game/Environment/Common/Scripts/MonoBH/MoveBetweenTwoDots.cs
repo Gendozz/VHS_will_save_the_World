@@ -4,27 +4,27 @@ using UnityEngine;
 
 public class MoveBetweenTwoDots : MonoBehaviour, IMovingPlatform, IActivatable
 {
-    [Header("Двигаемый объект")]
+    [Header("Р”РІРёРіР°РµРјС‹Р№ РѕР±СЉРµРєС‚")]
     [SerializeField] private Transform _transformToMove;
 
-    [Header("Точки, между которыми движется пивот объекта")]
+    [Header("РўРѕС‡РєРё, РјРµР¶РґСѓ РєРѕС‚РѕСЂС‹РјРё РґРІРёР¶РµС‚СЃСЏ РїРёРІРѕС‚ РѕР±СЉРµРєС‚Р°")]
     [SerializeField] private Transform _firstPoint;
     [SerializeField] private Transform _secondPoint;
 
-    [Header("Время полного пути между точками")]
+    [Header("Р’СЂРµРјСЏ РїРѕР»РЅРѕРіРѕ РїСѓС‚Рё РјРµР¶РґСѓ С‚РѕС‡РєР°РјРё")]
     [Range(0, 10)]
     [SerializeField] private float _moveDuration;
 
-    [Header("На сколько объект задерживается при достижении точки")]
+    [Header("РќР° СЃРєРѕР»СЊРєРѕ РѕР±СЉРµРєС‚ Р·Р°РґРµСЂР¶РёРІР°РµС‚СЃСЏ РїСЂРё РґРѕСЃС‚РёР¶РµРЅРёРё С‚РѕС‡РєРё")]
     [SerializeField] private float _delayWhenPointReached;
 
-    [Header("Активировать при старте?")]
+    [Header("РђРєС‚РёРІРёСЂРѕРІР°С‚СЊ РїСЂРё СЃС‚Р°СЂС‚Рµ?")]
     [SerializeField] private bool _toActivateOnStart = true;
 
-    [Header("Ограничить количество повторений движения?")]
+    [Header("РћРіСЂР°РЅРёС‡РёС‚СЊ РєРѕР»РёС‡РµСЃС‚РІРѕ РїРѕРІС‚РѕСЂРµРЅРёР№ РґРІРёР¶РµРЅРёСЏ?")]
     [SerializeField] private bool _toLimitAmountOfIterations;
 
-    [Header("Количество движений в 1 сторону (если включено ограничение)")]
+    [Header("РљРѕР»РёС‡РµСЃС‚РІРѕ РґРІРёР¶РµРЅРёР№ РІ 1 СЃС‚РѕСЂРѕРЅСѓ (РµСЃР»Рё РІРєР»СЋС‡РµРЅРѕ РѕРіСЂР°РЅРёС‡РµРЅРёРµ)")]
     [SerializeField] private int _amountOfItereations;
 
     private int _currentAmountOfIterations;

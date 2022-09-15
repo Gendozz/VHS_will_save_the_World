@@ -4,18 +4,18 @@ using UnityEngine;
 
 public class Activator : MonoBehaviour
 {
-    [Header("Размер зоны детекта \nнастраивается коллайдером")]
+    [Header("Р Р°Р·РјРµСЂ Р·РѕРЅС‹ РґРµС‚РµРєС‚Р° \nРЅР°СЃС‚СЂР°РёРІР°РµС‚СЃСЏ РєРѕР»Р»Р°Р№РґРµСЂРѕРј")]
     
-    [Header("Список объектов, которые нужно активировать")]
+    [Header("РЎРїРёСЃРѕРє РѕР±СЉРµРєС‚РѕРІ, РєРѕС‚РѕСЂС‹Рµ РЅСѓР¶РЅРѕ Р°РєС‚РёРІРёСЂРѕРІР°С‚СЊ")]
     [SerializeField] private GameObject[] _iActivatedComponents;
 
-    [Header("Задержка активации")]
+    [Header("Р—Р°РґРµСЂР¶РєР° Р°РєС‚РёРІР°С†РёРё")]
     [SerializeField] private float _activationDelay;
 
-    [Header("Период кулдауна активатора")]
+    [Header("РџРµСЂРёРѕРґ РєСѓР»РґР°СѓРЅР° Р°РєС‚РёРІР°С‚РѕСЂР°")]
     [SerializeField] private float _cooldownDelay;
 
-    [Header("Активатор одноразового использования?")]
+    [Header("РђРєС‚РёРІР°С‚РѕСЂ РѕРґРЅРѕСЂР°Р·РѕРІРѕРіРѕ РёСЃРїРѕР»СЊР·РѕРІР°РЅРёСЏ?")]
     [SerializeField] private bool _isOneTimeUse;
 
     private bool _isReady = true;
@@ -85,7 +85,7 @@ public class Activator : MonoBehaviour
             if (_activatables[i] == null)
             {
                 _iActivatedComponents[i] = null;
-                Debug.LogError("Добавленный объект не может быть активирован. Добавь другой объект");
+                Debug.LogError("Р”РѕР±Р°РІР»РµРЅРЅС‹Р№ РѕР±СЉРµРєС‚ РЅРµ РјРѕР¶РµС‚ Р±С‹С‚СЊ Р°РєС‚РёРІРёСЂРѕРІР°РЅ. Р”РѕР±Р°РІСЊ РґСЂСѓРіРѕР№ РѕР±СЉРµРєС‚");
             }
         }
     }

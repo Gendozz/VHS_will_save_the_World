@@ -2,10 +2,10 @@ using UnityEngine;
 
 public class ParentToMovingPlatform : MonoBehaviour
 {
-    [Header("Физическое тело объекта")]
+    [Header("Р¤РёР·РёС‡РµСЃРєРѕРµ С‚РµР»Рѕ РѕР±СЉРµРєС‚Р°")]
     [SerializeField] private Rigidbody _rigidbody;
 
-    [Header("Ссылка PlayerMovement")]
+    [Header("РЎСЃС‹Р»РєР° PlayerMovement")]
     [SerializeField] private PlayerMovement _playerMovement;
 
     private Transform _originParent;

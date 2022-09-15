@@ -4,22 +4,22 @@ using UnityEngine;
 [RequireComponent(typeof(Collider))]
 public class DestroyOnCollisionWithPlayer : MonoBehaviour
 {
-    [Header("-----     Настройки     -----")]
-    [Header("Задержка перед уничтожением после контакта")]
+    [Header("-----     РќР°СЃС‚СЂРѕР№РєРё     -----")]
+    [Header("Р—Р°РґРµСЂР¶РєР° РїРµСЂРµРґ СѓРЅРёС‡С‚РѕР¶РµРЅРёРµРј РїРѕСЃР»Рµ РєРѕРЅС‚Р°РєС‚Р°")]
     [SerializeField] private float destroyDelay;
 
-    [Header("Задержка перед респавном после уничтожения")]
+    [Header("Р—Р°РґРµСЂР¶РєР° РїРµСЂРµРґ СЂРµСЃРїР°РІРЅРѕРј РїРѕСЃР»Рµ СѓРЅРёС‡С‚РѕР¶РµРЅРёСЏ")]
     [SerializeField] private float respawnDelay;
 
-    [Header("-----     Компоненты и системные     -----")]
+    [Header("-----     РљРѕРјРїРѕРЅРµРЅС‚С‹ Рё СЃРёСЃС‚РµРјРЅС‹Рµ     -----")]
 
-    [Header("Объект, отображающий платформу")]
+    [Header("РћР±СЉРµРєС‚, РѕС‚РѕР±СЂР°Р¶Р°СЋС‰РёР№ РїР»Р°С‚С„РѕСЂРјСѓ")]
     [SerializeField] private GameObject modelPlatform;
 
-    [Header("Коллайдер платформы")]
+    [Header("РљРѕР»Р»Р°Р№РґРµСЂ РїР»Р°С‚С„РѕСЂРјС‹")]
     [SerializeField] private Collider collider;
 
-    [Header("Ссылка на ColorLerp")]
+    [Header("РЎСЃС‹Р»РєР° РЅР° ColorLerp")]
     [SerializeField] private ColorLerp _colorLerp;
 
     private void OnCollisionEnter(Collision collision)

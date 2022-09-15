@@ -3,7 +3,7 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody))]
 public class Enemy1Attack : MonoBehaviour
 {
-    [Header("-----      Компоненты и системные      -----")]
+    [Header("-----      РљРѕРјРїРѕРЅРµРЅС‚С‹ Рё СЃРёСЃС‚РµРјРЅС‹Рµ      -----")]
     [SerializeField] private Enemy1Moving _enemy1Moving;
     [SerializeField] private GameObject _projectile;
     [SerializeField] private Transform _firePoint;

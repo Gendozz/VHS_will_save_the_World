@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class Enemy1InteractionWithPlayer : MonoBehaviour
 {
-    [Header("-----      Компоненты и системные      -----")]
+    [Header("-----      РљРѕРјРїРѕРЅРµРЅС‚С‹ Рё СЃРёСЃС‚РµРјРЅС‹Рµ      -----")]
     [SerializeField] private GameObject _enemy1;
     [SerializeField] private AbilityStealing _abilityStealing;
 

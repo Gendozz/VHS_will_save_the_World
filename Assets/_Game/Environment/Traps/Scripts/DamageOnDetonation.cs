@@ -3,19 +3,19 @@ using UnityEngine;
 
 public class DamageOnDetonation : MonoBehaviour, IActivatable
 {
-    [Header("Радиус поражения")]
+    [Header("Р Р°РґРёСѓСЃ РїРѕСЂР°Р¶РµРЅРёСЏ")]
     [SerializeField] private float _damageRadius;
 
-    [Header("Слой игрока")]
+    [Header("РЎР»РѕР№ РёРіСЂРѕРєР°")]
     [SerializeField] private LayerMask _playerLayer;
 
-    [Header("Задержка между активацией и взрывом")]
+    [Header("Р—Р°РґРµСЂР¶РєР° РјРµР¶РґСѓ Р°РєС‚РёРІР°С†РёРµР№ Рё РІР·СЂС‹РІРѕРј")]
     [SerializeField] private float _delayBeforeExplosion;
 
-    [Header("Размер урона")]
+    [Header("Р Р°Р·РјРµСЂ СѓСЂРѕРЅР°")]
     [SerializeField] private int _damageAmount;
 
-    [Header("Ссылка на ColorLerp")]
+    [Header("РЎСЃС‹Р»РєР° РЅР° ColorLerp")]
     [SerializeField] private ColorLerp _colorLerp;
 
     private bool _isActivated;

@@ -6,98 +6,98 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody), typeof(PlayerInput))]
 public class PlayerMovement : MonoBehaviour
 {
-    [Header("-----      Настройки перемещения и прыжка      -----")]
+    [Header("-----      РќР°СЃС‚СЂРѕР№РєРё РїРµСЂРµРјРµС‰РµРЅРёСЏ Рё РїСЂС‹Р¶РєР°      -----")]
 
-    [Header("Динамика изменения горизонтальной скорости от времени нажатия клавиши")]
+    [Header("Р”РёРЅР°РјРёРєР° РёР·РјРµРЅРµРЅРёСЏ РіРѕСЂРёР·РѕРЅС‚Р°Р»СЊРЅРѕР№ СЃРєРѕСЂРѕСЃС‚Рё РѕС‚ РІСЂРµРјРµРЅРё РЅР°Р¶Р°С‚РёСЏ РєР»Р°РІРёС€Рё")]
     [SerializeField] private AnimationCurve _speedCurve;
 
-    [Header("Слой, который считать землёй")]
+    [Header("РЎР»РѕР№, РєРѕС‚РѕСЂС‹Р№ СЃС‡РёС‚Р°С‚СЊ Р·РµРјР»С‘Р№")]
     [SerializeField] private LayerMask _groundLayer;
 
-    [Header("Модификатор гравитации при падении")]
+    [Header("РњРѕРґРёС„РёРєР°С‚РѕСЂ РіСЂР°РІРёС‚Р°С†РёРё РїСЂРё РїР°РґРµРЅРёРё")]
     [SerializeField] private float _fallGravityMultiplier;
 
-    [Header("С какой скорости по Y применять модификатор гравитации")]
+    [Header("РЎ РєР°РєРѕР№ СЃРєРѕСЂРѕСЃС‚Рё РїРѕ Y РїСЂРёРјРµРЅСЏС‚СЊ РјРѕРґРёС„РёРєР°С‚РѕСЂ РіСЂР°РІРёС‚Р°С†РёРё")]
     [SerializeField] private float _fallGravityVelocityYStart;
 
-    [Header("Сила замедления смены направления в воздухе")]
+    [Header("РЎРёР»Р° Р·Р°РјРµРґР»РµРЅРёСЏ СЃРјРµРЅС‹ РЅР°РїСЂР°РІР»РµРЅРёСЏ РІ РІРѕР·РґСѓС…Рµ")]
     [SerializeField] private float _backForceOnJump;
 
-    [Header("ДЛЯ ТЕСТА --- Есть ли способность ко второму прыжку?")]
+    [Header("Р”Р›РЇ РўР•РЎРўРђ --- Р•СЃС‚СЊ Р»Рё СЃРїРѕСЃРѕР±РЅРѕСЃС‚СЊ РєРѕ РІС‚РѕСЂРѕРјСѓ РїСЂС‹Р¶РєСѓ?")]
     [SerializeField] private bool _haveDoubleJumpAbility = false;            // Temp imitation of switching-on/off double jump ability
 
-    [Header("Сила прыжка вверх от земли")]
+    [Header("РЎРёР»Р° РїСЂС‹Р¶РєР° РІРІРµСЂС… РѕС‚ Р·РµРјР»Рё")]
     [SerializeField] private float _jumpForce;
 
-    [Header("Сила прыжка вверх на батуте")]
+    [Header("РЎРёР»Р° РїСЂС‹Р¶РєР° РІРІРµСЂС… РЅР° Р±Р°С‚СѓС‚Рµ")]
     [SerializeField] private float _trampolineJumpForce;
 
-    [Header("Слой, который считать стеной")]
+    [Header("РЎР»РѕР№, РєРѕС‚РѕСЂС‹Р№ СЃС‡РёС‚Р°С‚СЊ СЃС‚РµРЅРѕР№")]
     [SerializeField] private LayerMask _wallLayer;
 
-    [Header("Скорость скольжения по стене")]
+    [Header("РЎРєРѕСЂРѕСЃС‚СЊ СЃРєРѕР»СЊР¶РµРЅРёСЏ РїРѕ СЃС‚РµРЅРµ")]
     [SerializeField] private float _wallSlideGravityVelocity;
 
-    [Header("Сила отскока от стены")]
+    [Header("РЎРёР»Р° РѕС‚СЃРєРѕРєР° РѕС‚ СЃС‚РµРЅС‹")]
     [SerializeField] private float _wallJumpSideForce;
 
-    [Header("Сила прыжка вверх от стены")]
+    [Header("РЎРёР»Р° РїСЂС‹Р¶РєР° РІРІРµСЂС… РѕС‚ СЃС‚РµРЅС‹")]
     [SerializeField] private float _wallJumpUpForce;
 
-    [Header("Максимальный вертикальная скорость по инерции на стене")]
+    [Header("РњР°РєСЃРёРјР°Р»СЊРЅС‹Р№ РІРµСЂС‚РёРєР°Р»СЊРЅР°СЏ СЃРєРѕСЂРѕСЃС‚СЊ РїРѕ РёРЅРµСЂС†РёРё РЅР° СЃС‚РµРЅРµ")]
     [SerializeField] private float _limitOnWallUpInertion;
 
-    [Header("Продолжительность блокировки после прыжка от стены")]
+    [Header("РџСЂРѕРґРѕР»Р¶РёС‚РµР»СЊРЅРѕСЃС‚СЊ Р±Р»РѕРєРёСЂРѕРІРєРё РїРѕСЃР»Рµ РїСЂС‹Р¶РєР° РѕС‚ СЃС‚РµРЅС‹")]
     [SerializeField] private float _afterWallJumpBlockMovementDuration;
 
     [Space]
-    [Header("-----      Взаимодействия со скользкой платформой      -----")]
-    [Header("Динамика изменения горизонтальной скорости от времени нажатия клавиши")]
+    [Header("-----      Р’Р·Р°РёРјРѕРґРµР№СЃС‚РІРёСЏ СЃРѕ СЃРєРѕР»СЊР·РєРѕР№ РїР»Р°С‚С„РѕСЂРјРѕР№      -----")]
+    [Header("Р”РёРЅР°РјРёРєР° РёР·РјРµРЅРµРЅРёСЏ РіРѕСЂРёР·РѕРЅС‚Р°Р»СЊРЅРѕР№ СЃРєРѕСЂРѕСЃС‚Рё РѕС‚ РІСЂРµРјРµРЅРё РЅР°Р¶Р°С‚РёСЏ РєР»Р°РІРёС€Рё")]
     [SerializeField] private AnimationCurve _slipperySpeedCurve;
 
-    [Header("Слой, который считать скользкой платформой")]
+    [Header("РЎР»РѕР№, РєРѕС‚РѕСЂС‹Р№ СЃС‡РёС‚Р°С‚СЊ СЃРєРѕР»СЊР·РєРѕР№ РїР»Р°С‚С„РѕСЂРјРѕР№")]
     [SerializeField] private LayerMask _slipperyLayer;
 
     [SerializeField] private LayerMask _trampolineLayer;
 
     [Space]
-    [Header("-----      Взаимодействие с ловушками      -----")]
-    [Header("Продолжительность блокировки после контакта с ловушкой")]
+    [Header("-----      Р’Р·Р°РёРјРѕРґРµР№СЃС‚РІРёРµ СЃ Р»РѕРІСѓС€РєР°РјРё      -----")]
+    [Header("РџСЂРѕРґРѕР»Р¶РёС‚РµР»СЊРЅРѕСЃС‚СЊ Р±Р»РѕРєРёСЂРѕРІРєРё РїРѕСЃР»Рµ РєРѕРЅС‚Р°РєС‚Р° СЃ Р»РѕРІСѓС€РєРѕР№")]
     [SerializeField] private float _afterGotTrappedBlockMovementDuration;
 
-    [Header("Сила отталкивания вверх при контакте с ловушкой")]
+    [Header("РЎРёР»Р° РѕС‚С‚Р°Р»РєРёРІР°РЅРёСЏ РІРІРµСЂС… РїСЂРё РєРѕРЅС‚Р°РєС‚Рµ СЃ Р»РѕРІСѓС€РєРѕР№")]
     [SerializeField] private float _forceYOnTrapContact;
 
-    [Header("Сила отталкивания вбок при контакте с ловушкой")]
+    [Header("РЎРёР»Р° РѕС‚С‚Р°Р»РєРёРІР°РЅРёСЏ РІР±РѕРє РїСЂРё РєРѕРЅС‚Р°РєС‚Рµ СЃ Р»РѕРІСѓС€РєРѕР№")]
     [SerializeField] private float _forceXOnTrapContact;
 
-    [Header("Сила отталкивания вверх при контакте с ловушкой-пружиной")]
+    [Header("РЎРёР»Р° РѕС‚С‚Р°Р»РєРёРІР°РЅРёСЏ РІРІРµСЂС… РїСЂРё РєРѕРЅС‚Р°РєС‚Рµ СЃ Р»РѕРІСѓС€РєРѕР№-РїСЂСѓР¶РёРЅРѕР№")]
     [SerializeField] private float _springTrapForceY;
 
-    [Header("Сила отталкивания вбок при контакте с ловушкой-пружиной")]
+    [Header("РЎРёР»Р° РѕС‚С‚Р°Р»РєРёРІР°РЅРёСЏ РІР±РѕРє РїСЂРё РєРѕРЅС‚Р°РєС‚Рµ СЃ Р»РѕРІСѓС€РєРѕР№-РїСЂСѓР¶РёРЅРѕР№")]
     [SerializeField] private float _springTrepForceX;
 
     [Space]
-    [Header("-----      Компоненты и системные     -----")]
+    [Header("-----      РљРѕРјРїРѕРЅРµРЅС‚С‹ Рё СЃРёСЃС‚РµРјРЅС‹Рµ     -----")]
 
-    [Header("Физическое тело объекта")]
+    [Header("Р¤РёР·РёС‡РµСЃРєРѕРµ С‚РµР»Рѕ РѕР±СЉРµРєС‚Р°")]
     [SerializeField] private Rigidbody _rigidbody;
 
-    [Header("Скрипт получения пользовательского ввода")]
+    [Header("РЎРєСЂРёРїС‚ РїРѕР»СѓС‡РµРЅРёСЏ РїРѕР»СЊР·РѕРІР°С‚РµР»СЊСЃРєРѕРіРѕ РІРІРѕРґР°")]
     [SerializeField] private PlayerInput _playerInput;
 
-    [Header("Радиус от пивота персонажа, в котором детектится земля")]
+    [Header("Р Р°РґРёСѓСЃ РѕС‚ РїРёРІРѕС‚Р° РїРµСЂСЃРѕРЅР°Р¶Р°, РІ РєРѕС‚РѕСЂРѕРј РґРµС‚РµРєС‚РёС‚СЃСЏ Р·РµРјР»СЏ")]
     [SerializeField] private float _groundCheckRadius;
 
     [SerializeField] private CapsuleCollider _mainCollider;
 
-    [Header("Расстояние вбок от пивота персонажа, в которой детектятся стены")]
+    [Header("Р Р°СЃСЃС‚РѕСЏРЅРёРµ РІР±РѕРє РѕС‚ РїРёРІРѕС‚Р° РїРµСЂСЃРѕРЅР°Р¶Р°, РІ РєРѕС‚РѕСЂРѕР№ РґРµС‚РµРєС‚СЏС‚СЃСЏ СЃС‚РµРЅС‹")]
     [SerializeField] private Vector3 _wallCheckBoxHalfSize;
 
-    [Header("Оффсет центра детекта стен")]
+    [Header("РћС„С„СЃРµС‚ С†РµРЅС‚СЂР° РґРµС‚РµРєС‚Р° СЃС‚РµРЅ")]
     [SerializeField] private Vector3 _checkBoxCenterOffset;
 
-    [Header("Длительность блокировки детекта стен после прыжка от стены")]
+    [Header("Р”Р»РёС‚РµР»СЊРЅРѕСЃС‚СЊ Р±Р»РѕРєРёСЂРѕРІРєРё РґРµС‚РµРєС‚Р° СЃС‚РµРЅ РїРѕСЃР»Рµ РїСЂС‹Р¶РєР° РѕС‚ СЃС‚РµРЅС‹")]
     [SerializeField] private float _blockWallDetectionDuration;
 
     // Ground relative

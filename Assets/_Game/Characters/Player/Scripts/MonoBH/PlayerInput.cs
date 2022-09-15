@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class PlayerInput : MonoBehaviour
 {
-    [Header("Перевёрнуто ли управление")]
+    [Header("РџРµСЂРµРІС‘СЂРЅСѓС‚Рѕ Р»Рё СѓРїСЂР°РІР»РµРЅРёРµ")]
     [SerializeField] private bool _isInputInversed = false;
 
     public float HorizontalDirection { get; private set; }

@@ -1,19 +1,19 @@
 using UnityEngine;
 
-// Временное решение
-// TODO: Переделать под нужды игры
+// Р’СЂРµРјРµРЅРЅРѕРµ СЂРµС€РµРЅРёРµ
+// TODO: РџРµСЂРµРґРµР»Р°С‚СЊ РїРѕРґ РЅСѓР¶РґС‹ РёРіСЂС‹
 public class CameraFollowPlayer : MonoBehaviour
 {
-    [Header("За кем движется камера")]
+    [Header("Р—Р° РєРµРј РґРІРёР¶РµС‚СЃСЏ РєР°РјРµСЂР°")]
     [SerializeField] private Transform target;
 
-    [Header("Офсет по вертикали относительно цели")]
+    [Header("РћС„СЃРµС‚ РїРѕ РІРµСЂС‚РёРєР°Р»Рё РѕС‚РЅРѕСЃРёС‚РµР»СЊРЅРѕ С†РµР»Рё")]
     [SerializeField] private float yOffset;
     
-    [Header("Отдаление от цели от")]
+    [Header("РћС‚РґР°Р»РµРЅРёРµ РѕС‚ С†РµР»Рё РѕС‚")]
     [SerializeField] private float zOffset;
 
-    [Header("Скорость слежения")]
+    [Header("РЎРєРѕСЂРѕСЃС‚СЊ СЃР»РµР¶РµРЅРёСЏ")]
     [SerializeField] private float followSpeed;
 
     [SerializeField] private float minX;

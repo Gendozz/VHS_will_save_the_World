@@ -3,18 +3,18 @@ using UnityEngine;
 
 public class PlayerModelRotation : MonoBehaviour
 {
-    [Header("Продолжительность разворота")]
+    [Header("РџСЂРѕРґРѕР»Р¶РёС‚РµР»СЊРЅРѕСЃС‚СЊ СЂР°Р·РІРѕСЂРѕС‚Р°")]
     [SerializeField] private float _rotationDuration;
 
-    [Header("Скорость по Х, когда разворот происходит без инпута")]
+    [Header("РЎРєРѕСЂРѕСЃС‚СЊ РїРѕ РҐ, РєРѕРіРґР° СЂР°Р·РІРѕСЂРѕС‚ РїСЂРѕРёСЃС…РѕРґРёС‚ Р±РµР· РёРЅРїСѓС‚Р°")]
     [SerializeField] private float _minVelocityToStartRotate;
 
     [Space]
-    [Header("-----     Компоненты     -----")]
-    [Header("Ссылка на пользовательский ввод")]
+    [Header("-----     РљРѕРјРїРѕРЅРµРЅС‚С‹     -----")]
+    [Header("РЎСЃС‹Р»РєР° РЅР° РїРѕР»СЊР·РѕРІР°С‚РµР»СЊСЃРєРёР№ РІРІРѕРґ")]
     [SerializeField] private PlayerInput _playerInput;
 
-    [Header("Физическое тело объекта")]
+    [Header("Р¤РёР·РёС‡РµСЃРєРѕРµ С‚РµР»Рѕ РѕР±СЉРµРєС‚Р°")]
     [SerializeField ]private Rigidbody _rigidbody;
 
     private Vector3 _rightRotation = new Vector3(0, 0.1f, 0);

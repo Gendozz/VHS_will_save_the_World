@@ -5,25 +5,25 @@ using UnityEngine;
 [RequireComponent(typeof(BoxCollider))]
 public class SwapZone : MonoBehaviour, IActivatable
 {
-    [Header("Объект игрока на сцене")]
+    [Header("РћР±СЉРµРєС‚ РёРіСЂРѕРєР° РЅР° СЃС†РµРЅРµ")]
     [SerializeField] private PlayerInput _playerInput;
 
-    [Header("Объект клона на сцене")]
+    [Header("РћР±СЉРµРєС‚ РєР»РѕРЅР° РЅР° СЃС†РµРЅРµ")]
     [SerializeField] private PlayerInput _cloneInput;
 
-    [Header("Главная камера")]
+    [Header("Р“Р»Р°РІРЅР°СЏ РєР°РјРµСЂР°")]
     [SerializeField] private CinemachineMainCamera _camera;
 
-    [Header("Задержка для перемены местами игрока и клона")]
+    [Header("Р—Р°РґРµСЂР¶РєР° РґР»СЏ РїРµСЂРµРјРµРЅС‹ РјРµСЃС‚Р°РјРё РёРіСЂРѕРєР° Рё РєР»РѕРЅР°")]
     [SerializeField] private float _cooldownDelay;
 
-    [Header("Объект, показывающий здоровье игрока")]
+    [Header("РћР±СЉРµРєС‚, РїРѕРєР°Р·С‹РІР°СЋС‰РёР№ Р·РґРѕСЂРѕРІСЊРµ РёРіСЂРѕРєР°")]
     [SerializeField] private TMP_Text _playerHealth;
 
-    [Header("Канвас, отображающий возможность нажатия специальной кнопки")]
+    [Header("РљР°РЅРІР°СЃ, РѕС‚РѕР±СЂР°Р¶Р°СЋС‰РёР№ РІРѕР·РјРѕР¶РЅРѕСЃС‚СЊ РЅР°Р¶Р°С‚РёСЏ СЃРїРµС†РёР°Р»СЊРЅРѕР№ РєРЅРѕРїРєРё")]
     [SerializeField] private GameObject _specialButtonLabelCanvas;
 
-    [Header("Объект с объёмом постпроцессинга, удаляемый после прохождения зоны клона")]
+    [Header("РћР±СЉРµРєС‚ СЃ РѕР±СЉС‘РјРѕРј РїРѕСЃС‚РїСЂРѕС†РµСЃСЃРёРЅРіР°, СѓРґР°Р»СЏРµРјС‹Р№ РїРѕСЃР»Рµ РїСЂРѕС…РѕР¶РґРµРЅРёСЏ Р·РѕРЅС‹ РєР»РѕРЅР°")]
     [SerializeField] private GameObject _postProcessingVolumeToDelete;
 
     private bool _isAbleToActivateClone = false;

@@ -3,23 +3,23 @@ using UnityEngine;
 
 public class Shooter : MonoBehaviour
 {
-    [Header("Префаб снаряда")]
+    [Header("РџСЂРµС„Р°Р± СЃРЅР°СЂСЏРґР°")]
     [SerializeField] private GameObject _projectilePrefab;
 
-    [Header("Точка, откуда летит снаряд")]
+    [Header("РўРѕС‡РєР°, РѕС‚РєСѓРґР° Р»РµС‚РёС‚ СЃРЅР°СЂСЏРґ")]
     [SerializeField] private Transform _firePoint;
 
-    [Header("Пауза между выстрелами")]
+    [Header("РџР°СѓР·Р° РјРµР¶РґСѓ РІС‹СЃС‚СЂРµР»Р°РјРё")]
     [SerializeField] private float _cooldownDuration;
 
-    public bool СanShoot { get; private set; } = true;
+    public bool РЎanShoot { get; private set; } = true;
 
     public void Shoot(Vector3 inDirection)
     {
-        if (СanShoot)
+        if (РЎanShoot)
         {
             Instantiate(_projectilePrefab, _firePoint.position, Quaternion.Euler(inDirection));
-            СanShoot = false;
+            РЎanShoot = false;
             StartCoroutine(Cooldown());
         }
     }
@@ -27,7 +27,7 @@ public class Shooter : MonoBehaviour
     private IEnumerator Cooldown()
     {
         yield return new WaitForSeconds(_cooldownDuration);
-        СanShoot = true;
+        РЎanShoot = true;
     }
 
 }

@@ -3,12 +3,12 @@ using UnityEngine;
 
 public class Enemy3IdleInteractionWithPlayer : MonoBehaviour
 {
-    [Header("-----      Настройки      -----")]
-    [Header("Сила импульса")]
+    [Header("-----      РќР°СЃС‚СЂРѕР№РєРё      -----")]
+    [Header("РЎРёР»Р° РёРјРїСѓР»СЊСЃР°")]
     [SerializeField] private float _vertically;
     [SerializeField] private float _horizontally;
     [Space]
-    [Header("-----      Компоненты и системные      -----")]
+    [Header("-----      РљРѕРјРїРѕРЅРµРЅС‚С‹ Рё СЃРёСЃС‚РµРјРЅС‹Рµ      -----")]
     [SerializeField] private Enemy3LookAtPlayer _enemy3LookAtPlayer;
     [SerializeField] private AbilityStealing _abilityStealing;
     [SerializeField] private Animator _animator;

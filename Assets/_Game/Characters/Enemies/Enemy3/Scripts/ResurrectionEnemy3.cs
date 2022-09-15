@@ -2,10 +2,10 @@ using UnityEngine;
 
 public class ResurrectionEnemy3 : MonoBehaviour
 {
-    [Header("-----      Настройки      -----")]
+    [Header("-----      РќР°СЃС‚СЂРѕР№РєРё      -----")]
     [SerializeField] private float _timeUntilRes;
     [Space]
-    [Header("-----      Компоненты и системные      -----")]
+    [Header("-----      РљРѕРјРїРѕРЅРµРЅС‚С‹ Рё СЃРёСЃС‚РµРјРЅС‹Рµ      -----")]
     [SerializeField] private Animator _animator;
     [SerializeField] private Behaviour[] _components;
 

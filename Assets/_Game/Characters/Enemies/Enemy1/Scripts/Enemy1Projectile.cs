@@ -3,17 +3,17 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody))]
 public class Enemy1Projectile : MonoBehaviour
 {
-    [Header("-----      Настройки      -----")]
-    [Header("Скорость снаряда")]
+    [Header("-----      РќР°СЃС‚СЂРѕР№РєРё      -----")]
+    [Header("РЎРєРѕСЂРѕСЃС‚СЊ СЃРЅР°СЂСЏРґР°")]
     [SerializeField] private float _speed;
 
-    [Header("Урон от снаряда")]
+    [Header("РЈСЂРѕРЅ РѕС‚ СЃРЅР°СЂСЏРґР°")]
     [SerializeField, Range(1, 10)] private int _damage;
 
-    [Header("Время жизни снаряда")]
+    [Header("Р’СЂРµРјСЏ Р¶РёР·РЅРё СЃРЅР°СЂСЏРґР°")]
     [SerializeField] private float _timeLife;
 
-    [Header("-----      Компоненты и системные      -----")]
+    [Header("-----      РљРѕРјРїРѕРЅРµРЅС‚С‹ Рё СЃРёСЃС‚РµРјРЅС‹Рµ      -----")]
     [SerializeField] private Rigidbody _rigidbody;
 
     private float _time;

@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class WalkOnSpikes : MonoBehaviour
 {
-    [Header("Все шипы, которые должны стать землёй")]
+    [Header("Р’СЃРµ С€РёРїС‹, РєРѕС‚РѕСЂС‹Рµ РґРѕР»Р¶РЅС‹ СЃС‚Р°С‚СЊ Р·РµРјР»С‘Р№")]
     [SerializeField] private SpikesGroundChanger[] _spikesGroundChangers;
 
     [SerializeField] private float _abilytyDuration;

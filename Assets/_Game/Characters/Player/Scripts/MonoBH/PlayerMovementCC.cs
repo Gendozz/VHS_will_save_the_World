@@ -5,21 +5,21 @@ using UnityEngine;
 [RequireComponent(typeof(CharacterController), typeof(PlayerInput))]
 public class PlayerMovementCC : MonoBehaviour
 {
-    [Header("-----     Настройки перемещения     -----")]
-    [Header("Скорость горизонтального перемещения")]
+    [Header("-----     РќР°СЃС‚СЂРѕР№РєРё РїРµСЂРµРјРµС‰РµРЅРёСЏ     -----")]
+    [Header("РЎРєРѕСЂРѕСЃС‚СЊ РіРѕСЂРёР·РѕРЅС‚Р°Р»СЊРЅРѕРіРѕ РїРµСЂРµРјРµС‰РµРЅРёСЏ")]
     [SerializeField] private float _speed;
     
-    [Header("Сила прыжка")]
+    [Header("РЎРёР»Р° РїСЂС‹Р¶РєР°")]
     [SerializeField] private float _jumpForce;
 
-    [Header("Сила притяжения")]
+    [Header("РЎРёР»Р° РїСЂРёС‚СЏР¶РµРЅРёСЏ")]
     [SerializeField] private float _gravity;
 
-    [Header("-----     Компоненты и системные     -----")]
-    [Header("Скорость горизонтального перемещения")]
+    [Header("-----     РљРѕРјРїРѕРЅРµРЅС‚С‹ Рё СЃРёСЃС‚РµРјРЅС‹Рµ     -----")]
+    [Header("РЎРєРѕСЂРѕСЃС‚СЊ РіРѕСЂРёР·РѕРЅС‚Р°Р»СЊРЅРѕРіРѕ РїРµСЂРµРјРµС‰РµРЅРёСЏ")]
     [SerializeField] private CharacterController _characterController;
 
-    [Header("Пользовательский ввод")]
+    [Header("РџРѕР»СЊР·РѕРІР°С‚РµР»СЊСЃРєРёР№ РІРІРѕРґ")]
     [SerializeField] private PlayerInput _playerInput;
 
 
