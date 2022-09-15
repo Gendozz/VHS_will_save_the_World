@@ -5,7 +5,7 @@ public class Enemy1Moving : MonoBehaviour
 {
     [HideInInspector] public bool IsSees;
 
-    [Header("-----      Õ‡ÒÚÓÈÍË      -----")]
+    [Header("-----      –ù–∞—Å—Ç—Ä–æ–π–∫–∏      -----")]
     [SerializeField] private Transform _leftPointTransform;
     [SerializeField] private Transform _rightPointTransform;
     [SerializeField] private float _speedPosition;
@@ -13,7 +13,7 @@ public class Enemy1Moving : MonoBehaviour
     [SerializeField] private float angleWhichEnemyChangesDirection;
     [SerializeField] private float _additionalVisibilityHeight;
     [Space]
-    [Header("-----       ÓÏÔÓÌÂÌÚ˚ Ë ÒËÒÚÂÏÌ˚Â      -----")]
+    [Header("-----      –ö–æ–º–ø–æ–Ω–µ–Ω—Ç—ã –∏ —Å–∏—Å—Ç–µ–º–Ω—ã–µ      -----")]
     [SerializeField] private Rigidbody _rigidbody;
     [SerializeField] private Transform _playerTransform;
     [SerializeField] private float _minDistanseBetweenPlayerAndEnemy;
@@ -23,7 +23,7 @@ public class Enemy1Moving : MonoBehaviour
     private float _rightPointTransformPositoinX;
     private float _lowerLimitFieldView;
     private float _upperLimitFieldView;
-    private float _angle≈rror = 0.1f;
+    private float _angleError = 0.1f;
     private bool _onScreen;
     private bool _playerInZone;
 
@@ -112,7 +112,7 @@ public class Enemy1Moving : MonoBehaviour
         if (leftPositon > _rigidbody.position.x)
         {
             _directionMoving = Vector3.zero;
-            _rigidbody.rotation = Quaternion.RotateTowards(_rigidbody.rotation, Quaternion.Euler(0, _angle≈rror, 0), _speedRotation);
+            _rigidbody.rotation = Quaternion.RotateTowards(_rigidbody.rotation, Quaternion.Euler(0, _angleError, 0), _speedRotation);
             if (transform.eulerAngles.y < angleWhichEnemyChangesDirection)
             {
                 _directionMoving = Vector3.right;
@@ -121,7 +121,7 @@ public class Enemy1Moving : MonoBehaviour
         else if (rightPosition < _rigidbody.position.x)
         {
             _directionMoving = Vector3.zero;
-            _rigidbody.rotation = Quaternion.RotateTowards(_rigidbody.rotation, Quaternion.Euler(0, 180 - _angle≈rror, 0), _speedRotation);
+            _rigidbody.rotation = Quaternion.RotateTowards(_rigidbody.rotation, Quaternion.Euler(0, 180 - _angleError, 0), _speedRotation);
             if (transform.eulerAngles.y > 180 - angleWhichEnemyChangesDirection)
             {
                 _directionMoving = Vector3.left;
@@ -130,11 +130,11 @@ public class Enemy1Moving : MonoBehaviour
 
         if (_directionMoving == Vector3.right)
         {
-            _rigidbody.rotation = Quaternion.RotateTowards(_rigidbody.rotation, Quaternion.Euler(0, _angle≈rror, 0), _speedRotation);
+            _rigidbody.rotation = Quaternion.RotateTowards(_rigidbody.rotation, Quaternion.Euler(0, _angleError, 0), _speedRotation);
         }
         else if (_directionMoving == Vector3.left)
         {
-            _rigidbody.rotation = Quaternion.RotateTowards(_rigidbody.rotation, Quaternion.Euler(0, 180 - _angle≈rror, 0), _speedRotation);
+            _rigidbody.rotation = Quaternion.RotateTowards(_rigidbody.rotation, Quaternion.Euler(0, 180 - _angleError, 0), _speedRotation);
         }
     }
 

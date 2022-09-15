@@ -5,21 +5,21 @@ using UnityEngine;
 
 public class ChangeWidth : MonoBehaviour, IMovingPlatform
 {
-    [Header("-----     Настройки     -----")]
-    [Header("Масштабируемый объект")]
+    [Header("-----     РќР°СЃС‚СЂРѕР№РєРё     -----")]
+    [Header("РњР°СЃС€С‚Р°Р±РёСЂСѓРµРјС‹Р№ РѕР±СЉРµРєС‚")]
     [SerializeField] private Transform _transformToScale;
 
-    [Header("Время на полное изменение ширины")]
+    [Header("Р’СЂРµРјСЏ РЅР° РїРѕР»РЅРѕРµ РёР·РјРµРЅРµРЅРёРµ С€РёСЂРёРЅС‹")]
     [SerializeField] private float _changeScaleDuration;
 
-    [Header("Увеличение в n раз от текущей ширины")]
+    [Header("РЈРІРµР»РёС‡РµРЅРёРµ РІ n СЂР°Р· РѕС‚ С‚РµРєСѓС‰РµР№ С€РёСЂРёРЅС‹")]
     [SerializeField] private float _targetScaleX;
 
-    [Header("Продолжительность паузы при достижении требуемоый ширины")]
+    [Header("РџСЂРѕРґРѕР»Р¶РёС‚РµР»СЊРЅРѕСЃС‚СЊ РїР°СѓР·С‹ РїСЂРё РґРѕСЃС‚РёР¶РµРЅРёРё С‚СЂРµР±СѓРµРјРѕС‹Р№ С€РёСЂРёРЅС‹")]
     [SerializeField] private float _delayWhenTargetScaleReached;
 
-    [Header("-----     Компоненты     -----")]
-    [Header("Коллайдер платформы")] 
+    [Header("-----     РљРѕРјРїРѕРЅРµРЅС‚С‹     -----")]
+    [Header("РљРѕР»Р»Р°Р№РґРµСЂ РїР»Р°С‚С„РѕСЂРјС‹")] 
     [SerializeField] private BoxCollider _thisCollider;
 
     private float _startScaleX;

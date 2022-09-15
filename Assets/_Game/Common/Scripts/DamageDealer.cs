@@ -3,10 +3,10 @@ using UnityEngine;
 [RequireComponent(typeof(Collider))]
 public class DamageDealer : MonoBehaviour
 {
-    [Header("Размер наносимого урона")]
+    [Header("Р Р°Р·РјРµСЂ РЅР°РЅРѕСЃРёРјРѕРіРѕ СѓСЂРѕРЅР°")]
     [SerializeField] private int _damage;
 
-    [Header("После причинения ущерба объект должен исчезнуть?")]
+    [Header("РџРѕСЃР»Рµ РїСЂРёС‡РёРЅРµРЅРёСЏ СѓС‰РµСЂР±Р° РѕР±СЉРµРєС‚ РґРѕР»Р¶РµРЅ РёСЃС‡РµР·РЅСѓС‚СЊ?")]
     [SerializeField] private bool _isOneTimeUse;
 
     private void OnCollisionEnter(Collision collision)

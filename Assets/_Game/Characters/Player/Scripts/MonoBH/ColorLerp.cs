@@ -3,16 +3,16 @@ using UnityEngine;
 
 public class ColorLerp : MonoBehaviour
 {
-    [Header("Цвет, на который меняется")]
+    [Header("Р¦РІРµС‚, РЅР° РєРѕС‚РѕСЂС‹Р№ РјРµРЅСЏРµС‚СЃСЏ")]
     [SerializeField] private Color _colorToLerpTo;
     
-    [Header("Продолжительность мигания")]
+    [Header("РџСЂРѕРґРѕР»Р¶РёС‚РµР»СЊРЅРѕСЃС‚СЊ РјРёРіР°РЅРёСЏ")]
     [SerializeField] private float _animationDuration;
 
-    [Header("Количество повторений")]
+    [Header("РљРѕР»РёС‡РµСЃС‚РІРѕ РїРѕРІС‚РѕСЂРµРЅРёР№")]
     [SerializeField] private int _amountOfItereations;
 
-    [Header("Ссылка на рендерер")]
+    [Header("РЎСЃС‹Р»РєР° РЅР° СЂРµРЅРґРµСЂРµСЂ")]
     [SerializeField] private Renderer _meshRenderer;
 
     private Coroutine _lerpRoutine;

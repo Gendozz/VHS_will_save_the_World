@@ -5,7 +5,7 @@ public class CinemachineMainCamera : MonoBehaviour
 {
     [SerializeField] private CinemachineVirtualCamera _cinemachineVirtualCamera;
 
-    [Header("За кем следит камера")]
+    [Header("Р—Р° РєРµРј СЃР»РµРґРёС‚ РєР°РјРµСЂР°")]
     [SerializeField] private Transform target;
 
     public void ChangeTarget(Transform newTarget)

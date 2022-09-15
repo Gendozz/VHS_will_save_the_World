@@ -5,7 +5,7 @@ public class TumblerSwitch : MonoBehaviour
 {
     [SerializeField] private Transform _switcherTransform;
 
-    [Header("Положение тумблера")]
+    [Header("РџРѕР»РѕР¶РµРЅРёРµ С‚СѓРјР±Р»РµСЂР°")]
     [SerializeField] private bool _isOn;
 
     [Range(0, 90)]

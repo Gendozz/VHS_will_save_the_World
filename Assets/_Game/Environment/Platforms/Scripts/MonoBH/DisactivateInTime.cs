@@ -3,10 +3,10 @@ using UnityEngine;
 
 public class DisactivateInTime : MonoBehaviour
 {
-    [Header("Объект, который дезактивируется")]
+    [Header("РћР±СЉРµРєС‚, РєРѕС‚РѕСЂС‹Р№ РґРµР·Р°РєС‚РёРІРёСЂСѓРµС‚СЃСЏ")]
     [SerializeField] private GameObject _objectToDisactivate;
 
-    [Header("Задержка после активации перед дезактивацией")]
+    [Header("Р—Р°РґРµСЂР¶РєР° РїРѕСЃР»Рµ Р°РєС‚РёРІР°С†РёРё РїРµСЂРµРґ РґРµР·Р°РєС‚РёРІР°С†РёРµР№")]
     [SerializeField] private float _delayBeforeDisactivate;
 
     private void OnEnable()

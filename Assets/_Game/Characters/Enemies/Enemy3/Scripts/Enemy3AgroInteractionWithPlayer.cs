@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class Enemy3AgroInteractionWithPlayer : MonoBehaviour
 {
-    [Header("-----      Компоненты и системные      -----")]
+    [Header("-----      РљРѕРјРїРѕРЅРµРЅС‚С‹ Рё СЃРёСЃС‚РµРјРЅС‹Рµ      -----")]
     [SerializeField] private Enemy3LookAtPlayer _enemy3LookAtPlayer;
     [SerializeField] private AbilityStealing _abilityStealing;
     [SerializeField] private Animator _animator;

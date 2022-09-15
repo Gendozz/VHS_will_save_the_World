@@ -4,15 +4,15 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody))]
 public class Enemy3AttackAoeDisplay : MonoBehaviour
 {
-    [Header("-----      Настройки      -----")]
-    [Header("AOE аттака")]
+    [Header("-----      РќР°СЃС‚СЂРѕР№РєРё      -----")]
+    [Header("AOE Р°С‚С‚Р°РєР°")]
     [SerializeField] private float _delayAttackAoe;
     [SerializeField] private float _scaleMaxAoeMultiply;
     [SerializeField] private float _timeToMaxAoe;
     [SerializeField] private float _timeToMinAoe;
     [SerializeField] private float _delayTimeMaxStateAoe;
     [Space]
-    [Header("-----      Компоненты и системные      -----")]
+    [Header("-----      РљРѕРјРїРѕРЅРµРЅС‚С‹ Рё СЃРёСЃС‚РµРјРЅС‹Рµ      -----")]
     [SerializeField] private GameObject _objAoe;
     [SerializeField] private Enemy3LookAtPlayer _enemy3LookAtPlayer;
     [SerializeField] private Transform _playerTransform;

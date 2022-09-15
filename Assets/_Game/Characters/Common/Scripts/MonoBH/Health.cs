@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class Health : MonoBehaviour, IDamagable, IHealable
 {
-    [Header("Максимальное количество жизней")]
+    [Header("РњР°РєСЃРёРјР°Р»СЊРЅРѕРµ РєРѕР»РёС‡РµСЃС‚РІРѕ Р¶РёР·РЅРµР№")]
     [SerializeField] private int maxLives;
 
-    [Header("Количество жизней на старте")]
+    [Header("РљРѕР»РёС‡РµСЃС‚РІРѕ Р¶РёР·РЅРµР№ РЅР° СЃС‚Р°СЂС‚Рµ")]
     [SerializeField] private int _livesOnStart;
 
-    [Header("Продолжительность неуязвимости после получения урона")]
+    [Header("РџСЂРѕРґРѕР»Р¶РёС‚РµР»СЊРЅРѕСЃС‚СЊ РЅРµСѓСЏР·РІРёРјРѕСЃС‚Рё РїРѕСЃР»Рµ РїРѕР»СѓС‡РµРЅРёСЏ СѓСЂРѕРЅР°")]
     [SerializeField] private float _invulnerabilityDuration;
 
     private int currentLives;

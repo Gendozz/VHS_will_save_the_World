@@ -3,16 +3,16 @@ using UnityEngine;
 [RequireComponent(typeof(BoxCollider))]
 public class DeadZone : MonoBehaviour
 {   
-    [Header("Точка восстановления")]
+    [Header("РўРѕС‡РєР° РІРѕСЃСЃС‚Р°РЅРѕРІР»РµРЅРёСЏ")]
     [SerializeField] private Transform _pointOfRestore;
 
-    [Header("Задержка перед перемещением в точку восстановления")]
+    [Header("Р—Р°РґРµСЂР¶РєР° РїРµСЂРµРґ РїРµСЂРµРјРµС‰РµРЅРёРµРј РІ С‚РѕС‡РєСѓ РІРѕСЃСЃС‚Р°РЅРѕРІР»РµРЅРёСЏ")]
     [SerializeField] private float _delayBeforeMoveToPoint;
 
-    [Header("Ссылка на Health игрока")]
+    [Header("РЎСЃС‹Р»РєР° РЅР° Health РёРіСЂРѕРєР°")]
     [SerializeField] private Health _playerHealth;
 
-    [Header("Ссылка на PlayerMovement")]
+    [Header("РЎСЃС‹Р»РєР° РЅР° PlayerMovement")]
     [SerializeField] private PlayerMovement _playerMovement;
 
 

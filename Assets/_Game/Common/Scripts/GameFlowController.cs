@@ -2,24 +2,24 @@ using UnityEngine;
 
 public class GameFlowController : MonoBehaviour
 {
-    [Header("Ссылка на Health игрока")]
+    [Header("РЎСЃС‹Р»РєР° РЅР° Health РёРіСЂРѕРєР°")]
     [SerializeField] private Health _playerHealth;
 
-    [Header("Для паузы игрока и клонов")]
-    [Header("Ссылки на все PlayerInput (игрок и все клоны)")]
+    [Header("Р”Р»СЏ РїР°СѓР·С‹ РёРіСЂРѕРєР° Рё РєР»РѕРЅРѕРІ")]
+    [Header("РЎСЃС‹Р»РєРё РЅР° РІСЃРµ PlayerInput (РёРіСЂРѕРє Рё РІСЃРµ РєР»РѕРЅС‹)")]
     [SerializeField] private PlayerInput[] _playerInputs;
     
-    [Header("Ссылки на все PlayerModelRotation (игрок и все клоны)")]
+    [Header("РЎСЃС‹Р»РєРё РЅР° РІСЃРµ PlayerModelRotation (РёРіСЂРѕРє Рё РІСЃРµ РєР»РѕРЅС‹)")]
     [SerializeField] private PlayerModelRotation[] _playerModelRotations;
 
-    [Header("Ссылки на все PlayerMovement (игрок и все клоны)")]
+    [Header("РЎСЃС‹Р»РєРё РЅР° РІСЃРµ PlayerMovement (РёРіСЂРѕРє Рё РІСЃРµ РєР»РѕРЅС‹)")]
     [SerializeField] private PlayerMovement[] _playerMovements;
 
-    [Header("Для паузы Enemy3")]
-    [Header("Ссылки на все Enemy3LookAtPlayer")]
+    [Header("Р”Р»СЏ РїР°СѓР·С‹ Enemy3")]
+    [Header("РЎСЃС‹Р»РєРё РЅР° РІСЃРµ Enemy3LookAtPlayer")]
     [SerializeField] private Enemy3LookAtPlayer[] _enemy3LookAtPlayer;
 
-    [Header("Ссылки на все Enemy3AttackAoeDisplay")]
+    [Header("РЎСЃС‹Р»РєРё РЅР° РІСЃРµ Enemy3AttackAoeDisplay")]
     [SerializeField] private Enemy3AttackAoeDisplay[] _enemy3AttackAoeDisplay;
 
 

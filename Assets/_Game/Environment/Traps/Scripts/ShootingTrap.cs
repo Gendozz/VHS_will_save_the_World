@@ -5,12 +5,12 @@ using UnityEngine;
 [RequireComponent(typeof(Shooter), typeof(BoxCollider))]
 public class ShootingTrap : MonoBehaviour
 {
-    [Header("Ссылка на коампнент Shooter")]
+    [Header("РЎСЃС‹Р»РєР° РЅР° РєРѕР°РјРїРЅРµРЅС‚ Shooter")]
     [SerializeField] private Shooter shooter;
 
     private void OnTriggerStay(Collider other)
     {
-        if (shooter.СanShoot)
+        if (shooter.РЎanShoot)
         {
             if (other.TryGetComponent<PlayerMovement>(out PlayerMovement playerMovement))
             {

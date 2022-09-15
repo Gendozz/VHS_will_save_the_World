@@ -3,7 +3,7 @@ using UnityEngine;
 [RequireComponent(typeof(BoxCollider))]
 public class ShowTextOnPlayerEnterTrigger : MonoBehaviour
 {
-    [Header("Объект с текстом")]
+    [Header("РћР±СЉРµРєС‚ СЃ С‚РµРєСЃС‚РѕРј")]
     [SerializeField] private GameObject _textObject;
 
     private void OnTriggerEnter(Collider other)

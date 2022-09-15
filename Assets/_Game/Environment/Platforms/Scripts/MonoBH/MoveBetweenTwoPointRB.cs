@@ -4,23 +4,23 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody))]
 public class MoveBetweenTwoPointRB : MonoBehaviour, IMovingPlatform
 {
-    [Header("-----      Настройки      -----")]
-    [Header("Точки, между которыми движется пивот объекта")]
+    [Header("-----      РќР°СЃС‚СЂРѕР№РєРё      -----")]
+    [Header("РўРѕС‡РєРё, РјРµР¶РґСѓ РєРѕС‚РѕСЂС‹РјРё РґРІРёР¶РµС‚СЃСЏ РїРёРІРѕС‚ РѕР±СЉРµРєС‚Р°")]
     [SerializeField] private Transform _firstPoint;
     [SerializeField] private Transform _secondPoint;
 
-    [Header("Скорость перемещения")]
+    [Header("РЎРєРѕСЂРѕСЃС‚СЊ РїРµСЂРµРјРµС‰РµРЅРёСЏ")]
     [SerializeField] private float _speed;
 
-    [Header("На сколько объект задерживается при достижении точки")]
+    [Header("РќР° СЃРєРѕР»СЊРєРѕ РѕР±СЉРµРєС‚ Р·Р°РґРµСЂР¶РёРІР°РµС‚СЃСЏ РїСЂРё РґРѕСЃС‚РёР¶РµРЅРёРё С‚РѕС‡РєРё")]
     [SerializeField] private float _delayWhenPointReached;
     
     [Space]
-    [Header("-----      Компоненты и системные      -----")]
-    [Header("Физическое тело объекта")]
+    [Header("-----      РљРѕРјРїРѕРЅРµРЅС‚С‹ Рё СЃРёСЃС‚РµРјРЅС‹Рµ      -----")]
+    [Header("Р¤РёР·РёС‡РµСЃРєРѕРµ С‚РµР»Рѕ РѕР±СЉРµРєС‚Р°")]
     [SerializeField] private Rigidbody _rigidbody;
 
-    [Header("Погрешность до достижения точки")]
+    [Header("РџРѕРіСЂРµС€РЅРѕСЃС‚СЊ РґРѕ РґРѕСЃС‚РёР¶РµРЅРёСЏ С‚РѕС‡РєРё")]
     [SerializeField] private float _pointReachingDistanceTreshold;
 
     private WaitForFixedUpdate _waitForFixedUpdate = new WaitForFixedUpdate();

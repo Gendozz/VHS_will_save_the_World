@@ -2,10 +2,10 @@ using UnityEngine;
 
 public class SpikesGroundChanger : MonoBehaviour
 {
-    [Header("Часть с шипами")]
+    [Header("Р§Р°СЃС‚СЊ СЃ С€РёРїР°РјРё")]
     [SerializeField] private GameObject _spikes;
 
-    [Header("Часть с землёй")]
+    [Header("Р§Р°СЃС‚СЊ СЃ Р·РµРјР»С‘Р№")]
     [SerializeField] private GameObject _ground;
 
     private bool _isLocalGroundTime;

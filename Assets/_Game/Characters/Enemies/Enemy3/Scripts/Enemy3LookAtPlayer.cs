@@ -5,7 +5,7 @@ public class Enemy3LookAtPlayer : MonoBehaviour
 {
     public bool IsSees { get; private set; } = false;
 
-    [Header("-----      Настройки      -----")]
+    [Header("-----      РќР°СЃС‚СЂРѕР№РєРё      -----")]
     [SerializeField] private float _speedRotationIdle;
     [SerializeField] private float _speedRotationAgro;
     [SerializeField] private float _delayTimeState;
@@ -13,7 +13,7 @@ public class Enemy3LookAtPlayer : MonoBehaviour
     [SerializeField] private float _timeAgroWhenPlayerLeft;
     [SerializeField] private float _additionalVisibility;
     [Space]
-    [Header("-----      Компоненты и системное      -----")]
+    [Header("-----      РљРѕРјРїРѕРЅРµРЅС‚С‹ Рё СЃРёСЃС‚РµРјРЅРѕРµ      -----")]
     [SerializeField] private Animator _animator;
     [SerializeField] private Transform _playerTransform;
 
