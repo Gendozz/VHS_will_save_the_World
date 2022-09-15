@@ -332,7 +332,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxLives: 194
   _livesOnStart: 5
-  _invulnerabilityDuration: 1
+  _invulnerabilityDuration: 1.5
 --- !u!114 &1053100847
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -409,6 +409,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   _abilytyDuration: 7
+  _playerHealth: {fileID: 0}
 --- !u!114 &81582886
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -459,9 +460,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3999f293c8fd9b84ea5826a48fd395f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _colorToLerpTo: {r: 1, g: 0.05464481, b: 0, a: 1}
-  _animationDuration: 1
-  _amountOfItereations: 3
+  _colorToLerpTo: {r: 0, g: 0, b: 0, a: 1}
+  _animationDuration: 1.5
+  _amountOfItereations: 5
   _meshRenderer: {fileID: 2667930730072025161}
 --- !u!114 &3568743226998430310
 MonoBehaviour:
