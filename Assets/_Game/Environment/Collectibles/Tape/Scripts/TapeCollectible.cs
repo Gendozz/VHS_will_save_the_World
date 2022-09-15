@@ -10,8 +10,6 @@ public class TapeCollectible : MonoBehaviour
     
     public static Action onTapeCollected;
 
-
-
     private void OnTriggerEnter(Collider other)
     {
         if(other.TryGetComponent<PlayerMovement>(out PlayerMovement playerMovement))

@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7377094923184222119}
   - component: {fileID: 7377094923184222118}
   m_Layer: 0
-  m_Name: GameFlowController
+  m_Name: LevelFlowController
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

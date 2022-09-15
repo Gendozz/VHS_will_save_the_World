@@ -3049,6 +3049,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5f6d05c6fe03ee8459d361f03837248a, type: 3}
+--- !u!114 &250927009 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2786588716870694421, guid: 5f6d05c6fe03ee8459d361f03837248a, type: 3}
+  m_PrefabInstance: {fileID: 250927008}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &252482474
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4408,11 +4419,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7134526227119681806, guid: ca7afbaec9273cc4d9084906258983ef, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 61.73
+      value: 1.4
       objectReference: {fileID: 0}
     - target: {fileID: 7134526227119681806, guid: ca7afbaec9273cc4d9084906258983ef, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -2.7199998
+      value: -3.1
       objectReference: {fileID: 0}
     - target: {fileID: 7134526227119681806, guid: ca7afbaec9273cc4d9084906258983ef, type: 3}
       propertyPath: m_LocalPosition.z
@@ -4789,8 +4800,16 @@ PrefabInstance:
       value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 7646019559414788173, guid: eb88391af9de9524bb030411dae905cb, type: 3}
+      propertyPath: m_Size.x
+      value: 0.8691559
+      objectReference: {fileID: 0}
+    - target: {fileID: 7646019559414788173, guid: eb88391af9de9524bb030411dae905cb, type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7646019559414788173, guid: eb88391af9de9524bb030411dae905cb, type: 3}
+      propertyPath: m_Center.x
+      value: -0.18457794
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: eb88391af9de9524bb030411dae905cb, type: 3}
@@ -5377,11 +5396,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4649936741893627902, guid: 577e3cec71230744da8c24092afb5112, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 61.73
+      value: 1.6735306
       objectReference: {fileID: 0}
     - target: {fileID: 4649936741893627902, guid: 577e3cec71230744da8c24092afb5112, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -2.7199998
+      value: -3.1
       objectReference: {fileID: 0}
     - target: {fileID: 4649936741893627902, guid: 577e3cec71230744da8c24092afb5112, type: 3}
       propertyPath: m_LocalPosition.z
@@ -6923,6 +6942,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 1866546098}
     m_Modifications:
     - target: {fileID: 4925396538503970033, guid: 4c08062868937ef48b03749c0a2095b6, type: 3}
+      propertyPath: _tapePiece
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4925396538503970033, guid: 4c08062868937ef48b03749c0a2095b6, type: 3}
       propertyPath: _lerpLights.Array.size
       value: 4
       objectReference: {fileID: 0}
@@ -7287,6 +7310,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 302259788}
     m_Modifications:
+    - target: {fileID: 4925396538503970033, guid: 4c08062868937ef48b03749c0a2095b6, type: 3}
+      propertyPath: _tapePiece
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 4925396538503970033, guid: 4c08062868937ef48b03749c0a2095b6, type: 3}
       propertyPath: _lerpLights.Array.size
       value: 5
@@ -12810,6 +12837,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 1906539316}
     m_Modifications:
     - target: {fileID: 4925396538503970033, guid: 4c08062868937ef48b03749c0a2095b6, type: 3}
+      propertyPath: _tapePiece
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4925396538503970033, guid: 4c08062868937ef48b03749c0a2095b6, type: 3}
       propertyPath: _lerpLights.Array.size
       value: 4
       objectReference: {fileID: 0}
@@ -14092,6 +14123,52 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5804215824295358477, guid: f96ec8356c572c3469ea1dff46dad04e, type: 3}
   m_PrefabInstance: {fileID: 1087284656}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1089194541
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1089194543}
+  - component: {fileID: 1089194542}
+  m_Layer: 0
+  m_Name: TapesCollectibleHandler
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1089194542
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1089194541}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 034e288bf11316a41ab3844dbf6a62f3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _tapesText: {fileID: 250927009}
+  _textBeforeTapes: 'Tapes: '
+--- !u!4 &1089194543
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1089194541}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 72.77899, y: -6.6664715, z: 8.501812}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 20
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1106310284
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -16907,8 +16984,20 @@ PrefabInstance:
       value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 9022257322462522039, guid: 11a40a711a0853e4f804b437b53de2c6, type: 3}
+      propertyPath: m_Size.x
+      value: 0.8575592
+      objectReference: {fileID: 0}
+    - target: {fileID: 9022257322462522039, guid: 11a40a711a0853e4f804b437b53de2c6, type: 3}
       propertyPath: m_Size.y
       value: 8.002293
+      objectReference: {fileID: 0}
+    - target: {fileID: 9022257322462522039, guid: 11a40a711a0853e4f804b437b53de2c6, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9022257322462522039, guid: 11a40a711a0853e4f804b437b53de2c6, type: 3}
+      propertyPath: m_Center.x
+      value: -0.1787796
       objectReference: {fileID: 0}
     - target: {fileID: 9022257322462522039, guid: 11a40a711a0853e4f804b437b53de2c6, type: 3}
       propertyPath: m_Center.y
@@ -17228,6 +17317,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 938499700}
     m_Modifications:
+    - target: {fileID: 4925396538503970033, guid: 4c08062868937ef48b03749c0a2095b6, type: 3}
+      propertyPath: _tapePiece
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 4925396538503970033, guid: 4c08062868937ef48b03749c0a2095b6, type: 3}
       propertyPath: _lerpLights.Array.size
       value: 4
@@ -18820,6 +18913,50 @@ Light:
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!1 &1525813743
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1525813745}
+  - component: {fileID: 1525813744}
+  m_Layer: 0
+  m_Name: GameFlowController
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1525813744
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1525813743}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: acf3d1d7ece7ef64e8ed9446fbb9feaa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &1525813745
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1525813743}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 72.77899, y: -6.6664715, z: 8.501812}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 19
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1532600179
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -19551,11 +19688,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5987480786865510300, guid: 9332198de8928ce418fad1c876476546, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 61.73
+      value: 1.4
       objectReference: {fileID: 0}
     - target: {fileID: 5987480786865510300, guid: 9332198de8928ce418fad1c876476546, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -3.92
+      value: -4.3
       objectReference: {fileID: 0}
     - target: {fileID: 5987480786865510300, guid: 9332198de8928ce418fad1c876476546, type: 3}
       propertyPath: m_LocalPosition.z
@@ -25161,6 +25298,10 @@ PrefabInstance:
       value: 8.013355
       objectReference: {fileID: 0}
     - target: {fileID: 9022257322462522039, guid: 11a40a711a0853e4f804b437b53de2c6, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9022257322462522039, guid: 11a40a711a0853e4f804b437b53de2c6, type: 3}
       propertyPath: m_Center.y
       value: -1.0066776
       objectReference: {fileID: 0}
@@ -25505,6 +25646,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 832433344}
     m_Modifications:
+    - target: {fileID: 4925396538503970033, guid: 4c08062868937ef48b03749c0a2095b6, type: 3}
+      propertyPath: _tapePiece
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 4925396538503970033, guid: 4c08062868937ef48b03749c0a2095b6, type: 3}
       propertyPath: _lerpLights.Array.size
       value: 4
@@ -26467,6 +26612,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 473482717}
     m_Modifications:
     - target: {fileID: 4925396538503970033, guid: 4c08062868937ef48b03749c0a2095b6, type: 3}
+      propertyPath: _tapePiece
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 4925396538503970033, guid: 4c08062868937ef48b03749c0a2095b6, type: 3}
       propertyPath: _lerpLights.Array.size
       value: 5
       objectReference: {fileID: 0}
@@ -26832,7 +26981,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7377094923184222136, guid: 89e12a5e4fcfd3540b568d1ad34ff354, type: 3}
       propertyPath: m_Name
-      value: GameFlowController
+      value: LevelFlowController
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 89e12a5e4fcfd3540b568d1ad34ff354, type: 3}
