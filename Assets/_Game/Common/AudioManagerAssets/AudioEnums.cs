@@ -17,6 +17,18 @@ namespace JSAM {
         TapePiece_12
     }
     public enum Music {
+        FinalTrack_01,
+        FinalTrack_02,
+        FinalTrack_03,
+        FinalTrack_04,
+        FinalTrack_05,
+        FinalTrack_06,
+        FinalTrack_07,
+        FinalTrack_08,
+        FinalTrack_09,
+        FinalTrack_10,
+        FinalTrack_11,
+        FinalTrack_12,
         Level1Noise,
         MainMenuTheme
     }

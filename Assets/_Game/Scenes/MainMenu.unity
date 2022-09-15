@@ -3514,6 +3514,18 @@ MonoBehaviour:
   - {fileID: 11400000, guid: e803c38d7648b604b8f3e23c99de6df4, type: 2}
   - {fileID: 11400000, guid: 834296b91708440418b0be5f4144e2ef, type: 2}
   audioFileMusicObjects:
+  - {fileID: 11400000, guid: 09cfad381acaeda41bf5a1df58b573f1, type: 2}
+  - {fileID: 11400000, guid: 23eb1d4fc40e99344a3e87c14e206c4a, type: 2}
+  - {fileID: 11400000, guid: 8196b6d8bfb1ff444a5fb47c0b4cf733, type: 2}
+  - {fileID: 11400000, guid: e4bb9b4de06955241928fb516e97daa2, type: 2}
+  - {fileID: 11400000, guid: 18b36af2b81cef341aa5d0aaab0da9c5, type: 2}
+  - {fileID: 11400000, guid: 46f2da45c38dbcd489cfef95a375e781, type: 2}
+  - {fileID: 11400000, guid: 5a75bbcc028136c479c35c0cb09389cd, type: 2}
+  - {fileID: 11400000, guid: 1d4d3f68531dee0498de06433797a948, type: 2}
+  - {fileID: 11400000, guid: 5d1b4128d35f9904eb69767adb7b6439, type: 2}
+  - {fileID: 11400000, guid: 397f376c7e9f6a244b5add898613a84d, type: 2}
+  - {fileID: 11400000, guid: 18a8af8ff6866d448bbc0cb014a1c52f, type: 2}
+  - {fileID: 11400000, guid: 430f474cd7a40144ca168f5f131bfc42, type: 2}
   - {fileID: 11400000, guid: 7489699860b80fa4d952cfe1fd5f0cbf, type: 2}
   - {fileID: 11400000, guid: 2665b7aca264a4645bdcbf824c437c8c, type: 2}
   sceneSoundEnumName: JSAM.Sounds

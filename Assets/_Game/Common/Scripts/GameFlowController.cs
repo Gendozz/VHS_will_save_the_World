@@ -33,6 +33,8 @@ public class GameFlowController : MonoBehaviour
     
     private void SetCurrentLevelComplete()
     {
+        // врн-рн гдеяэ
+
         PlayerPrefs.SetInt(StringConsts.LEVELS_COMPLETE, _maxLevelNumber == SceneManager.GetActiveScene().buildIndex ? 0 : SceneManager.GetActiveScene().buildIndex);
     }
 
