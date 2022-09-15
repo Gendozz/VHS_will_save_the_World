@@ -29,7 +29,10 @@ public class StringConsts
     public const string COIN = "Coin";
     #endregion
 
+    #region PlayerPrefs
     public const string MUSIC_VOLUME = "MusicVolume";
     public const string SOUNDS_VOLUME = "SoundsVolume";
     public const string TOTAL_TAPES_AMOUNT = "TotalTapesCollected";
+    public const string LEVELS_COMPLETE = "LevelsComplete";
+    #endregion
 }
