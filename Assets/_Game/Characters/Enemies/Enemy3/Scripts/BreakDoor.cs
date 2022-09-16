@@ -6,7 +6,8 @@ public class BreakDoor : MonoBehaviour
     [SerializeField] private AnimationClip _animKick;
     [SerializeField] private AbilityStealing _abilityStealing;
     [SerializeField] private GameObject _door;
-    [SerializeField] private ParticleSystem _fragments;
+    [SerializeField] private Animator _animatorDoor;
+    [SerializeField] private AnimationClip _breakDoor;
 
     private float _timeAnimKick;
     private bool _canDestroyDoor;
@@ -43,7 +44,8 @@ public class BreakDoor : MonoBehaviour
     private IEnumerator IToBreakDoor()
     {
         yield return new WaitForSeconds(_timeAnimKick);
+        _animatorDoor.SetTrigger("Break");
+        yield return new WaitForSeconds(_breakDoor.length);
         Destroy(_door);
-        _fragments.Play();
     }
 }
