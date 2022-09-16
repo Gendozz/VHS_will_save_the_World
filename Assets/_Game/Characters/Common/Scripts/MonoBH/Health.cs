@@ -13,7 +13,9 @@ public class Health : MonoBehaviour, IDamagable, IHealable
     [Header("Продолжительность неуязвимости после получения урона")]
     [SerializeField] private float _invulnerabilityDuration;
 
-    private int currentLives;
+
+    [Header("FOR TEST")]
+    [SerializeField] private int currentLives;
     
     private IHealthDisplayer healthDisplayer;
 
