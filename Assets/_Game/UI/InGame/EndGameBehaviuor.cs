@@ -35,12 +35,30 @@ public class EndGameBehaviuor : MonoBehaviour
     
     private void PlayResultMusic()
     {
-        AudioManager.PlayMusic(_resultMusics[_totalTapes - 1]);
+        if (_totalTapes > 0)
+        {
+            AudioManager.PlayMusic(_resultMusics[_totalTapes - 1]); 
+        }
     }
 
     public void LoadMainMenu()
     {
         SceneManager.LoadScene(0);
+    }
+
+    public void LoadFirstLevel()
+    {
+        SceneManager.LoadScene(1);
+    }
+
+    private void ClearTapesProgress()
+    {
+        if (PlayerPrefs.HasKey(StringConsts.TOTAL_TAPES_AMOUNT))
+        {
+            PlayerPrefs.SetInt(StringConsts.TOTAL_TAPES_AMOUNT, 0);
+        }
+
+        PlayerPrefs.SetInt(StringConsts.LEVELS_COMPLETE, 0);
     }
 
     private IEnumerator ShowThanks()

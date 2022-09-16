@@ -12,7 +12,14 @@ public class HealthDisplayer : MonoBehaviour, IHealthDisplayer
 
     public void ShowActualHealth(int currentHealth, int maxHealth)
     {
-        _healthBar.fillAmount = (float) currentHealth / (float) maxHealth;
+        if (_healthBar != null)
+        {
+            _healthBar.fillAmount = (float)currentHealth / (float)maxHealth;
+        }
+        else
+        {
+            Debug.Log($"{gameObject.name} got damage. It's current health is {currentHealth}");
+        }
 
 
 

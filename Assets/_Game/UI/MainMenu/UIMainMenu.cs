@@ -82,6 +82,11 @@ public class UIMainMenu : MonoBehaviour
         SceneManager.LoadScene(1);
     }
 
+    public void RestartLevel()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
+
     public void StartNextUnfinishedLevel()
     {
         Debug.Log("PlayerPrefs.GetInt(StringConsts.LEVELS_COMPLETE) =" + PlayerPrefs.GetInt(StringConsts.LEVELS_COMPLETE));
