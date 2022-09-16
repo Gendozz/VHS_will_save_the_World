@@ -11,22 +11,6 @@ public class UIAbility : MonoBehaviour
     private Coroutine _stolenAbilities;
     private Coroutine _walkingSpikes;
 
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Z))
-        {
-            TimerDisplayBreakingDoors(10f);
-        }
-        if (Input.GetKeyDown(KeyCode.X))
-        {
-            TimerDisplayDoubleJump(10f);
-        }
-        if (Input.GetKeyDown(KeyCode.C))
-        {
-            TimerDisplayWalkingOnSpikes(20f);
-        }
-    }
-
     public void TimerDisplayBreakingDoors(float time)
     {
         _objects[1].SetActive(true);

@@ -8,6 +8,7 @@ public class AbilityStealing : MonoBehaviour
     [SerializeField] private float _timeDoubleJump;
     [SerializeField] private float _timeBreakingDoors;
     [SerializeField] private PlayerMovement _playerMovement;
+    [SerializeField] private UIAbility _uiAbility;
 
     private float _timer = 0;
     private bool _isStartTimerJump = false;
@@ -41,6 +42,7 @@ public class AbilityStealing : MonoBehaviour
     public void StartTimerDoubleJump()
     {
         _timer = 0;
+        _uiAbility.TimerDisplayDoubleJump(_timeDoubleJump);
         _playerMovement.SetDoubleJumpAbility(true);
         _isStartTimerJump = true;
         IsStartTimerBreakDoors = false;
@@ -49,6 +51,7 @@ public class AbilityStealing : MonoBehaviour
     public void StartTimerBreakingDoors()
     {
         _timer = 0;
+        _uiAbility.TimerDisplayBreakingDoors(_timeBreakingDoors);
         IsStartTimerBreakDoors = true;
         _isStartTimerJump = false;
         onStartBreakDoorAbility?.Invoke();
