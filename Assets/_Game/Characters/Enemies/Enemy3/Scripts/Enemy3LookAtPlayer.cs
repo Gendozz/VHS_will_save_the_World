@@ -49,7 +49,6 @@ public class Enemy3LookAtPlayer : MonoBehaviour
         }
         else if (_startIlde)
         {
-            Debug.Log("testik");
             _animator.SetBool("ToAgro", false);
             IsSees = false;
             _timerAgroWhenPlayerLeft = 0;
@@ -134,5 +133,10 @@ public class Enemy3LookAtPlayer : MonoBehaviour
     public void StopAllCor()
     {
         StopAllCoroutines();
+    }
+
+    public void ResurectionFromIdle()
+    {
+        _startIlde = true;
     }
 }

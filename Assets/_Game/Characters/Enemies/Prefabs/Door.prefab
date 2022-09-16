@@ -157,8 +157,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 19059bfd3a5aa5547b14be9878bcf7b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _animKick: {fileID: -203655887218126122, guid: 987c2abcd4455e840abaf69c2e333a74, type: 3}
   _abilityStealing: {fileID: 0}
   _door: {fileID: 5831728586906787667}
+  _fragments: {fileID: 0}
 --- !u!114 &5831728586979269214
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -172,7 +174,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _timeUntilRes: 10
+  _colliderResizing: {fileID: 0}
   _animator: {fileID: 0}
+  _idleCollider: {fileID: 0}
+  _agroCollider: {fileID: 0}
   _components:
   - {fileID: 0}
   - {fileID: 0}

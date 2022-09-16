@@ -1,4 +1,3 @@
-using System.Collections;
 using UnityEngine;
 
 public class Enemy3IdleInteractionWithPlayer : MonoBehaviour
@@ -9,10 +8,13 @@ public class Enemy3IdleInteractionWithPlayer : MonoBehaviour
     [SerializeField] private float _horizontally;
     [Space]
     [Header("-----      Компоненты и системные      -----")]
+    [SerializeField] private ColliderResizing _colliderResizing;
     [SerializeField] private Enemy3LookAtPlayer _enemy3LookAtPlayer;
     [SerializeField] private AbilityStealing _abilityStealing;
     [SerializeField] private Animator _animator;
     [SerializeField] private Behaviour[] _components;
+
+    private bool _isReductionStart = false;
 
     private void OnTriggerEnter(Collider other)
     {
@@ -40,6 +42,14 @@ public class Enemy3IdleInteractionWithPlayer : MonoBehaviour
                 {
                     _components[i].enabled = false;
                 }
+
+                if (!_isReductionStart)
+                {
+                    _colliderResizing.ReductionSizeCollider();
+                    _isReductionStart = true;
+                }
+
+                gameObject.SetActive(false);
             }
         }
     }

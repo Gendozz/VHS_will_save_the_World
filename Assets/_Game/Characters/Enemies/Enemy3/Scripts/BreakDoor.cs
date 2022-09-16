@@ -1,15 +1,49 @@
+using System.Collections;
 using UnityEngine;
 
 public class BreakDoor : MonoBehaviour
 {
+    [SerializeField] private AnimationClip _animKick;
     [SerializeField] private AbilityStealing _abilityStealing;
     [SerializeField] private GameObject _door;
+    [SerializeField] private ParticleSystem _fragments;
 
-    private void OnTriggerStay(Collider other)
+    private float _timeAnimKick;
+    private bool _canDestroyDoor;
+
+    private void Start()
     {
-        if (Input.GetKeyDown(KeyCode.R) && _abilityStealing.IsStartTimerBreakDoors && other.GetComponent<PlayerInput>())
+        _timeAnimKick = _animKick.length / 2;
+    }
+
+    private void Update()
+    {
+        if (_canDestroyDoor && Input.GetKeyDown(KeyCode.R) && _abilityStealing.IsStartTimerBreakDoors)
         {
-            Destroy(_door);
+            StartCoroutine(IToBreakDoor());
         }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.GetComponent<PlayerInput>())
+        {
+            _canDestroyDoor = true;
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.GetComponent<PlayerInput>())
+        {
+            _canDestroyDoor = false;
+        }
+    }
+
+    private IEnumerator IToBreakDoor()
+    {
+        yield return new WaitForSeconds(_timeAnimKick);
+        Destroy(_door);
+        _fragments.Play();
     }
 }

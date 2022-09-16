@@ -6,7 +6,11 @@ public class ResurrectionEnemy3 : MonoBehaviour
     [SerializeField] private float _timeUntilRes;
     [Space]
     [Header("-----      Компоненты и системные      -----")]
+    [SerializeField] private Enemy3LookAtPlayer _enemy3LookAtPlayer;
+    [SerializeField] private ColliderResizing _colliderResizing;
     [SerializeField] private Animator _animator;
+    [SerializeField] private GameObject _idleCollider;
+    [SerializeField] private GameObject _agroCollider;
     [SerializeField] private Behaviour[] _components;
 
     private float _timerRes = 0;
@@ -23,6 +27,12 @@ public class ResurrectionEnemy3 : MonoBehaviour
                 {
                     _components[i].enabled = true;
                 }
+                _colliderResizing.IncreaseSizeCollider();
+
+                _idleCollider.SetActive(true);
+                _agroCollider.SetActive(true);
+
+                _enemy3LookAtPlayer.ResurectionFromIdle();
 
                 _timerRes = 0;
             }
