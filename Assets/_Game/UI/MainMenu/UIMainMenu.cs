@@ -4,15 +4,22 @@ using UnityEngine.SceneManagement;
 public class UIMainMenu : MonoBehaviour
 {
     [SerializeField] private CanvasGroup _settingsCanvasGroup;
-    [SerializeField] private CanvasGroup _authorsCanvasGroup;
+    [SerializeField] private CanvasGroup _aboutCanvasGroup;
+    [SerializeField] private CanvasGroup _controllsCanvasGroup;
+    [SerializeField] private CanvasGroup _materialsCanvasGroup;
     [SerializeField] private GameObject _continueButton;
+
 
     private void Awake()
     {
         _settingsCanvasGroup.gameObject.SetActive(true);
-        _authorsCanvasGroup.gameObject.SetActive(true);
+        _aboutCanvasGroup.gameObject.SetActive(true);
+        _controllsCanvasGroup.gameObject.SetActive(true);
+        _materialsCanvasGroup.gameObject.SetActive(true);
         SetUpCanvasGroup(_settingsCanvasGroup, 0, false, false);
-        SetUpCanvasGroup(_authorsCanvasGroup, 0, false, false);
+        SetUpCanvasGroup(_aboutCanvasGroup, 0, false, false);
+        SetUpCanvasGroup(_controllsCanvasGroup, 0, false, false);
+        SetUpCanvasGroup(_materialsCanvasGroup, 0, false, false);
 
         if (PlayerPrefs.HasKey(StringConsts.LEVELS_COMPLETE))
         {
@@ -40,14 +47,34 @@ public class UIMainMenu : MonoBehaviour
         SetUpCanvasGroup(_settingsCanvasGroup, 0, false, false);
     }
 
-    public void ShowAuthorsCanvas()
+    public void ShowAboutCanvas()
     {
-        SetUpCanvasGroup(_authorsCanvasGroup, 1, true, true);
+        SetUpCanvasGroup(_aboutCanvasGroup, 1, true, true);
     }
 
-    public void CloseAuthorsCanvas()
+    public void CloseAboutCanvas()
     {
-        SetUpCanvasGroup(_authorsCanvasGroup, 0, false, false);
+        SetUpCanvasGroup(_aboutCanvasGroup, 0, false, false);
+    }    
+    
+    public void ShowMaterialsCanvas()
+    {
+        SetUpCanvasGroup(_materialsCanvasGroup, 1, true, true);
+    }
+
+    public void CloseMaterialsCanvas()
+    {
+        SetUpCanvasGroup(_materialsCanvasGroup, 0, false, false);
+    }
+    
+    public void ShowControllsCanvas()
+    {
+        SetUpCanvasGroup(_controllsCanvasGroup, 1, true, true);
+    }
+
+    public void CloseControllsCanvas()
+    {
+        SetUpCanvasGroup(_controllsCanvasGroup, 0, false, false);
     }
 
     public void StartGame()
