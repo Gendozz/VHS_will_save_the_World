@@ -18,6 +18,8 @@ public class DamageOnDetonation : MonoBehaviour, IActivatable
     [Header("Ссылка на ColorLerp")]
     [SerializeField] private ColorLerp _colorLerp;
 
+    [SerializeField] private RedAlertLerp _redAlertLerp;
+
     private bool _isActivated;
 
     private Collider[] _playerCollider = new Collider[1];
@@ -50,6 +52,7 @@ public class DamageOnDetonation : MonoBehaviour, IActivatable
     private IEnumerator Detonate()
     {
         _colorLerp.StartLerp();
+        _redAlertLerp.StartLerp();
         yield return new WaitForSeconds(_delayBeforeExplosion);
 
         if (_isIntoDamageRadius)
