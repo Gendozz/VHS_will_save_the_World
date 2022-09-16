@@ -18,7 +18,7 @@ public class SwapZone : MonoBehaviour, IActivatable
     [SerializeField] private float _cooldownDelay;
 
     [Header("Объект, показывающий здоровье игрока")]
-    [SerializeField] private TMP_Text _playerHealth;
+    [SerializeField] private GameObject _playerHealth;
 
     [Header("Канвас, отображающий возможность нажатия специальной кнопки")]
     [SerializeField] private GameObject _specialButtonLabelCanvas;
@@ -75,7 +75,7 @@ public class SwapZone : MonoBehaviour, IActivatable
         _playerInput.SwitchInput(_isPlayerActive);
         _cloneInput.SwitchInput(!_isPlayerActive);
         _camera.ChangeTarget(_isPlayerActive ? _playerInput.transform : _cloneInput.transform);
-        _playerHealth.gameObject.SetActive(!_playerHealth.gameObject.activeSelf);
+        _playerHealth.SetActive(!_playerHealth.activeSelf);
     }
 
     private IEnumerator RestoreAbility()

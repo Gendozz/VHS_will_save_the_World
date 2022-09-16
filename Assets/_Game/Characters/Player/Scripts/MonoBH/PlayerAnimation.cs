@@ -27,8 +27,11 @@ public class PlayerAnimation : MonoBehaviour
     {
         _playerHealth.onTakeDamage += AnimateDamage;
         _playerHealth.onOutOfLifes += AnimateDeath;
-        _abilityStealing.onStartBreakDoorAbility += SwitchCanKick;
-        _abilityStealing.onEndBreakDoorAbility += SwitchCanKick;
+        if (_abilityStealing != null)
+        {
+            _abilityStealing.onStartBreakDoorAbility += SwitchCanKick;
+            _abilityStealing.onEndBreakDoorAbility += SwitchCanKick;
+        }
     }
 
 
@@ -37,8 +40,11 @@ public class PlayerAnimation : MonoBehaviour
     {
         _playerHealth.onTakeDamage -= AnimateDamage;
         _playerHealth.onOutOfLifes -= AnimateDeath;
-        _abilityStealing.onStartBreakDoorAbility -= SwitchCanKick;
-        _abilityStealing.onEndBreakDoorAbility -= SwitchCanKick;
+        if (_abilityStealing != null)
+        {
+            _abilityStealing.onStartBreakDoorAbility -= SwitchCanKick;
+            _abilityStealing.onEndBreakDoorAbility -= SwitchCanKick;
+        }
     }
 
     private void AnimateDeath()

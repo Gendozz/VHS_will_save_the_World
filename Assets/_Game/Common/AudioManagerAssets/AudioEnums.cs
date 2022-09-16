@@ -30,6 +30,7 @@ namespace JSAM {
         FinalTrack_11,
         FinalTrack_12,
         Level1Noise,
+        Level2Noise,
         MainMenuTheme
     }
 }
