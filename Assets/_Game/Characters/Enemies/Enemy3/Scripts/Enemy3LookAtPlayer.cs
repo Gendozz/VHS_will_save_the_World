@@ -17,6 +17,7 @@ public class Enemy3LookAtPlayer : MonoBehaviour
     [SerializeField] private Animator _animator;
     [SerializeField] private Transform _playerTransform;
 
+    private Coroutine IsIdle;
     private float _lowerLimitFieldView;
     private float _upperLimitFieldView;
     private float _timerAgroWhenPlayerLeft;
@@ -30,7 +31,6 @@ public class Enemy3LookAtPlayer : MonoBehaviour
     {
         _lowerLimitFieldView = transform.position.y - transform.localScale.y;
         _upperLimitFieldView = transform.position.y + transform.localScale.y + _additionalVisibility;
-        _timerAgroWhenPlayerLeft = _timeAgroWhenPlayerLeft;
         _startIlde = true;
     }
 
@@ -39,21 +39,23 @@ public class Enemy3LookAtPlayer : MonoBehaviour
         PlayerInZone();
         StandingRightLeft();
 
-        if ((_onScreen && _playerInZone && _isSight) || 
-            (_timerAgroWhenPlayerLeft < _timeAgroWhenPlayerLeft && _timerAgroWhenPlayerLeft != 0))
+        if (_onScreen && _playerInZone && _isSight)
         {
-            _animator.SetBool("ToAgro", true);
-            IsSees = true;
-            _timerAgroWhenPlayerLeft += Time.deltaTime;
+            _timerAgroWhenPlayerLeft = 0.1f;
             ToAgro(); 
         }
-        else if (_startIlde)
+        else if(_timerAgroWhenPlayerLeft < _timeAgroWhenPlayerLeft && _timerAgroWhenPlayerLeft != 0)
+        {
+            _timerAgroWhenPlayerLeft += Time.deltaTime;
+        }
+        
+        if (_startIlde)
         {
             _animator.SetBool("ToAgro", false);
             IsSees = false;
             _timerAgroWhenPlayerLeft = 0;
             _startIlde = false;
-            StartCoroutine(ToIdle());
+            IsIdle = StartCoroutine(ToIdle());
         }
     }
 
@@ -85,7 +87,10 @@ public class Enemy3LookAtPlayer : MonoBehaviour
 
     private void ToAgro()
     {
-        StopAllCor();
+        _animator.SetBool("ToAgro", true);
+        IsSees = true;
+
+        StopCoroutine(IsIdle);
         _startIlde = true;
 
         if (_playerTransform.position.x > transform.position.x)
@@ -100,24 +105,24 @@ public class Enemy3LookAtPlayer : MonoBehaviour
 
     private IEnumerator ToIdle()
     {
-        float angle = Quaternion.Euler(0, -_angleRotation + 1, 0).y;
-        while (transform.rotation.y > angle)
+        while (true)
         {
-            transform.rotation = Quaternion.RotateTowards(transform.rotation, Quaternion.Euler(0, -_angleRotation, 0), _speedRotationIdle);
-            yield return null;
+            float angle = Quaternion.Euler(0, -_angleRotation + 1, 0).y;
+            while (transform.rotation.y > angle)
+            {
+                transform.rotation = Quaternion.RotateTowards(transform.rotation, Quaternion.Euler(0, -_angleRotation, 0), _speedRotationIdle);
+                yield return null;
+            }
+            yield return new WaitForSeconds(_delayTimeState);
+
+            angle = Quaternion.Euler(0, _angleRotation - 1, 0).y;
+            while (transform.rotation.y < angle)
+            {
+                transform.rotation = Quaternion.RotateTowards(transform.rotation, Quaternion.Euler(0, _angleRotation, 0), _speedRotationIdle);
+                yield return null;
+            }
+            yield return new WaitForSeconds(_delayTimeState);
         }
-        yield return new WaitForSeconds(_delayTimeState);
-
-        angle = Quaternion.Euler(0, _angleRotation - 1, 0).y;
-
-        while (transform.rotation.y < angle)
-        {
-            transform.rotation = Quaternion.RotateTowards(transform.rotation, Quaternion.Euler(0, _angleRotation, 0), _speedRotationIdle);
-            yield return null;
-        }
-        yield return new WaitForSeconds(_delayTimeState);
-
-        yield return StartCoroutine(ToIdle());
     }
 
     private void OnBecameVisible()
@@ -130,9 +135,9 @@ public class Enemy3LookAtPlayer : MonoBehaviour
         _onScreen = false;
     }
 
-    public void StopAllCor()
+    public void StopIsIdleCorutine()
     {
-        StopAllCoroutines();
+        StopCoroutine(IsIdle);
     }
 
     public void ResurectionFromIdle()

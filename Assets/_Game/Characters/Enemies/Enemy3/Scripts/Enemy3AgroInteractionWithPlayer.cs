@@ -30,6 +30,8 @@ public class Enemy3AgroInteractionWithPlayer : MonoBehaviour
                 _isReductionStart = true;
             }
 
+            _enemy3LookAtPlayer.StopIsIdleCorutine();
+
             gameObject.SetActive(false);
             _idleCollider.SetActive(false);
         }
