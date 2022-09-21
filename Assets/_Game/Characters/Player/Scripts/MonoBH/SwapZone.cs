@@ -26,6 +26,9 @@ public class SwapZone : MonoBehaviour, IActivatable
     [Header("Объект с объёмом постпроцессинга, удаляемый после прохождения зоны клона")]
     [SerializeField] private GameObject _postProcessingVolumeToDelete;
 
+    [Header("Задержка перед возвращением управления игроку после прохождения зоны")]
+    [SerializeField] private float _delayBeforeDeactivation;
+
     private bool _isAbleToActivateClone = false;
 
     // For cooldown
@@ -85,6 +88,12 @@ public class SwapZone : MonoBehaviour, IActivatable
     }
 
     public void Activate()
+    {
+        _isAbleToActivateClone = false;
+        Invoke(nameof(Deactivate), _delayBeforeDeactivation);
+    }
+
+    private void Deactivate()
     {
         SwapPlayerClone();
         _cloneInput.gameObject.SetActive(false);
