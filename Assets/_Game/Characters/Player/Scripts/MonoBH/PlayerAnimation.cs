@@ -78,6 +78,7 @@ public class PlayerAnimation : MonoBehaviour
 
     private void ApplyMovementAnimations()
     {
+
         if (_playerMovement.IsGrounded)
         {
             _animator.SetBool("isGrounded", true);
@@ -105,12 +106,17 @@ public class PlayerAnimation : MonoBehaviour
 
             if (_playerMovement.IsOnWall)
             {
+                _animator.SetBool("isJumping", false);
+                _isJumping = false;
                 _animator.SetBool("isOnWall", true);
                 _animator.SetBool("isFalling", false);
 
                 if (_playerInput.IsJumpButtonPressed)
                 {
                     _animator.SetBool("isJumping", true);
+                    _isJumping = true;
+                    _animator.SetBool("osOnWall", false);
+                    Debug.Log($"_playerMovement.IsOnWall = {_playerMovement.IsOnWall}, Jump pressed");
                 }
             }
             else
@@ -125,6 +131,8 @@ public class PlayerAnimation : MonoBehaviour
             _isJumping = false;
             _animator.SetBool("isFalling", true);
         }
+
+
     }
 
     private void AnimateDamage()

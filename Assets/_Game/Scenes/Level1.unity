@@ -12746,7 +12746,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &935803424
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20162,7 +20162,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 533797386109943541, guid: 9332198de8928ce418fad1c876476546, type: 3}
       propertyPath: maxLives
-      value: 10
+      value: 99999
+      objectReference: {fileID: 0}
+    - target: {fileID: 533797386109943541, guid: 9332198de8928ce418fad1c876476546, type: 3}
+      propertyPath: _livesOnStart
+      value: 99999
       objectReference: {fileID: 0}
     - target: {fileID: 608321760767030826, guid: 9332198de8928ce418fad1c876476546, type: 3}
       propertyPath: m_LocalPosition.x
