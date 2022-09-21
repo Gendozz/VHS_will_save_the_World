@@ -22,6 +22,7 @@ public class PlayerAnimation : MonoBehaviour
     private bool _isJumping = false;
 
     private bool _canKick = false;
+    private bool _isOnWall;
 
     private void OnEnable()
     {
@@ -79,6 +80,7 @@ public class PlayerAnimation : MonoBehaviour
     private void ApplyMovementAnimations()
     {
 
+
         if (_playerMovement.IsGrounded)
         {
             _animator.SetBool("isGrounded", true);
@@ -102,6 +104,13 @@ public class PlayerAnimation : MonoBehaviour
         }
         else
         {
+            if ((_isJumping && _playerMovement.VelocityY < 0) || (_playerMovement.VelocityY < -2 && !_playerMovement.IsOnWall))
+            {
+                _animator.SetBool("isJumping", false);
+                _isJumping = false;
+                _animator.SetBool("isFalling", true);
+            }
+
             _animator.SetBool("isGrounded", false);
 
             if (_playerMovement.IsOnWall)
@@ -115,8 +124,7 @@ public class PlayerAnimation : MonoBehaviour
                 {
                     _animator.SetBool("isJumping", true);
                     _isJumping = true;
-                    _animator.SetBool("osOnWall", false);
-                    Debug.Log($"_playerMovement.IsOnWall = {_playerMovement.IsOnWall}, Jump pressed");
+                    _animator.SetBool("isOnWall", false);
                 }
             }
             else
@@ -125,14 +133,14 @@ public class PlayerAnimation : MonoBehaviour
             }
         }
 
-        if (_isJumping && _playerMovement.VelocityY < 0 || _playerMovement.VelocityY < -2 && !_playerMovement.IsOnWall)
-        {
-            _animator.SetBool("isJumping", false);
-            _isJumping = false;
-            _animator.SetBool("isFalling", true);
-        }
 
 
+
+    }
+
+    private void SetIsOnWallToFalse()
+    {
+        _isOnWall = false;
     }
 
     private void AnimateDamage()

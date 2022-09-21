@@ -133,6 +133,8 @@ public class PlayerMovement : MonoBehaviour
 
     private bool _shoudDetectWall = true;
 
+    public Action onWall;
+
 
     // Common
     private bool _canMove = true;

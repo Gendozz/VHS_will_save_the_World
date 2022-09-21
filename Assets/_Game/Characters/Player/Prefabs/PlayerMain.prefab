@@ -172,7 +172,7 @@ MonoBehaviour:
   _wallJumpSideForce: 4.55
   _wallJumpUpForce: 13
   _limitOnWallUpInertion: 1.2
-  _afterWallJumpBlockMovementDuration: 0.2
+  _afterWallJumpBlockMovementDuration: 0
   _slipperySpeedCurve:
     serializedVersion: 2
     m_Curve:
@@ -418,6 +418,7 @@ MonoBehaviour:
   _timeDoubleJump: 5
   _timeBreakingDoors: 10
   _playerMovement: {fileID: 5987480786865510303}
+  _uiAbility: {fileID: 0}
 --- !u!1001 &6895110523773578925
 PrefabInstance:
   m_ObjectHideFlags: 0
