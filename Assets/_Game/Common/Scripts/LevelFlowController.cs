@@ -1,4 +1,3 @@
-using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -31,13 +30,11 @@ public class LevelFlowController : MonoBehaviour
     private void OnEnable()
     {
         _playerHealth.onOutOfLifes += DoAfterPlayerDieActions;
-        LevelEnd.onPlayerGotToLevelEnd += DoPlayerWinActions;
     }
 
     private void OnDisable()
     {
         _playerHealth.onOutOfLifes -= DoAfterPlayerDieActions;
-        LevelEnd.onPlayerGotToLevelEnd -= DoPlayerWinActions;
     }
 
     private void Update()
@@ -57,15 +54,6 @@ public class LevelFlowController : MonoBehaviour
             _playerInputs[i].SwitchInput(false);
             _playerModelRotations[i].enabled = false;
         }
-    }
-
-    private void DoPlayerWinActions()
-    {
-        //_isGamePaused = true;
-        //_menuController.ShowWinCanvas();
-        //SwitchMotions(!_isGamePaused);
-
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 
     public void SwitchPauseState()

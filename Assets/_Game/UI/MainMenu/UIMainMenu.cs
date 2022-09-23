@@ -1,5 +1,7 @@
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class UIMainMenu : MonoBehaviour
 {
@@ -7,10 +9,20 @@ public class UIMainMenu : MonoBehaviour
     [SerializeField] private CanvasGroup _aboutCanvasGroup;
     [SerializeField] private CanvasGroup _controllsCanvasGroup;
     [SerializeField] private CanvasGroup _materialsCanvasGroup;
-    [SerializeField] private GameObject _continueButton;
+    [SerializeField] private Button _continueButton;
+    [SerializeField] private TMP_Text _continueButtonText;
 
+    private void OnEnable()
+    {
+        GameFlowController.onProgessLoaded += EnableContinueButton;
+        Debug.Log("UIMainMenu subscribed on GameFlowController.onProgessLoaded");
+    }
+    private void OnDisable()
+    {
+        GameFlowController.onProgessLoaded -= EnableContinueButton;
+    }
 
-    private void Awake()
+    private void Start()
     {
         _settingsCanvasGroup.gameObject.SetActive(true);
         _aboutCanvasGroup.gameObject.SetActive(true);
@@ -20,14 +32,6 @@ public class UIMainMenu : MonoBehaviour
         SetUpCanvasGroup(_aboutCanvasGroup, 0, false, false);
         SetUpCanvasGroup(_controllsCanvasGroup, 0, false, false);
         SetUpCanvasGroup(_materialsCanvasGroup, 0, false, false);
-
-        if (PlayerPrefs.HasKey(StringConsts.LEVELS_COMPLETE))
-        {
-            if(PlayerPrefs.GetInt(StringConsts.LEVELS_COMPLETE) > 0)
-            {
-                _continueButton.SetActive(true);
-            }
-        }
     }
 
     public void SetUpCanvasGroup(CanvasGroup canvasGroup, float alpha, bool blocksRaycasts, bool interactable)
@@ -77,6 +81,20 @@ public class UIMainMenu : MonoBehaviour
         SetUpCanvasGroup(_controllsCanvasGroup, 0, false, false);
     }
 
+
+    public void EnableContinueButton()
+    {
+        if(GameFlowController.LevelsComplete > 1)
+        {
+            _continueButton.interactable = true;
+
+            Color currentColor = _continueButton.image.color;
+
+            _continueButton.image.color = new Color(currentColor.r, currentColor.g, currentColor.b, 1);
+            _continueButtonText.color = new Color(currentColor.r, currentColor.g, currentColor.b, 1);
+        }
+    }
+
     public void StartGame()
     {
         SceneManager.LoadScene(1);
@@ -89,9 +107,7 @@ public class UIMainMenu : MonoBehaviour
 
     public void StartNextUnfinishedLevel()
     {
-        Debug.Log("PlayerPrefs.GetInt(StringConsts.LEVELS_COMPLETE) =" + PlayerPrefs.GetInt(StringConsts.LEVELS_COMPLETE));
-        int tempInt = PlayerPrefs.GetInt(StringConsts.LEVELS_COMPLETE + 1);
-        SceneManager.LoadScene(PlayerPrefs.GetInt(StringConsts.LEVELS_COMPLETE) + 1);
+        SceneManager.LoadScene(GameFlowController.LevelsComplete);
     }
 
     public void ExitApp()

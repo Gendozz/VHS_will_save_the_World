@@ -1742,7 +1742,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 552698194}
   m_OnClick:
     m_PersistentCalls:
@@ -1784,7 +1784,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.39215687}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -2345,8 +2345,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4288938233
-  m_fontColor: {r: 0.9764706, g: 0, b: 0.6431373, a: 1}
+    rgba: 1688469753
+  m_fontColor: {r: 0.9764706, g: 0, b: 0.6431373, a: 0.39215687}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -3350,7 +3350,8 @@ MonoBehaviour:
   _aboutCanvasGroup: {fileID: 2136162391}
   _controllsCanvasGroup: {fileID: 1462755734}
   _materialsCanvasGroup: {fileID: 1311204678}
-  _continueButton: {fileID: 552698191}
+  _continueButton: {fileID: 552698193}
+  _continueButtonText: {fileID: 739408047}
 --- !u!1 &1092187122
 GameObject:
   m_ObjectHideFlags: 0
@@ -4124,6 +4125,63 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1230219565}
   m_CullTransparentMesh: 1
+--- !u!1001 &1247223285
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 3776767488337121125, guid: bfdb62d673b4be5459f2566895679596, type: 3}
+      propertyPath: m_RootOrder
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 3776767488337121125, guid: bfdb62d673b4be5459f2566895679596, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 72.77899
+      objectReference: {fileID: 0}
+    - target: {fileID: 3776767488337121125, guid: bfdb62d673b4be5459f2566895679596, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -6.6664715
+      objectReference: {fileID: 0}
+    - target: {fileID: 3776767488337121125, guid: bfdb62d673b4be5459f2566895679596, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 8.501812
+      objectReference: {fileID: 0}
+    - target: {fileID: 3776767488337121125, guid: bfdb62d673b4be5459f2566895679596, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3776767488337121125, guid: bfdb62d673b4be5459f2566895679596, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3776767488337121125, guid: bfdb62d673b4be5459f2566895679596, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3776767488337121125, guid: bfdb62d673b4be5459f2566895679596, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3776767488337121125, guid: bfdb62d673b4be5459f2566895679596, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3776767488337121125, guid: bfdb62d673b4be5459f2566895679596, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3776767488337121125, guid: bfdb62d673b4be5459f2566895679596, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3776767488337121147, guid: bfdb62d673b4be5459f2566895679596, type: 3}
+      propertyPath: m_Name
+      value: GameFlowController
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: bfdb62d673b4be5459f2566895679596, type: 3}
 --- !u!1 &1273333294
 GameObject:
   m_ObjectHideFlags: 0

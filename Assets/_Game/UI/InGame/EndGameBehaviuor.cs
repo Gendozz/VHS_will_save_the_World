@@ -19,7 +19,7 @@ public class EndGameBehaviuor : MonoBehaviour
     void Start()
     {
         _thanksText.SetActive(false);
-        _totalTapes = PlayerPrefs.GetInt(StringConsts.TOTAL_TAPES_AMOUNT);
+        _totalTapes = GameFlowController.TotalTapesAmount;
         _delayBeforShowThanks = _totalTapes * 10;
         ShowTotalResult();
         PlayResultMusic();
@@ -27,10 +27,7 @@ public class EndGameBehaviuor : MonoBehaviour
 
     private void ShowTotalResult()
     {
-        if (PlayerPrefs.HasKey(StringConsts.TOTAL_TAPES_AMOUNT))
-        {
-            _totalResultsText.text = "Всего плёнок собрано " + _totalTapes + " из 12";
-        }
+        _totalResultsText.text = "Всего плёнок собрано " + _totalTapes + " из 12";        
     }
     
     private void PlayResultMusic()
@@ -51,15 +48,15 @@ public class EndGameBehaviuor : MonoBehaviour
         SceneManager.LoadScene(1);
     }
 
-    private void ClearTapesProgress()
-    {
-        if (PlayerPrefs.HasKey(StringConsts.TOTAL_TAPES_AMOUNT))
-        {
-            PlayerPrefs.SetInt(StringConsts.TOTAL_TAPES_AMOUNT, 0);
-        }
+    //private void ClearTapesProgress()
+    //{
+    //    if (PlayerPrefs.HasKey(StringConsts.TOTAL_TAPES_AMOUNT))
+    //    {
+    //        PlayerPrefs.SetInt(StringConsts.TOTAL_TAPES_AMOUNT, 0);
+    //    }
 
-        PlayerPrefs.SetInt(StringConsts.LEVELS_COMPLETE, 0);
-    }
+    //    PlayerPrefs.SetInt(StringConsts.LEVELS_COMPLETE, 0);
+    //}
 
     private IEnumerator ShowThanks()
     {

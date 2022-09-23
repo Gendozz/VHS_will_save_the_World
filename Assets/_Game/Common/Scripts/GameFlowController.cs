@@ -1,51 +1,122 @@
+using System;
+using System.IO;
+using System.Runtime.Serialization.Formatters.Binary;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class GameFlowController : MonoBehaviour
 {
-    private int _totalTapesCollected;
+    public static int TotalTapesAmount { get; private set; } = 0;
 
-    private int _maxLevelNumber = 2;
+    public static int LevelsComplete { get; private set; } = 0;
 
-    private void Start()
-    {
-        if (PlayerPrefs.HasKey(StringConsts.TOTAL_TAPES_AMOUNT))
-        {
-            _totalTapesCollected = PlayerPrefs.GetInt(StringConsts.TOTAL_TAPES_AMOUNT);
-        }
+    private string savePath = "/gamesave.save";
 
-        DontDestroyOnLoad(gameObject);
+    public static Action onProgessLoaded;
 
-        //Debug.Log("Current total tapes on Start: " + _totalTapesCollected);
-    }
+    private int sceneBuildNumberToResetProgress = 2;
 
     private void OnEnable()
     {
-        TapeCollectibleHandler.onLevelEndCoinsCollected += AddTapes;
-        LevelEnd.onPlayerGotToLevelEnd += SetCurrentLevelComplete;
+        TapeCollectibleHandler.onLevelEndCoinsCollected += SaveGame;
+        LevelEnd.onPlayerGotToLevelEnd += DoPlayerWinActions;
     }
 
     private void OnDisable()
     {
-        TapeCollectibleHandler.onLevelEndCoinsCollected -= AddTapes;
-        LevelEnd.onPlayerGotToLevelEnd -= SetCurrentLevelComplete;
-    }
-    
-    private void SetCurrentLevelComplete()
-    {
-        // врн-рн гдеяэ
+        TapeCollectibleHandler.onLevelEndCoinsCollected -= SaveGame;
+        LevelEnd.onPlayerGotToLevelEnd -= DoPlayerWinActions;
 
-        PlayerPrefs.SetInt(StringConsts.LEVELS_COMPLETE, _maxLevelNumber == SceneManager.GetActiveScene().buildIndex ? 0 : SceneManager.GetActiveScene().buildIndex);
     }
 
-    private void AddTapes(int tapesToAdd)
+    private void Awake()
     {
-        _totalTapesCollected += tapesToAdd;
-        PlayerPrefs.SetInt(StringConsts.TOTAL_TAPES_AMOUNT, _totalTapesCollected);
-        //Debug.Log("Total score in playerprefs " + PlayerPrefs.GetInt(StringConsts.TOTAL_TAPES_AMOUNT));
+        LoadProgress();
     }
+
+    private void Start()
+    {
+        onProgessLoaded?.Invoke();
+
+        Debug.Log("onProgessLoaded fired");
+    }
+    private void DoPlayerWinActions()
+    {
+        //_isGamePaused = true;
+        //_menuController.ShowWinCanvas();
+        //SwitchMotions(!_isGamePaused);
+        Invoke(nameof(LoadNextLevel), 1);
+    }
+
+    private void LoadNextLevel()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+    }
+
+
+    private Save CreateSaveObject(int tapesCollectedAmount, int levelCompleteAmount)
+    {
+
+        Save save = new Save();
+
+        save.TotalTapes = TotalTapesAmount + tapesCollectedAmount;
+        save.LevelsComplete = LevelsComplete + levelCompleteAmount;
+
+        return save;
+    }
+
+
+    public void SaveGame(int tapesCollectedAmount)
+    {
+        Save save = CreateSaveObject(tapesCollectedAmount, SceneManager.GetActiveScene().buildIndex);
+        BinaryFormatter bf = new BinaryFormatter();
+        FileStream file = File.Create(Application.persistentDataPath + savePath);
+
+        bf.Serialize(file, save);
+
+        file.Close();
+
+        Debug.Log("Game Saved");
+    }
+
+
+    public void LoadProgress()
+    {
+        if (File.Exists(Application.persistentDataPath + savePath))
+        {
+            BinaryFormatter bf = new BinaryFormatter();
+            FileStream file = File.Open(Application.persistentDataPath + savePath, FileMode.Open);
+            Save save = (Save)bf.Deserialize(file);
+            file.Close();
+
+            TotalTapesAmount = save.TotalTapes;
+            LevelsComplete = save.LevelsComplete;
+            Debug.Log("Progress Loaded");
+        }
+    }
+
+    public void ResetProgress()
+    {
+        TotalTapesAmount = 0;
+        LevelsComplete = 0;
+        SaveGame(TotalTapesAmount);
+    }
+
+
+
 
     // FOR DEBUG
+
+    private void OnGUI()
+    {
+        if(SceneManager.GetActiveScene().buildIndex == 0)
+        {
+            if (GUI.Button(new Rect(10, 10, 150, 50), "Clear Progress"))
+                ResetProgress();
+        }
+    }
+
+
     //private void OnLevelWasLoaded(int level)
     //{
     //    //if (PlayerPrefs.HasKey(StringConsts.TOTAL_TAPES_AMOUNT))

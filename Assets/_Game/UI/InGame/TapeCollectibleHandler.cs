@@ -22,10 +22,7 @@ public class TapeCollectibleHandler : MonoBehaviour
 
     private void Start()
     {
-        if (PlayerPrefs.HasKey(StringConsts.TOTAL_TAPES_AMOUNT))
-        {
-            _currentTotalTapes = PlayerPrefs.GetInt(StringConsts.TOTAL_TAPES_AMOUNT);
-        }
+        _currentTotalTapes = GameFlowController.TotalTapesAmount;
         _tapesBar.fillAmount = (float)(GotTapesAmountOnLevel + _currentTotalTapes) / 12;
 
         //Debug.Log("Current total tapes on Start: " + _totalTapesCollected);
