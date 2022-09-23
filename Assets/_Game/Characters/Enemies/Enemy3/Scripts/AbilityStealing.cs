@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using UnityEngine;
 
 public class AbilityStealing : MonoBehaviour
@@ -10,50 +11,37 @@ public class AbilityStealing : MonoBehaviour
     [SerializeField] private PlayerMovement _playerMovement;
     [SerializeField] private UIAbility _uiAbility;
 
-    private float _timer = 0;
-    private bool _isStartTimerJump = false;
-
     public Action onStartBreakDoorAbility;
     public Action onEndBreakDoorAbility;
 
-    private void Update()
-    {
-        if (_isStartTimerJump)
-        {
-            if (_timer > _timeDoubleJump)
-            {
-                _isStartTimerJump = false;
-                _playerMovement.SetDoubleJumpAbility(false);
-            }
-            _timer += Time.deltaTime;
-        }
-
-        if (IsStartTimerBreakDoors)
-        {
-            if (_timer > _timeBreakingDoors)
-            {
-                IsStartTimerBreakDoors = false;
-                onEndBreakDoorAbility?.Invoke();
-            }
-            _timer += Time.deltaTime;
-        }
-    }
-
     public void StartTimerDoubleJump()
     {
-        _timer = 0;
         _uiAbility.TimerDisplayDoubleJump(_timeDoubleJump);
         _playerMovement.SetDoubleJumpAbility(true);
-        _isStartTimerJump = true;
-        IsStartTimerBreakDoors = false;
+        StopAllCoroutines();
+        StartCoroutine(TimerDoubleJump());
+    }
+
+    private IEnumerator TimerDoubleJump()
+    {
+        yield return new WaitForSeconds(_timeDoubleJump);
+        Debug.Log("Способность закончилась");
+        _playerMovement.SetDoubleJumpAbility(false);
     }
 
     public void StartTimerBreakingDoors()
     {
-        _timer = 0;
         _uiAbility.TimerDisplayBreakingDoors(_timeBreakingDoors);
-        IsStartTimerBreakDoors = true;
-        _isStartTimerJump = false;
         onStartBreakDoorAbility?.Invoke();
+        StopAllCoroutines();
+        StartCoroutine(TimerBreakingDoors());
+    }
+
+    private IEnumerator TimerBreakingDoors()
+    {
+        yield return new WaitForSeconds(_timeBreakingDoors);
+        Debug.Log("Способность закончилась");
+        IsStartTimerBreakDoors = false;
+        onEndBreakDoorAbility?.Invoke();
     }
 }

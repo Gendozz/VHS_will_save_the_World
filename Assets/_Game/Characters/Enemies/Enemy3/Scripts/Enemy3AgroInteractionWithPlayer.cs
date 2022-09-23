@@ -10,8 +10,6 @@ public class Enemy3AgroInteractionWithPlayer : MonoBehaviour
     [SerializeField] private Animator _animator;
     [SerializeField] private Behaviour[] _components;
 
-    private bool _isReductionStart = false;
-
     private void OnTriggerEnter(Collider other)
     {
         if (other.GetComponent<PlayerInput>() != null && _enemy3LookAtPlayer.IsSees)
@@ -24,13 +22,9 @@ public class Enemy3AgroInteractionWithPlayer : MonoBehaviour
                 _components[i].enabled = false;
             }
 
-            if (!_isReductionStart)
-            {
-                _colliderResizing.ReductionSizeCollider();
-                _isReductionStart = true;
-            }
+            _colliderResizing.ReductionSizeCollider();
 
-            _enemy3LookAtPlayer.StopIsIdleCorutine();
+            _enemy3LookAtPlayer.StopAllCor();
 
             gameObject.SetActive(false);
             _idleCollider.SetActive(false);

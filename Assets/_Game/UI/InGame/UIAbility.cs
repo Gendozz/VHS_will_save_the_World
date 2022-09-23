@@ -19,11 +19,11 @@ public class UIAbility : MonoBehaviour
         if (_stolenAbilities != null)
         {
             StopCoroutine(_stolenAbilities);
-            _stolenAbilities = StartCoroutine(ITimerDisplayStolenAbilities(1 / time * Time.deltaTime, 3, 1));
+            _stolenAbilities = StartCoroutine(ITimerDisplayStolenAbilities(1 / time, 3, 1));
         }
         else
         {
-            _stolenAbilities = StartCoroutine(ITimerDisplayStolenAbilities(1 / time * Time.deltaTime, 3, 1));
+            _stolenAbilities = StartCoroutine(ITimerDisplayStolenAbilities(1 / time, 3, 1));
         }
     }
 
@@ -35,13 +35,12 @@ public class UIAbility : MonoBehaviour
         if (_stolenAbilities != null)
         {
             StopCoroutine(_stolenAbilities);
-            _stolenAbilities = StartCoroutine(ITimerDisplayStolenAbilities(1 / time * Time.deltaTime, 3, 1));
+            _stolenAbilities = StartCoroutine(ITimerDisplayStolenAbilities(1 / time, 3, 1));
         }
         else
         {
-            _stolenAbilities = StartCoroutine(ITimerDisplayStolenAbilities(1 / time * Time.deltaTime, 3, 1));
+            _stolenAbilities = StartCoroutine(ITimerDisplayStolenAbilities(1 / time, 3, 1));
         }
-        
     }
 
     public void TimerDisplayWalkingOnSpikes(float time)
@@ -51,19 +50,19 @@ public class UIAbility : MonoBehaviour
         if (_walkingSpikes != null)
         {
             StopCoroutine(_walkingSpikes);
-            _walkingSpikes = StartCoroutine(ITimerDisplayStolenAbilities(1 / time * Time.deltaTime, 1, 0));
+            _walkingSpikes = StartCoroutine(ITimerDisplayStolenAbilities(1 / time, 1, 0));
         }
         else
         {
-            _walkingSpikes = StartCoroutine(ITimerDisplayStolenAbilities(1 / time * Time.deltaTime, 1, 0));
+            _walkingSpikes = StartCoroutine(ITimerDisplayStolenAbilities(1 / time, 1, 0));
         }
     }
 
     private IEnumerator ITimerDisplayStolenAbilities(float speed, int indexImage, int indexObj)
     {
-        while(_images[indexImage].fillAmount > 0 && _images[indexImage].fillAmount > speed)
+        while(_images[indexImage].fillAmount > 0 && _images[indexImage].fillAmount > speed * Time.deltaTime)
         {
-            yield return _images[indexImage].fillAmount -= speed;
+            yield return _images[indexImage].fillAmount -= speed * Time.deltaTime;
         }
 
         _objects[indexObj].SetActive(false);

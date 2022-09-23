@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using static Unity.Burst.Intrinsics.X86;
 
 public class Enemy3LookAtPlayer : MonoBehaviour
 {
@@ -9,7 +10,6 @@ public class Enemy3LookAtPlayer : MonoBehaviour
     [SerializeField] private float _speedRotationIdle;
     [SerializeField] private float _speedRotationAgro;
     [SerializeField] private float _delayTimeState;
-    [SerializeField] private float _visionTimeAbroad;
     [SerializeField] private float _timeAgroWhenPlayerLeft;
     [SerializeField] private float _additionalVisibility;
     [Space]
@@ -17,21 +17,26 @@ public class Enemy3LookAtPlayer : MonoBehaviour
     [SerializeField] private Animator _animator;
     [SerializeField] private Transform _playerTransform;
 
-    private Coroutine IsIdle;
+    private Coroutine _isIdle;
+    private Coroutine _isAgro;
+    private Coroutine _isDoesntSeeButAggro;
     private float _lowerLimitFieldView;
     private float _upperLimitFieldView;
-    private float _timerAgroWhenPlayerLeft;
     private float _angleRotation = 89.9f;
     private bool _onScreen;
+    private bool _startAgro;
+    private bool _startDoesntSeeButAggro;
     private bool _startIlde;
     private bool _playerInZone;
     private bool _isSight;
 
     private void Start()
     {
-        _lowerLimitFieldView = transform.position.y - transform.localScale.y;
+        _lowerLimitFieldView = transform.position.y;
         _upperLimitFieldView = transform.position.y + transform.localScale.y + _additionalVisibility;
         _startIlde = true;
+        _startAgro = true;
+        _startDoesntSeeButAggro = false;
     }
 
     private void Update()
@@ -39,23 +44,36 @@ public class Enemy3LookAtPlayer : MonoBehaviour
         PlayerInZone();
         StandingRightLeft();
 
-        if (_onScreen && _playerInZone && _isSight)
+        if ((_onScreen && _playerInZone && _isSight))
         {
-            _timerAgroWhenPlayerLeft = 0.1f;
-            ToAgro(); 
+            if (!_startDoesntSeeButAggro)
+            {
+                _startDoesntSeeButAggro = true;
+
+                if (_isDoesntSeeButAggro != null)
+                {
+                    StopCoroutine(_isDoesntSeeButAggro);
+                }
+            }
+
+            if (_startAgro)
+            {
+                _startAgro = false;
+                _startIlde = false;
+                _startDoesntSeeButAggro = true;
+                _isAgro = StartCoroutine(ToAgro());
+            }
         }
-        else if(_timerAgroWhenPlayerLeft < _timeAgroWhenPlayerLeft && _timerAgroWhenPlayerLeft != 0)
+        else if(_startDoesntSeeButAggro)
         {
-            _timerAgroWhenPlayerLeft += Time.deltaTime;
+            _startAgro = true;
+            _startDoesntSeeButAggro = false;
+            _isDoesntSeeButAggro = StartCoroutine((ToDoesntSeeButAggro()));
         }
-        
-        if (_startIlde)
+        else if (_startIlde)
         {
-            _animator.SetBool("ToAgro", false);
-            IsSees = false;
-            _timerAgroWhenPlayerLeft = 0;
             _startIlde = false;
-            IsIdle = StartCoroutine(ToIdle());
+            _isIdle = StartCoroutine(ToIdle());
         }
     }
 
@@ -85,26 +103,39 @@ public class Enemy3LookAtPlayer : MonoBehaviour
         }
     }
 
-    private void ToAgro()
-    {
+    private IEnumerator ToAgro()
+    {        
         _animator.SetBool("ToAgro", true);
         IsSees = true;
+        StopCoroutine(_isIdle);
 
-        StopCoroutine(IsIdle);
+        while (true)
+        {
+            if (_playerTransform.position.x > transform.position.x)
+            {
+                yield return transform.rotation = Quaternion.RotateTowards(transform.rotation, Quaternion.Euler(0, -_angleRotation, 0), _speedRotationAgro);
+            }
+            if (_playerTransform.position.x < transform.position.x)
+            {
+                yield return transform.rotation = Quaternion.RotateTowards(transform.rotation, Quaternion.Euler(0, _angleRotation, 0), _speedRotationAgro);
+            }
+        }
+    }
+
+    private IEnumerator ToDoesntSeeButAggro()
+    {
+        yield return new WaitForSeconds(_timeAgroWhenPlayerLeft);
         _startIlde = true;
+        StopCoroutine(_isAgro);
 
-        if (_playerTransform.position.x > transform.position.x)
-        {
-            transform.rotation = Quaternion.RotateTowards(transform.rotation, Quaternion.Euler(0, -_angleRotation, 0), _speedRotationAgro);
-        }
-        if (_playerTransform.position.x < transform.position.x)
-        {
-            transform.rotation = Quaternion.RotateTowards(transform.rotation, Quaternion.Euler(0, _angleRotation, 0), _speedRotationAgro);
-        }
+        Debug.Log("вот и всё");
     }
 
     private IEnumerator ToIdle()
     {
+        _animator.SetBool("ToAgro", false);
+        IsSees = false;
+
         while (true)
         {
             float angle = Quaternion.Euler(0, -_angleRotation + 1, 0).y;
@@ -135,9 +166,12 @@ public class Enemy3LookAtPlayer : MonoBehaviour
         _onScreen = false;
     }
 
-    public void StopIsIdleCorutine()
+    public void StopAllCor()
     {
-        StopCoroutine(IsIdle);
+        _startIlde = true;
+        _startAgro = true;
+        _startDoesntSeeButAggro = false;
+        StopAllCoroutines();
     }
 
     public void ResurectionFromIdle()

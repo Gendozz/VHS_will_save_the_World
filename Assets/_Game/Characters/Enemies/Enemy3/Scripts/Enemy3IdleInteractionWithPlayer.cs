@@ -20,7 +20,6 @@ public class Enemy3IdleInteractionWithPlayer : MonoBehaviour
     {
         if (other.GetComponent<PlayerInput>() != null)
         {
-            Debug.Log(_enemy3LookAtPlayer.IsSees);
             if (_enemy3LookAtPlayer.IsSees)
             {
                 if (other.transform.position.x > transform.position.x)
@@ -37,7 +36,7 @@ public class Enemy3IdleInteractionWithPlayer : MonoBehaviour
                 _abilityStealing.StartTimerBreakingDoors();
                 _animator.SetTrigger("Death");
 
-                _enemy3LookAtPlayer.StopIsIdleCorutine();
+                _enemy3LookAtPlayer.StopAllCor();
 
                 for (int i = 0; i < _components.Length; i++)
                 {
