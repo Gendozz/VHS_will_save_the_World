@@ -1,10 +1,9 @@
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.EventSystems;
 using TMPro;
 
 public class ChangeTextColorWhenHovered : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
-
     [SerializeField] private TMP_Text _text;
 
     private Color _colorHover = new Color(0.075f, 0.090f, 0.294f, 1);

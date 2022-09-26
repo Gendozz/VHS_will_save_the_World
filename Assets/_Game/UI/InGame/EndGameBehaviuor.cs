@@ -1,4 +1,4 @@
-using JSAM;
+п»їusing JSAM;
 using System.Collections;
 using TMPro;
 using UnityEngine;
@@ -28,7 +28,7 @@ public class EndGameBehaviuor : MonoBehaviour
 
     private void ShowTotalResult()
     {
-        _totalResultsText.text = "Всего плёнок собрано " + _totalTapes + " из 12";        
+        _totalResultsText.text = "Р’СЃРµРіРѕ РїР»С‘РЅРѕРє СЃРѕР±СЂР°РЅРѕ " + _totalTapes + " РёР· 12";        
     }
     
     private void PlayResultMusic()

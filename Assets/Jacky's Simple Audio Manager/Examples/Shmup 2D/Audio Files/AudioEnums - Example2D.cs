@@ -1,4 +1,4 @@
-namespace JSAM {
+﻿namespace JSAM {
     public enum SoundsExample2D{
         BulletHit,
         Shooting

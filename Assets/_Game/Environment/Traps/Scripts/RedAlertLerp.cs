@@ -1,14 +1,14 @@
-using System.Collections;
+п»їusing System.Collections;
 using UnityEngine;
 
 public class RedAlertLerp : MonoBehaviour
 {
     [SerializeField] private VLight _vLight;
 
-    [Header("Продолжительность мигания")]
+    [Header("пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ")]
     [SerializeField] private float _animationDuration;
 
-    [Header("Количество повторений")]
+    [Header("пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ")]
     [SerializeField] private int _amountOfItereations;
 
     private float _startLightMultiplier;

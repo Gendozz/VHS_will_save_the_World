@@ -1,4 +1,4 @@
-/*
+﻿/*
  * VLight
  * Copyright Brian Su 2011-2019
 */

@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 
 // Временное решение
 // TODO: Переделать под нужды игры

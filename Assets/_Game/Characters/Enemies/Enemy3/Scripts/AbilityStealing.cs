@@ -1,4 +1,4 @@
-using System;
+п»їusing System;
 using System.Collections;
 using UnityEngine;
 
@@ -25,7 +25,7 @@ public class AbilityStealing : MonoBehaviour
     private IEnumerator TimerDoubleJump()
     {
         yield return new WaitForSeconds(_timeDoubleJump);
-        Debug.Log("Способность закончилась");
+        Debug.Log("пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ");
         _playerMovement.SetDoubleJumpAbility(false);
     }
 
@@ -40,7 +40,7 @@ public class AbilityStealing : MonoBehaviour
     private IEnumerator TimerBreakingDoors()
     {
         yield return new WaitForSeconds(_timeBreakingDoors);
-        Debug.Log("Способность закончилась");
+        Debug.Log("пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ");
         IsStartTimerBreakDoors = false;
         onEndBreakDoorAbility?.Invoke();
     }

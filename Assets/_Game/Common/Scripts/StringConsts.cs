@@ -1,4 +1,4 @@
-public class StringConsts
+﻿public class StringConsts
 {
     #region Input
     public const string HORIZONTAL_AXIS = "Horizontal";

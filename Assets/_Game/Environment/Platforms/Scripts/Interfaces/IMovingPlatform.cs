@@ -1,1 +1,1 @@
-public interface IMovingPlatform { }
+﻿public interface IMovingPlatform { }

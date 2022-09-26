@@ -1,4 +1,4 @@
-public interface ICanDie
+﻿public interface ICanDie
 {
     public void Die();
 }

@@ -1,4 +1,4 @@
-namespace JSAM {
+﻿namespace JSAM {
     public enum Sounds {
         MM_Button1,
         MM_Button2,
