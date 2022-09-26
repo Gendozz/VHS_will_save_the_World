@@ -3,6 +3,7 @@ public class Save
 {
     private int totalTapes;
     private int levelsComplete;
+    private int lives;
 
     public int TotalTapes
     {
@@ -25,6 +26,18 @@ public class Save
         set
         {
             levelsComplete = value;
+        }
+    }
+
+    public int Lives
+    {
+        get
+        {
+            return lives;
+        }
+        set
+        {
+            lives = value;
         }
     }
 }

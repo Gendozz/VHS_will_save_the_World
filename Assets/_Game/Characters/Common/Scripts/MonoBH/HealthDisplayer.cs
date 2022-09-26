@@ -18,7 +18,7 @@ public class HealthDisplayer : MonoBehaviour, IHealthDisplayer
         }
         else
         {
-            Debug.Log($"{gameObject.name} got damage. It's current health is {currentHealth}");
+            //Debug.Log($"{gameObject.name} got damage. It's current health is {currentHealth}");
         }
 
 

@@ -14,7 +14,7 @@ public class GameFlowController : MonoBehaviour
 
     public static Action onProgessLoaded;
 
-    private int sceneBuildNumberToResetProgress = 2;
+    private int _sceneBuildNumberToResetProgress = 2;
 
     private void OnEnable()
     {
@@ -45,7 +45,7 @@ public class GameFlowController : MonoBehaviour
         //_isGamePaused = true;
         //_menuController.ShowWinCanvas();
         //SwitchMotions(!_isGamePaused);
-        Invoke(nameof(LoadNextLevel), 1);
+        Invoke(nameof(LoadNextLevel), 1f);
     }
 
     private void LoadNextLevel()
@@ -59,8 +59,8 @@ public class GameFlowController : MonoBehaviour
 
         Save save = new Save();
 
-        save.TotalTapes = TotalTapesAmount + tapesCollectedAmount;
-        save.LevelsComplete = LevelsComplete + levelCompleteAmount;
+        save.TotalTapes = tapesCollectedAmount;
+        save.LevelsComplete = levelCompleteAmount;
 
         return save;
     }
@@ -68,7 +68,10 @@ public class GameFlowController : MonoBehaviour
 
     public void SaveGame(int tapesCollectedAmount)
     {
-        Save save = CreateSaveObject(tapesCollectedAmount, SceneManager.GetActiveScene().buildIndex);
+        int sceneNumberToSave = SceneManager.GetActiveScene().buildIndex + 1;
+        int tapesNumberToSave = tapesCollectedAmount;
+
+        Save save = CreateSaveObject(tapesNumberToSave, sceneNumberToSave);
         BinaryFormatter bf = new BinaryFormatter();
         FileStream file = File.Create(Application.persistentDataPath + savePath);
 
@@ -89,9 +92,16 @@ public class GameFlowController : MonoBehaviour
             Save save = (Save)bf.Deserialize(file);
             file.Close();
 
-            TotalTapesAmount = save.TotalTapes;
-            LevelsComplete = save.LevelsComplete;
-            Debug.Log("Progress Loaded");
+            if (SceneManager.GetActiveScene().buildIndex == 0 && save.LevelsComplete > _sceneBuildNumberToResetProgress)
+            {
+                ResetProgress();
+            }
+            else
+            {
+                TotalTapesAmount = save.TotalTapes;
+                LevelsComplete = save.LevelsComplete;
+            }
+            Debug.Log($"Progress Loaded. Total taped collected at start {TotalTapesAmount}. Current build index saved {LevelsComplete}");
         }
     }
 
@@ -109,7 +119,7 @@ public class GameFlowController : MonoBehaviour
 
     private void OnGUI()
     {
-        if(SceneManager.GetActiveScene().buildIndex == 0)
+        if (SceneManager.GetActiveScene().buildIndex == 0)
         {
             if (GUI.Button(new Rect(10, 10, 150, 50), "Clear Progress"))
                 ResetProgress();

@@ -11,6 +11,7 @@ public class UIMainMenu : MonoBehaviour
     [SerializeField] private CanvasGroup _materialsCanvasGroup;
     [SerializeField] private Button _continueButton;
     [SerializeField] private TMP_Text _continueButtonText;
+    private ChangeTextColorWhenHovered _changeTextColorWhenHovered;
 
     private void OnEnable()
     {
@@ -84,7 +85,7 @@ public class UIMainMenu : MonoBehaviour
 
     public void EnableContinueButton()
     {
-        if(GameFlowController.LevelsComplete > 1)
+        if(SceneManager.GetActiveScene().buildIndex == 0 && GameFlowController.LevelsComplete > 1)
         {
             _continueButton.interactable = true;
 
@@ -92,6 +93,9 @@ public class UIMainMenu : MonoBehaviour
 
             _continueButton.image.color = new Color(currentColor.r, currentColor.g, currentColor.b, 1);
             _continueButtonText.color = new Color(currentColor.r, currentColor.g, currentColor.b, 1);
+
+            _changeTextColorWhenHovered = _continueButton.gameObject.AddComponent<ChangeTextColorWhenHovered>();
+            _changeTextColorWhenHovered.AddTMP_Text(_continueButtonText);
         }
     }
 
@@ -117,4 +121,30 @@ public class UIMainMenu : MonoBehaviour
 #endif
         Application.Quit();
     }
+
+    // DEBUG
+
+    private void OnGUI()
+    {
+        if (SceneManager.GetActiveScene().buildIndex == 0)
+        {
+            if (GUI.Button(new Rect(10, 110, 150, 50), "Activate continue"))
+                EnableContinueButtonDEBUG();
+        }
+    }
+
+    private void EnableContinueButtonDEBUG()
+    {
+        _continueButton.interactable = true;
+
+        Color currentButtonColor = _continueButton.image.color;
+        Color currentTextColor = _continueButtonText.color;
+
+        _continueButton.image.color = new Color(currentButtonColor.r, currentButtonColor.g, currentButtonColor.b, 1);
+        _continueButtonText.color = new Color(currentTextColor.r, currentTextColor.g, currentTextColor.b, 1);
+
+        _changeTextColorWhenHovered = _continueButton.gameObject.AddComponent<ChangeTextColorWhenHovered>();
+        _changeTextColorWhenHovered.AddTMP_Text(_continueButtonText);
+    }
+
 }

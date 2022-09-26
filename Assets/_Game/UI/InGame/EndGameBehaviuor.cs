@@ -23,6 +23,7 @@ public class EndGameBehaviuor : MonoBehaviour
         _delayBeforShowThanks = _totalTapes * 10;
         ShowTotalResult();
         PlayResultMusic();
+        
     }
 
     private void ShowTotalResult()

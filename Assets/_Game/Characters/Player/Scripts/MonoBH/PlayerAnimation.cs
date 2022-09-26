@@ -22,7 +22,6 @@ public class PlayerAnimation : MonoBehaviour
     private bool _isJumping = false;
 
     private bool _canKick = false;
-    private bool _isOnWall;
 
     private void OnEnable()
     {
@@ -132,15 +131,6 @@ public class PlayerAnimation : MonoBehaviour
                 _animator.SetBool("isOnWall", false);
             }
         }
-
-
-
-
-    }
-
-    private void SetIsOnWallToFalse()
-    {
-        _isOnWall = false;
     }
 
     private void AnimateDamage()
