@@ -1,6 +1,8 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody))]
+[RequireComponent(typeof(Animator))]
 public class Enemy1Moving : MonoBehaviour
 {
     [HideInInspector] public bool IsSees;
@@ -9,56 +11,56 @@ public class Enemy1Moving : MonoBehaviour
     [SerializeField] private Transform _leftPointTransform;
     [SerializeField] private Transform _rightPointTransform;
     [SerializeField] private float _speedPosition;
-    [SerializeField] private float _speedRotation;
-    [SerializeField] private float angleWhichEnemyChangesDirection;
+    [SerializeField] private float _timeIdleRotation;
+    [SerializeField] private float _timeAgroRotation;
     [SerializeField] private float _additionalVisibilityHeight;
     [Space]
     [Header("-----      Компоненты и системные      -----")]
+    [SerializeField] private Animator _animator;
     [SerializeField] private Rigidbody _rigidbody;
     [SerializeField] private Transform _playerTransform;
     [SerializeField] private float _minDistanseBetweenPlayerAndEnemy;
+    [SerializeField] private Transform _firePoint;
 
-    private Vector3 _directionMoving = Vector3.left;
+    private Coroutine _changingFirePoint;
+    private Vector3 _directionMoving;
     private float _leftPointTransformPositionX;
     private float _rightPointTransformPositoinX;
     private float _lowerLimitFieldView;
     private float _upperLimitFieldView;
-    private float _angleError = 0.1f;
     private bool _onScreen;
     private bool _playerInZone;
+    private bool _isFirePointchanging;
 
     private void Start()
     {
-        _rigidbody.useGravity = true;
-        _rigidbody.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationZ;
+        _rigidbody.constraints = RigidbodyConstraints.FreezeRotation | RigidbodyConstraints.FreezePositionY;
+
+        _directionMoving = Vector3.left;
 
         _leftPointTransformPositionX = _leftPointTransform.position.x;
         _rightPointTransformPositoinX = _rightPointTransform.position.x;
 
-        _lowerLimitFieldView = transform.position.y - transform.localScale.y;
-        _upperLimitFieldView = transform.position.y + transform.localScale.y + _additionalVisibilityHeight;
+        _lowerLimitFieldView = transform.position.y - transform.localScale.y / 2;
+        _upperLimitFieldView = transform.position.y + transform.localScale.y / 2 + _additionalVisibilityHeight;
+
+        _isFirePointchanging = true;
     }
 
     private void Update()
     {
-        PlayerInZone();
-
-        if (_onScreen && _playerInZone)
+        if (_isFirePointchanging)
         {
-            ChangeDirection(_playerTransform.position.x, _playerTransform.position.x);
-            GetStay();
+            GetInfAboutPlayerInZone();
 
-            if (_rigidbody.position.x < _playerTransform.position.x && (transform.eulerAngles.y < 90 - angleWhichEnemyChangesDirection) ||
-            _rigidbody.position.x > _playerTransform.position.x && (transform.eulerAngles.y > 90 + angleWhichEnemyChangesDirection))
+            if (_onScreen && _playerInZone)
             {
-                IsSees = true;
+                FollowPlayer();
             }
-        }
-        else
-        {
-            IsSees = false;
-            KeepMoving();
-            ChangeDirection(_leftPointTransformPositionX, _rightPointTransformPositoinX);
+            else
+            {
+                SetMoveIdle();
+            }
         }
     }
 
@@ -67,10 +69,10 @@ public class Enemy1Moving : MonoBehaviour
         _rigidbody.velocity = _directionMoving * _speedPosition;
     }
 
-    private void PlayerInZone()
+    private void GetInfAboutPlayerInZone()
     {
-        if (_playerTransform.position.y - _playerTransform.localScale.y < _upperLimitFieldView &&
-            _playerTransform.position.y + _playerTransform.localScale.y > _lowerLimitFieldView)
+        if (_playerTransform.position.y < _upperLimitFieldView &&
+            _playerTransform.position.y > _lowerLimitFieldView)
         {
             _playerInZone = true;
         }
@@ -80,61 +82,104 @@ public class Enemy1Moving : MonoBehaviour
         }
     }
 
-    private void GetStay()
+    private void FollowPlayer()
     {
-        float _distToPlayer = _rigidbody.position.x - _playerTransform.position.x;
-
-        if (_rigidbody.position.x <= _leftPointTransformPositionX && (transform.eulerAngles.y > 180 - angleWhichEnemyChangesDirection) ||
-            _rigidbody.position.x >= _rightPointTransformPositoinX && (transform.eulerAngles.y < angleWhichEnemyChangesDirection) ||
-            _distToPlayer * _distToPlayer < _minDistanseBetweenPlayerAndEnemy * _minDistanseBetweenPlayerAndEnemy)
+        if (_playerTransform.position.x > transform.position.x)
         {
-            _directionMoving = Vector3.zero;
-        }
-    }
-
-    private void KeepMoving()
-    {
-        if (_directionMoving == Vector3.zero)
-        {
-            if (transform.eulerAngles.y > angleWhichEnemyChangesDirection)
+            if (_firePoint.localPosition.z < 0)
             {
-                _directionMoving = Vector3.left;
+                IsSees = true;
+
+                float _distToPlayer = _rigidbody.position.x - _playerTransform.position.x;
+                if (_distToPlayer * _distToPlayer < _minDistanseBetweenPlayerAndEnemy * _minDistanseBetweenPlayerAndEnemy ||
+                    transform.position.x < _leftPointTransformPositionX || transform.position.x > _rightPointTransformPositoinX)
+                {
+                    _directionMoving = Vector3.zero;
+                    _animator.SetBool("Walk", false);
+                }
+                else
+                {
+                    _directionMoving = Vector3.right;
+                    _animator.SetBool("Walk", true);
+                }
             }
             else
             {
-                _directionMoving = Vector3.right;
+                IsSees = false;
+
+                if (_changingFirePoint != null)
+                {
+                    StopCoroutine(_changingFirePoint);
+                }
+                _changingFirePoint = StartCoroutine(СhangingFirePoint(_timeAgroRotation));
+                _isFirePointchanging = false;
+            }
+        }
+        else
+        {
+            if (_firePoint.localPosition.z < 0)
+            {
+                IsSees = false;
+
+                if (_changingFirePoint != null)
+                {
+                    StopCoroutine(_changingFirePoint);
+                }
+                _changingFirePoint = StartCoroutine(СhangingFirePoint(_timeAgroRotation));
+                _isFirePointchanging = false;
+            }
+            else
+            {
+                IsSees = true;
+
+                float _distToPlayer = _rigidbody.position.x - _playerTransform.position.x;
+                if (_distToPlayer * _distToPlayer < _minDistanseBetweenPlayerAndEnemy * _minDistanseBetweenPlayerAndEnemy ||
+                    transform.position.x < _leftPointTransformPositionX || transform.position.x > _rightPointTransformPositoinX)
+                {
+                    _directionMoving = Vector3.zero;
+                    _animator.SetBool("Walk", false);
+                }
+                else
+                {
+                    _directionMoving = Vector3.left;
+                    _animator.SetBool("Walk", true);
+                }
             }
         }
     }
 
-    private void ChangeDirection(float leftPositon, float rightPosition)
+    private IEnumerator СhangingFirePoint(float _speedRotation)
     {
-        if (leftPositon > _rigidbody.position.x)
+        _directionMoving = Vector3.zero;
+        yield return new WaitForSeconds(_speedRotation);
+        _firePoint.localPosition = new Vector3(_firePoint.localPosition.x, _firePoint.localPosition.y, _firePoint.localPosition.z * -1);
+        if (_firePoint.localPosition.z > 0)
         {
-            _directionMoving = Vector3.zero;
-            _rigidbody.rotation = Quaternion.RotateTowards(_rigidbody.rotation, Quaternion.Euler(0, _angleError, 0), _speedRotation);
-            if (transform.eulerAngles.y < angleWhichEnemyChangesDirection)
-            {
-                _directionMoving = Vector3.right;
-            }
+            _directionMoving = Vector3.left;
         }
-        else if (rightPosition < _rigidbody.position.x)
+        else
         {
-            _directionMoving = Vector3.zero;
-            _rigidbody.rotation = Quaternion.RotateTowards(_rigidbody.rotation, Quaternion.Euler(0, 180 - _angleError, 0), _speedRotation);
-            if (transform.eulerAngles.y > 180 - angleWhichEnemyChangesDirection)
-            {
-                _directionMoving = Vector3.left;
-            }
+            _directionMoving = Vector3.right;
         }
+        _animator.SetBool("Walk", true);
+        yield return new WaitForFixedUpdate();
+        _isFirePointchanging = true;
+    }
 
-        if (_directionMoving == Vector3.right)
+    private void SetMoveIdle()
+    {
+        IsSees = false;
+
+        if (transform.position.x < _leftPointTransformPositionX || transform.position.x > _rightPointTransformPositoinX)
         {
-            _rigidbody.rotation = Quaternion.RotateTowards(_rigidbody.rotation, Quaternion.Euler(0, _angleError, 0), _speedRotation);
-        }
-        else if (_directionMoving == Vector3.left)
-        {
-            _rigidbody.rotation = Quaternion.RotateTowards(_rigidbody.rotation, Quaternion.Euler(0, 180 - _angleError, 0), _speedRotation);
+            _directionMoving = Vector3.zero;
+            _animator.SetBool("Walk", false);
+            if (_changingFirePoint != null)
+            {
+                StopCoroutine(_changingFirePoint);
+            }
+            _changingFirePoint = StartCoroutine(СhangingFirePoint(_timeIdleRotation));
+            _isFirePointchanging = false;
         }
     }
 

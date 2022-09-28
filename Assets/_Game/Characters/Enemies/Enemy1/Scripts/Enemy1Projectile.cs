@@ -39,6 +39,7 @@ public class Enemy1Projectile : MonoBehaviour
         if (other.GetComponent<IDamagable>() != null)
         {
             other.GetComponent<IDamagable>().TakeDamage(_damage);
+            Destroy(gameObject);
         }
         else if (other.gameObject.layer == LayerMask.NameToLayer(StringConsts.WALL))
         {

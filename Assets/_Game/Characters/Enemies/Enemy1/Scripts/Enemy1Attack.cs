@@ -7,10 +7,9 @@ public class Enemy1Attack : MonoBehaviour
     [SerializeField] private Enemy1Moving _enemy1Moving;
     [SerializeField] private GameObject _projectile;
     [SerializeField] private Transform _firePoint;
-    [SerializeField] private float _delayAttack = 2f;
+    [SerializeField] private float _delayAttack;
 
     private float _time;
-    private float errorAngleWhichEnemyShoot = 20;
 
     private void Start()
     {
@@ -19,19 +18,22 @@ public class Enemy1Attack : MonoBehaviour
 
     private void Update()
     {
-        if (_delayAttack <= _time && _enemy1Moving.IsSees)
+        if (_enemy1Moving.IsSees)
         {
-            if (transform.rotation.eulerAngles.y > 180 - errorAngleWhichEnemyShoot)
+            if (_delayAttack <= _time)
             {
-                Instantiate(_projectile, _firePoint.position, Quaternion.Euler(0, 180, 0));
-                _time = 0;
+                if (_firePoint.localPosition.z < 0)
+                {
+                    Instantiate(_projectile, _firePoint.position, Quaternion.Euler(0, 0, 0));
+                    _time = 0;
+                }
+                else
+                {
+                    Instantiate(_projectile, _firePoint.position, Quaternion.Euler(0, 180, 0));
+                    _time = 0;
+                }
             }
-            else if (transform.rotation.eulerAngles.y < 0 + errorAngleWhichEnemyShoot)
-            {
-                Instantiate(_projectile, _firePoint.position, Quaternion.Euler(0, 0, 0));
-                _time = 0;
-            }
+            _time += Time.deltaTime;
         }
-        _time += Time.deltaTime;
     }
 }
