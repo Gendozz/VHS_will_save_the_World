@@ -32,7 +32,9 @@
     #region PlayerPrefs
     public const string MUSIC_VOLUME = "MusicVolume";
     public const string SOUNDS_VOLUME = "SoundsVolume";
-    public const string TOTAL_TAPES_AMOUNT = "TotalTapesCollected";
-    public const string LEVELS_COMPLETE = "LevelsComplete";
+    public const string RESOLUTION_WIDTH = "ResolutionWidth";
+    public const string RESOLUTION_HEIGHT = "ResolutionHeight";
+    public const string RESOLUTION_FULLSCREEN = "Fulscreen";
+    public const string RESOLUTION_DROPDOWN_INDEX = "Dropdown";
     #endregion
 }

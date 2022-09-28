@@ -49,16 +49,6 @@ public class EndGameBehaviuor : MonoBehaviour
         SceneManager.LoadScene(1);
     }
 
-    //private void ClearTapesProgress()
-    //{
-    //    if (PlayerPrefs.HasKey(StringConsts.TOTAL_TAPES_AMOUNT))
-    //    {
-    //        PlayerPrefs.SetInt(StringConsts.TOTAL_TAPES_AMOUNT, 0);
-    //    }
-
-    //    PlayerPrefs.SetInt(StringConsts.LEVELS_COMPLETE, 0);
-    //}
-
     private IEnumerator ShowThanks()
     {
         yield return new WaitForSeconds(_delayBeforShowThanks);
