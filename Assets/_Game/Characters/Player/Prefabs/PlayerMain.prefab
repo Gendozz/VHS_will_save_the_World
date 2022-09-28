@@ -127,6 +127,15 @@ MonoBehaviour:
       inWeight: 0
       outWeight: 0
     - serializedVersion: 3
+      time: -0.67634785
+      value: -2.0085442
+      inSlope: 7.2983513
+      outSlope: 7.2983513
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
       time: 0
       value: 0
       inSlope: 0
@@ -136,8 +145,8 @@ MonoBehaviour:
       inWeight: 0
       outWeight: 0
     - serializedVersion: 3
-      time: 0.5647973
-      value: 1.6782736
+      time: 0.6731347
+      value: 2.0084586
       inSlope: 6.7440414
       outSlope: 6.7440414
       tangentMode: 0
@@ -159,17 +168,17 @@ MonoBehaviour:
   _groundLayer:
     serializedVersion: 2
     m_Bits: 128
-  _fallGravityMultiplier: 3.74
-  _fallGravityVelocityYStart: 16
-  _backForceOnJump: 13.1
+  _fallGravityMultiplier: 4
+  _fallGravityVelocityYStart: 14
+  _backForceOnJump: 14
   _haveDoubleJumpAbility: 0
-  _jumpForce: 16
+  _jumpForce: 15
   _trampolineJumpForce: 20
   _wallLayer:
     serializedVersion: 2
     m_Bits: 64
   _wallSlideGravityVelocity: 2
-  _wallJumpSideForce: 4.55
+  _wallJumpSideForce: 4.8
   _wallJumpUpForce: 13
   _limitOnWallUpInertion: 1.2
   _afterWallJumpBlockMovementDuration: 0
