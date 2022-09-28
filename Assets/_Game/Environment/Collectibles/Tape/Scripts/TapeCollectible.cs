@@ -7,6 +7,8 @@ public class TapeCollectible : MonoBehaviour
     [SerializeField] private LerpLight[] _lerpLights;
 
     [SerializeField] private Sounds _tapePiece;
+
+    [SerializeField] private GameObject _particleSystemOnCollectPrefab;
     
     public static Action onTapeCollected;
 
@@ -17,6 +19,7 @@ public class TapeCollectible : MonoBehaviour
             AudioManager.PlaySound(_tapePiece);
             SwitchLights();
             SayTapeCollected();
+            Instantiate(_particleSystemOnCollectPrefab, transform.position, _particleSystemOnCollectPrefab.transform.rotation);
             gameObject.SetActive(false);
         }
     }

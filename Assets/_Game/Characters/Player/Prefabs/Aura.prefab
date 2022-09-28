@@ -142,7 +142,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6136739863184431439, guid: 5b2cfce6d1939524c92bfa43605f1e84, type: 3}
       propertyPath: pointLightRadius
-      value: 0.7
+      value: 0.8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5b2cfce6d1939524c92bfa43605f1e84, type: 3}
@@ -275,7 +275,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6136739863184431439, guid: 5b2cfce6d1939524c92bfa43605f1e84, type: 3}
       propertyPath: pointLightRadius
-      value: 1.15
+      value: 1.25
       objectReference: {fileID: 0}
     - target: {fileID: 6136739863184431439, guid: 5b2cfce6d1939524c92bfa43605f1e84, type: 3}
       propertyPath: _boundsCentreOffset.x

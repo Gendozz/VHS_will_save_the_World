@@ -5,6 +5,8 @@ public class HealthCollectible : MonoBehaviour
 {
     [SerializeField] private int _healthAmount;
 
+    [SerializeField] private GameObject _particleSystemOnCollectPrefab;
+
     private bool _wasTaken;
 
     private void OnTriggerEnter(Collider other)
@@ -12,6 +14,8 @@ public class HealthCollectible : MonoBehaviour
         if(other.TryGetComponent<IHealable>(out IHealable healable))
         {
             _wasTaken = !healable.RestoreHealth(_healthAmount);
+            Instantiate(_particleSystemOnCollectPrefab, transform.position, _particleSystemOnCollectPrefab.transform.rotation);
+
             gameObject.SetActive(_wasTaken);
             
         }
