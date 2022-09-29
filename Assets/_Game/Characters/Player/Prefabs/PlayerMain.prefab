@@ -170,7 +170,7 @@ MonoBehaviour:
     m_Bits: 128
   _fallGravityMultiplier: 4
   _fallGravityVelocityYStart: 14
-  _backForceOnJump: 14
+  _backForceOnJump: 16.5
   _haveDoubleJumpAbility: 0
   _jumpForce: 15
   _trampolineJumpForce: 20
