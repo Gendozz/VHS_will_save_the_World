@@ -9,6 +9,8 @@ public class TapeCollectible : MonoBehaviour
     [SerializeField] private Sounds _tapePiece;
 
     [SerializeField] private GameObject _particleSystemOnCollectPrefab;
+
+    [SerializeField] private GameObject _tapePermanentHighlight;
     
     public static Action onTapeCollected;
 
@@ -20,6 +22,7 @@ public class TapeCollectible : MonoBehaviour
             SwitchLights();
             SayTapeCollected();
             Instantiate(_particleSystemOnCollectPrefab, transform.position, _particleSystemOnCollectPrefab.transform.rotation);
+            _tapePermanentHighlight.SetActive(false);
             gameObject.SetActive(false);
         }
     }

@@ -30,11 +30,14 @@ public class LevelFlowController : MonoBehaviour
     private void OnEnable()
     {
         _playerHealth.onOutOfLifes += DoAfterPlayerDieActions;
+        ShowRemainingTapes.onShowingRemainingTapes += SwitchPlayerMovement;
     }
 
     private void OnDisable()
     {
         _playerHealth.onOutOfLifes -= DoAfterPlayerDieActions;
+        ShowRemainingTapes.onShowingRemainingTapes -= SwitchPlayerMovement;
+
     }
 
     private void Update()
@@ -76,6 +79,16 @@ public class LevelFlowController : MonoBehaviour
         {
             _enemy3LookAtPlayer[i].enabled = needMotions;
             _enemy3AttackAoeDisplay[i].enabled = needMotions;
+        }
+    }
+
+    private void SwitchPlayerMovement(bool needMotions)
+    {
+        for (int i = 0; i < _playerInputs.Length; i++)
+        {
+            _playerInputs[i].enabled = !needMotions;
+            _playerModelRotations[i].enabled = !needMotions;
+            _playerMovements[i].PauseUnpauseActions(needMotions);
         }
     }
 }

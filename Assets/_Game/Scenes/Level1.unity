@@ -2454,6 +2454,7 @@ Transform:
   m_Children:
   - {fileID: 1537501214}
   - {fileID: 1795766089}
+  - {fileID: 2007684584}
   - {fileID: 1640831753}
   m_Father: {fileID: 852722580}
   m_RootOrder: 1
@@ -4703,11 +4704,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7134526227119681806, guid: ca7afbaec9273cc4d9084906258983ef, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -3.61
+      value: -4.1
       objectReference: {fileID: 0}
     - target: {fileID: 7134526227119681806, guid: ca7afbaec9273cc4d9084906258983ef, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -6.7599998
+      value: -6.7999997
       objectReference: {fileID: 0}
     - target: {fileID: 7134526227119681806, guid: ca7afbaec9273cc4d9084906258983ef, type: 3}
       propertyPath: m_LocalPosition.z
@@ -5680,11 +5681,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4649936741893627902, guid: 577e3cec71230744da8c24092afb5112, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.6735303
+      value: 1.6735306
       objectReference: {fileID: 0}
     - target: {fileID: 4649936741893627902, guid: 577e3cec71230744da8c24092afb5112, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -6.7599998
+      value: -6.7999997
       objectReference: {fileID: 0}
     - target: {fileID: 4649936741893627902, guid: 577e3cec71230744da8c24092afb5112, type: 3}
       propertyPath: m_LocalPosition.z
@@ -7250,6 +7251,26 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1866546098}
     m_Modifications:
+    - target: {fileID: 1648098178838730523, guid: 4c08062868937ef48b03749c0a2095b6, type: 3}
+      propertyPath: far clip plane
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1648098178838730523, guid: 4c08062868937ef48b03749c0a2095b6, type: 3}
+      propertyPath: m_projectionMatrixMode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3112932176661913440, guid: 4c08062868937ef48b03749c0a2095b6, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 3787742000896809621, guid: 4c08062868937ef48b03749c0a2095b6, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 3787742000896809622, guid: 4c08062868937ef48b03749c0a2095b6, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 4925396538503970033, guid: 4c08062868937ef48b03749c0a2095b6, type: 3}
       propertyPath: _tapePiece
       value: 4
@@ -7258,6 +7279,10 @@ PrefabInstance:
       propertyPath: _lerpLights.Array.size
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 4925396538503970033, guid: 4c08062868937ef48b03749c0a2095b6, type: 3}
+      propertyPath: _tapePermanentHighlight
+      value: 
+      objectReference: {fileID: 2088197869}
     - target: {fileID: 4925396538503970033, guid: 4c08062868937ef48b03749c0a2095b6, type: 3}
       propertyPath: _lerpLights.Array.data[0]
       value: 
@@ -7321,6 +7346,10 @@ PrefabInstance:
     - target: {fileID: 4925396538503970037, guid: 4c08062868937ef48b03749c0a2095b6, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7251496195993311253, guid: 4c08062868937ef48b03749c0a2095b6, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4c08062868937ef48b03749c0a2095b6, type: 3}
@@ -7686,6 +7715,26 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 302259788}
     m_Modifications:
+    - target: {fileID: 1648098178838730523, guid: 4c08062868937ef48b03749c0a2095b6, type: 3}
+      propertyPath: far clip plane
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1648098178838730523, guid: 4c08062868937ef48b03749c0a2095b6, type: 3}
+      propertyPath: m_projectionMatrixMode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3112932176661913440, guid: 4c08062868937ef48b03749c0a2095b6, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 3787742000896809621, guid: 4c08062868937ef48b03749c0a2095b6, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 3787742000896809622, guid: 4c08062868937ef48b03749c0a2095b6, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 4925396538503970033, guid: 4c08062868937ef48b03749c0a2095b6, type: 3}
       propertyPath: _tapePiece
       value: 5
@@ -7694,6 +7743,10 @@ PrefabInstance:
       propertyPath: _lerpLights.Array.size
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 4925396538503970033, guid: 4c08062868937ef48b03749c0a2095b6, type: 3}
+      propertyPath: _tapePermanentHighlight
+      value: 
+      objectReference: {fileID: 1285891814}
     - target: {fileID: 4925396538503970033, guid: 4c08062868937ef48b03749c0a2095b6, type: 3}
       propertyPath: _lerpLights.Array.data[0]
       value: 
@@ -7761,6 +7814,10 @@ PrefabInstance:
     - target: {fileID: 4925396538503970037, guid: 4c08062868937ef48b03749c0a2095b6, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7251496195993311253, guid: 4c08062868937ef48b03749c0a2095b6, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4c08062868937ef48b03749c0a2095b6, type: 3}
@@ -13509,6 +13566,26 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1906539316}
     m_Modifications:
+    - target: {fileID: 1648098178838730523, guid: 4c08062868937ef48b03749c0a2095b6, type: 3}
+      propertyPath: far clip plane
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1648098178838730523, guid: 4c08062868937ef48b03749c0a2095b6, type: 3}
+      propertyPath: m_projectionMatrixMode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3112932176661913440, guid: 4c08062868937ef48b03749c0a2095b6, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 3787742000896809621, guid: 4c08062868937ef48b03749c0a2095b6, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 3787742000896809622, guid: 4c08062868937ef48b03749c0a2095b6, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 4925396538503970033, guid: 4c08062868937ef48b03749c0a2095b6, type: 3}
       propertyPath: _tapePiece
       value: 3
@@ -13517,6 +13594,10 @@ PrefabInstance:
       propertyPath: _lerpLights.Array.size
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 4925396538503970033, guid: 4c08062868937ef48b03749c0a2095b6, type: 3}
+      propertyPath: _tapePermanentHighlight
+      value: 
+      objectReference: {fileID: 1456156947153930635}
     - target: {fileID: 4925396538503970033, guid: 4c08062868937ef48b03749c0a2095b6, type: 3}
       propertyPath: _lerpLights.Array.data[0]
       value: 
@@ -13580,6 +13661,10 @@ PrefabInstance:
     - target: {fileID: 4925396538503970037, guid: 4c08062868937ef48b03749c0a2095b6, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7251496195993311253, guid: 4c08062868937ef48b03749c0a2095b6, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4c08062868937ef48b03749c0a2095b6, type: 3}
@@ -13950,6 +14035,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 270bef70e3ecf3e498de69a29e4d615e, type: 3}
+--- !u!1 &1036420342 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1456156947711145780, guid: 270bef70e3ecf3e498de69a29e4d615e, type: 3}
+  m_PrefabInstance: {fileID: 1036420341}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1047511169
 GameObject:
   m_ObjectHideFlags: 0
@@ -15047,6 +15137,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 270bef70e3ecf3e498de69a29e4d615e, type: 3}
+--- !u!1 &1132356495 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1456156947711145780, guid: 270bef70e3ecf3e498de69a29e4d615e, type: 3}
+  m_PrefabInstance: {fileID: 1132356494}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1151531002
 GameObject:
   m_ObjectHideFlags: 0
@@ -16670,6 +16765,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 270bef70e3ecf3e498de69a29e4d615e, type: 3}
+--- !u!1 &1285891814 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1456156947711145780, guid: 270bef70e3ecf3e498de69a29e4d615e, type: 3}
+  m_PrefabInstance: {fileID: 1285891813}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1288298747
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -17666,6 +17766,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 270bef70e3ecf3e498de69a29e4d615e, type: 3}
+--- !u!1 &1350909837 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1456156947711145780, guid: 270bef70e3ecf3e498de69a29e4d615e, type: 3}
+  m_PrefabInstance: {fileID: 1350909836}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1364081997
 GameObject:
   m_ObjectHideFlags: 0
@@ -18147,6 +18252,26 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 938499700}
     m_Modifications:
+    - target: {fileID: 1648098178838730523, guid: 4c08062868937ef48b03749c0a2095b6, type: 3}
+      propertyPath: far clip plane
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1648098178838730523, guid: 4c08062868937ef48b03749c0a2095b6, type: 3}
+      propertyPath: m_projectionMatrixMode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3112932176661913440, guid: 4c08062868937ef48b03749c0a2095b6, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 3787742000896809621, guid: 4c08062868937ef48b03749c0a2095b6, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 3787742000896809622, guid: 4c08062868937ef48b03749c0a2095b6, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 4925396538503970033, guid: 4c08062868937ef48b03749c0a2095b6, type: 3}
       propertyPath: _tapePiece
       value: 7
@@ -18155,6 +18280,10 @@ PrefabInstance:
       propertyPath: _lerpLights.Array.size
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 4925396538503970033, guid: 4c08062868937ef48b03749c0a2095b6, type: 3}
+      propertyPath: _tapePermanentHighlight
+      value: 
+      objectReference: {fileID: 1350909837}
     - target: {fileID: 4925396538503970033, guid: 4c08062868937ef48b03749c0a2095b6, type: 3}
       propertyPath: _lerpLights.Array.data[0]
       value: 
@@ -18218,6 +18347,10 @@ PrefabInstance:
     - target: {fileID: 4925396538503970037, guid: 4c08062868937ef48b03749c0a2095b6, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7251496195993311253, guid: 4c08062868937ef48b03749c0a2095b6, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4c08062868937ef48b03749c0a2095b6, type: 3}
@@ -21104,11 +21237,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5987480786865510300, guid: 9332198de8928ce418fad1c876476546, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -3.61
+      value: -4.1
       objectReference: {fileID: 0}
     - target: {fileID: 5987480786865510300, guid: 9332198de8928ce418fad1c876476546, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -7.96
+      value: -8
       objectReference: {fileID: 0}
     - target: {fileID: 5987480786865510300, guid: 9332198de8928ce418fad1c876476546, type: 3}
       propertyPath: m_LocalPosition.z
@@ -22111,7 +22244,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 2e9eb3cb6f6af6a4aabf17d43ed4c1ee, type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 2e9eb3cb6f6af6a4aabf17d43ed4c1ee, type: 3}
       propertyPath: m_LocalScale.x
@@ -27902,6 +28035,65 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2007684583
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2007684584}
+  - component: {fileID: 2007684586}
+  - component: {fileID: 2007684585}
+  m_Layer: 0
+  m_Name: RemainingTapesHighlight
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2007684584
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2007684583}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 82.24394, y: -14.51, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 205840949}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2007684585
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2007684583}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: edb5fff6f3ad98341892d5c46eae8f08, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _flybyCamAnimation: {fileID: -3391336123341792772, guid: 3be3c72aa9c5c3e4683ba0e72068f156, type: 2}
+--- !u!65 &2007684586
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2007684583}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.6503143, y: 3, z: 1}
+  m_Center: {x: -0.049827576, y: 0, z: 0}
 --- !u!1001 &2008386416
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -28340,6 +28532,26 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 832433344}
     m_Modifications:
+    - target: {fileID: 1648098178838730523, guid: 4c08062868937ef48b03749c0a2095b6, type: 3}
+      propertyPath: far clip plane
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1648098178838730523, guid: 4c08062868937ef48b03749c0a2095b6, type: 3}
+      propertyPath: m_projectionMatrixMode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3112932176661913440, guid: 4c08062868937ef48b03749c0a2095b6, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 3787742000896809621, guid: 4c08062868937ef48b03749c0a2095b6, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 3787742000896809622, guid: 4c08062868937ef48b03749c0a2095b6, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 4925396538503970033, guid: 4c08062868937ef48b03749c0a2095b6, type: 3}
       propertyPath: _tapePiece
       value: 8
@@ -28348,6 +28560,10 @@ PrefabInstance:
       propertyPath: _lerpLights.Array.size
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 4925396538503970033, guid: 4c08062868937ef48b03749c0a2095b6, type: 3}
+      propertyPath: _tapePermanentHighlight
+      value: 
+      objectReference: {fileID: 1132356495}
     - target: {fileID: 4925396538503970033, guid: 4c08062868937ef48b03749c0a2095b6, type: 3}
       propertyPath: _lerpLights.Array.data[0]
       value: 
@@ -28411,6 +28627,10 @@ PrefabInstance:
     - target: {fileID: 4925396538503970037, guid: 4c08062868937ef48b03749c0a2095b6, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7251496195993311253, guid: 4c08062868937ef48b03749c0a2095b6, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4c08062868937ef48b03749c0a2095b6, type: 3}
@@ -29455,6 +29675,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 270bef70e3ecf3e498de69a29e4d615e, type: 3}
+--- !u!1 &2088197869 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1456156947711145780, guid: 270bef70e3ecf3e498de69a29e4d615e, type: 3}
+  m_PrefabInstance: {fileID: 2088197868}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2090776750
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -29462,6 +29687,26 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 473482717}
     m_Modifications:
+    - target: {fileID: 1648098178838730523, guid: 4c08062868937ef48b03749c0a2095b6, type: 3}
+      propertyPath: far clip plane
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1648098178838730523, guid: 4c08062868937ef48b03749c0a2095b6, type: 3}
+      propertyPath: m_projectionMatrixMode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3112932176661913440, guid: 4c08062868937ef48b03749c0a2095b6, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 3787742000896809621, guid: 4c08062868937ef48b03749c0a2095b6, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 3787742000896809622, guid: 4c08062868937ef48b03749c0a2095b6, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 4925396538503970033, guid: 4c08062868937ef48b03749c0a2095b6, type: 3}
       propertyPath: _tapePiece
       value: 6
@@ -29470,6 +29715,10 @@ PrefabInstance:
       propertyPath: _lerpLights.Array.size
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 4925396538503970033, guid: 4c08062868937ef48b03749c0a2095b6, type: 3}
+      propertyPath: _tapePermanentHighlight
+      value: 
+      objectReference: {fileID: 1036420342}
     - target: {fileID: 4925396538503970033, guid: 4c08062868937ef48b03749c0a2095b6, type: 3}
       propertyPath: _lerpLights.Array.data[0]
       value: 
@@ -29537,6 +29786,10 @@ PrefabInstance:
     - target: {fileID: 4925396538503970037, guid: 4c08062868937ef48b03749c0a2095b6, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7251496195993311253, guid: 4c08062868937ef48b03749c0a2095b6, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4c08062868937ef48b03749c0a2095b6, type: 3}
@@ -30779,6 +31032,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 270bef70e3ecf3e498de69a29e4d615e, type: 3}
+--- !u!1 &1456156947153930635 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1456156947711145780, guid: 270bef70e3ecf3e498de69a29e4d615e, type: 3}
+  m_PrefabInstance: {fileID: 1456156947153930634}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2458592632907037407
 PrefabInstance:
   m_ObjectHideFlags: 0
