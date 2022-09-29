@@ -310,7 +310,7 @@ public class PlayerMovement : MonoBehaviour
         _rigidbody.velocity = new Vector3(_rigidbody.velocity.x, jumpForce, 0);
         _shouldDetectGround = false;
         IsGrounded = false;
-        StartCoroutine(RestoreGroundDetection(0.5f));
+        StartCoroutine(RestoreGroundDetection(0));
     }
 
     private void WallJump()
