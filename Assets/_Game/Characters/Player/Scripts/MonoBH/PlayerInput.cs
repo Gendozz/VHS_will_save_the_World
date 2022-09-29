@@ -44,6 +44,11 @@ public class PlayerInput : MonoBehaviour
                     IsGrappleButtonPressed = Input.GetKeyDown(KeyCode.R);
                     break;
             }
+            if(Input.GetKey(KeyCode.A) && Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.LeftArrow) && Input.GetKey(KeyCode.RightArrow) ||
+                Input.GetKey(KeyCode.A) && Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.D) && Input.GetKey(KeyCode.LeftArrow))
+            {
+                HorizontalDirection = 0;
+            }
 
         }
     }
