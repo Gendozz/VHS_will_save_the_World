@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 [RequireComponent(typeof(Shooter), typeof(BoxCollider))]
 public class ShootingTrap : MonoBehaviour

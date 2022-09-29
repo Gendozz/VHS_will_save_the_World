@@ -3,11 +3,19 @@
 [RequireComponent(typeof(Collider))]
 public class PushPlayerOnContact : MonoBehaviour
 {
+    [SerializeField] private bool _isOneTimeUse;
+
+    private bool _wasContact;
+
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.TryGetComponent<PlayerMovement>(out PlayerMovement playerMovement))
+        if (!_wasContact && collision.gameObject.TryGetComponent<PlayerMovement>(out PlayerMovement playerMovement))
         {
             playerMovement.ApplyExternalForce(transform.position);
+            if (_isOneTimeUse)
+            {
+                _wasContact = true;
+            }
         }
     }
 }
