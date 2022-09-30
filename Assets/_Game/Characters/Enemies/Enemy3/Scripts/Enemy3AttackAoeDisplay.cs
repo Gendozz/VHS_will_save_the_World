@@ -16,6 +16,7 @@ public class Enemy3AttackAoeDisplay : MonoBehaviour
     [SerializeField] private GameObject _objAoe;
     [SerializeField] private Enemy3LookAtPlayer _enemy3LookAtPlayer;
     [SerializeField] private Transform _playerTransform;
+    [SerializeField] private ParticleSystem _particleSystem;
 
     private Vector3 _startScaleAOE;
     private Vector3 _radiusAoe;
@@ -26,6 +27,9 @@ public class Enemy3AttackAoeDisplay : MonoBehaviour
         _isDelayAttackPassed = true;
         _startScaleAOE = _objAoe.transform.localScale;
         _radiusAoe = _startScaleAOE * _scaleMaxAoeMultiply;
+
+        var main = _particleSystem.main;
+        main.simulationSpeed = _timeToMaxAoe / 10;
     }
 
     private void Update()
@@ -52,22 +56,11 @@ public class Enemy3AttackAoeDisplay : MonoBehaviour
         Vector3 startScale = _objAoe.transform.localScale;
         var elapsedTime = 0.0f;
 
+        _particleSystem.Play();
+
         while ((elapsedTime += Time.deltaTime) <= _timeToMaxAoe)
         {
             _objAoe.transform.localScale = Vector3.Lerp(startScale, _radiusAoe * 2, elapsedTime / _timeToMaxAoe);
-
-            yield return null;
-        }
-
-        yield return new WaitForSeconds(_delayTimeMaxStateAoe);
-
-        startScale = _objAoe.transform.localScale;
-
-        elapsedTime = 0.0f;
-
-        while ((elapsedTime += Time.deltaTime) <= _timeToMinAoe)
-        {
-            _objAoe.transform.localScale = Vector3.Lerp(startScale, _startScaleAOE, elapsedTime / _timeToMinAoe);
 
             yield return null;
         }

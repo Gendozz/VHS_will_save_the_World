@@ -508,6 +508,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5837882582818180009}
   - component: {fileID: 5837882582818180008}
+  - component: {fileID: 1439254901747200005}
   m_Layer: 0
   m_Name: Door
   m_TagString: Untagged
@@ -558,6 +559,19 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!65 &1439254901747200005
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6507565035401842963}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 2.16, z: 2.74}
+  m_Center: {x: 0, y: 1, z: 0}
 --- !u!1 &8552902743524159844
 GameObject:
   m_ObjectHideFlags: 0
@@ -668,7 +682,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8899018909033608211}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.52, y: 1.4478993, z: -0.050603867}
+  m_LocalPosition: {x: -0.614, y: 1.4478993, z: -0.050603867}
   m_LocalScale: {x: 1, y: 3, z: 2}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -719,10 +733,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _timeUntilRes: 10
   _enemy3LookAtPlayer: {fileID: 0}
-  _colliderResizing: {fileID: 0}
-  _animator: {fileID: 0}
-  _idleCollider: {fileID: 0}
-  _agroCollider: {fileID: 0}
-  _components:
-  - {fileID: 0}
-  - {fileID: 0}
+  _colliderResizingE3: {fileID: 0}
+  _animatorE3: {fileID: 0}
+  _idleColliderE3: {fileID: 0}
+  _agroColliderE3: {fileID: 0}
+  _componentsE3: []

@@ -25,13 +25,13 @@ public class AbilityStealing : MonoBehaviour
     private IEnumerator TimerDoubleJump()
     {
         yield return new WaitForSeconds(_timeDoubleJump);
-        Debug.Log("����������� �����������");
         _playerMovement.SetDoubleJumpAbility(false);
     }
 
     public void StartTimerBreakingDoors()
     {
         _uiAbility.TimerDisplayBreakingDoors(_timeBreakingDoors);
+        IsStartTimerBreakDoors = true;
         onStartBreakDoorAbility?.Invoke();
         StopAllCoroutines();
         StartCoroutine(TimerBreakingDoors());
@@ -40,7 +40,6 @@ public class AbilityStealing : MonoBehaviour
     private IEnumerator TimerBreakingDoors()
     {
         yield return new WaitForSeconds(_timeBreakingDoors);
-        Debug.Log("����������� �����������");
         IsStartTimerBreakDoors = false;
         onEndBreakDoorAbility?.Invoke();
     }
