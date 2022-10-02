@@ -133,6 +133,8 @@ public class PlayerMovement : MonoBehaviour
 
     private bool _shoudDetectWall = true;
 
+    private bool _isJumpingFromWall;
+
     public Action onWall;
 
 
@@ -220,6 +222,7 @@ public class PlayerMovement : MonoBehaviour
             ApplyInputToJump();
         }
 
+        // Autojump on trampoline
         if (_isOnTrampoline)
         {
             Jump(_jumpForce);
@@ -234,7 +237,7 @@ public class PlayerMovement : MonoBehaviour
             case false:
                 if (_isJumpInput)
                 {
-                    if (_isInTrampolineTrigger)
+                    if (_isInTrampolineTrigger)     
                     {
                         Jump(_trampolineJumpForce);
                     }
@@ -291,13 +294,20 @@ public class PlayerMovement : MonoBehaviour
                 {
                     _rigidbody.velocity = new Vector3(_speedCurve.Evaluate(_playerInput.HorizontalDirection), _rigidbody.velocity.y, _rigidbody.velocity.z);
                 }
+                _isJumpingFromWall = false;
             }
-            else
+            else 
             {
-                //_rigidbody.velocity = new Vector3(_speedCurve.Evaluate(_playerInput.HorizontalDirection), _rigidbody.velocity.y, _rigidbody.velocity.z);
 
-                _rigidbody.velocity += _backForceOnJump * Time.deltaTime * new Vector3(Mathf.Sign(_playerInput.HorizontalDirection), 0, 0);
-                _rigidbody.velocity = new Vector3(Mathf.Clamp(_rigidbody.velocity.x, _speedCurve.Evaluate(-1), _speedCurve.Evaluate(1)), _rigidbody.velocity.y, _rigidbody.velocity.z);
+                if (_isJumpingFromWall)
+                {
+                    _rigidbody.velocity += _backForceOnJump * Time.deltaTime * new Vector3(Mathf.Sign(_playerInput.HorizontalDirection), 0, 0);
+                    _rigidbody.velocity = new Vector3(Mathf.Clamp(_rigidbody.velocity.x, _speedCurve.Evaluate(-1), _speedCurve.Evaluate(1)), _rigidbody.velocity.y, _rigidbody.velocity.z);
+                }
+                else
+                {
+                    _rigidbody.velocity = new Vector3(_speedCurve.Evaluate(_playerInput.HorizontalDirection), _rigidbody.velocity.y, _rigidbody.velocity.z);
+                }                
             }
         }
     }
@@ -322,6 +332,7 @@ public class PlayerMovement : MonoBehaviour
         StartCoroutine(RestoreWallDetection(_blockWallDetectionDuration));
         _blockMovementRoutine = StartCoroutine(BlockMovementOnSeconds(_afterWallJumpBlockMovementDuration));
         _rigidbody.velocity = new Vector3(_wallJumpSideForce * _offTheWallDirection, _wallJumpUpForce, _rigidbody.velocity.z);
+        _isJumpingFromWall = true;
     }
 
     private IEnumerator RestoreWallDetection(float delay)
@@ -361,6 +372,8 @@ public class PlayerMovement : MonoBehaviour
             {
                 InterruptBlockMovementRoutine();
             }
+
+            _isJumpingFromWall = false;
         }
     }
 

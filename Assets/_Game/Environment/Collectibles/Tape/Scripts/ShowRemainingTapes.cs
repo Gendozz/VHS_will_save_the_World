@@ -1,6 +1,5 @@
 using System;
 using UnityEngine;
-using UnityEngine.Playables;
 
 [RequireComponent(typeof(BoxCollider))]
 public class ShowRemainingTapes : MonoBehaviour
@@ -14,7 +13,7 @@ public class ShowRemainingTapes : MonoBehaviour
     private void Start()
     {
         _flybyCamDuration = _flybyCamAnimation.averageDuration;
-        Debug.Log($"_flybyCamDuration duration is {_flybyCamDuration}");
+        //Debug.Log($"_flybyCamDuration duration is {_flybyCamDuration}");
     }
 
     private void OnTriggerStay(Collider other)
