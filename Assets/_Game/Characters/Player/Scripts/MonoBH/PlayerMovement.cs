@@ -294,6 +294,8 @@ public class PlayerMovement : MonoBehaviour
             }
             else
             {
+                //_rigidbody.velocity = new Vector3(_speedCurve.Evaluate(_playerInput.HorizontalDirection), _rigidbody.velocity.y, _rigidbody.velocity.z);
+
                 _rigidbody.velocity += _backForceOnJump * Time.deltaTime * new Vector3(Mathf.Sign(_playerInput.HorizontalDirection), 0, 0);
                 _rigidbody.velocity = new Vector3(Mathf.Clamp(_rigidbody.velocity.x, _speedCurve.Evaluate(-1), _speedCurve.Evaluate(1)), _rigidbody.velocity.y, _rigidbody.velocity.z);
             }
