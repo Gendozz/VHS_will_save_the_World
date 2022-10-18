@@ -147,11 +147,11 @@ public class PlayerMovement : MonoBehaviour
 
     private bool _isGrappling = false;
 
-    private bool _isOnSlippery = false;
+    public bool IsOnSlippery { get; private set; } = false;
 
-    private bool _isOnTrampoline = false;
+    public bool IsOnTrampoline { get; private set; } = false;
 
-    private bool _isInTrampolineTrigger = false;
+    public bool IsInTrampolineTrigger { get; private set; } = false;
     
 
     // For animation
@@ -223,7 +223,7 @@ public class PlayerMovement : MonoBehaviour
         }
 
         // Autojump on trampoline
-        if (_isOnTrampoline)
+        if (IsOnTrampoline)
         {
             Jump(_jumpForce);
         }
@@ -237,11 +237,11 @@ public class PlayerMovement : MonoBehaviour
             case false:
                 if (_isJumpInput)
                 {
-                    if (_isInTrampolineTrigger)     
+                    if (IsInTrampolineTrigger)     
                     {
                         Jump(_trampolineJumpForce);
                     }
-                    else if (IsGrounded || _isOnSlippery)
+                    else if (IsGrounded || IsOnSlippery)
                     {
                         Jump(_jumpForce);
                     }
@@ -254,11 +254,11 @@ public class PlayerMovement : MonoBehaviour
             case true:
                 if (_isJumpInput)
                 {
-                    if (_isInTrampolineTrigger)
+                    if (IsInTrampolineTrigger)
                     {
                         Jump(_trampolineJumpForce);
                     }
-                    else if (IsGrounded || _isOnSlippery)
+                    else if (IsGrounded || IsOnSlippery)
                     {
                         Jump(_jumpForce);
                         _canDoubleJump = true;
@@ -286,7 +286,7 @@ public class PlayerMovement : MonoBehaviour
         {
             if (IsGrounded)
             {
-                if (!_isOnSlippery)
+                if (!IsOnSlippery)
                 {
                     _rigidbody.velocity = new Vector3(_speedCurve.Evaluate(_playerInput.HorizontalDirection), _rigidbody.velocity.y, _rigidbody.velocity.z);
                 }
@@ -350,8 +350,8 @@ public class PlayerMovement : MonoBehaviour
     private void CheckGround()
     {
         IsGrounded = Physics.OverlapSphereNonAlloc(transform.position, _groundCheckRadius, _groundCollider, _groundLayer) > 0;
-        _isOnSlippery = Physics.OverlapSphereNonAlloc(transform.position, _groundCheckRadius, _slipperyCollider, _slipperyLayer) > 0;
-        _isOnTrampoline = Physics.OverlapSphereNonAlloc(transform.position, _groundCheckRadius, _trampolineCollider, _trampolineLayer) > 0;
+        IsOnSlippery = Physics.OverlapSphereNonAlloc(transform.position, _groundCheckRadius, _slipperyCollider, _slipperyLayer) > 0;
+        IsOnTrampoline = Physics.OverlapSphereNonAlloc(transform.position, _groundCheckRadius, _trampolineCollider, _trampolineLayer) > 0;
     }
 
     private void CheckWall()
@@ -425,7 +425,7 @@ public class PlayerMovement : MonoBehaviour
     {
         if (other.gameObject.CompareTag(StringConsts.TRAMPOLINE))
         {
-            _isInTrampolineTrigger = true;
+            IsInTrampolineTrigger = true;
         }
         if (other.gameObject.CompareTag(StringConsts.SPRINGTRAP))
         {
@@ -438,7 +438,7 @@ public class PlayerMovement : MonoBehaviour
     {
         if (other.gameObject.CompareTag(StringConsts.TRAMPOLINE))
         {
-            _isInTrampolineTrigger = false;
+            IsInTrampolineTrigger = false;
         }
         if (other.gameObject.CompareTag(StringConsts.SPRINGTRAP))
         {

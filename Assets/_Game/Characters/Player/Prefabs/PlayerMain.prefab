@@ -22,6 +22,8 @@ GameObject:
   - component: {fileID: 81582893}
   - component: {fileID: 871622685}
   - component: {fileID: 3568743226998430310}
+  - component: {fileID: 6558624195018615561}
+  - component: {fileID: 3790316727196863995}
   m_Layer: 9
   m_Name: PlayerMain
   m_TagString: Untagged
@@ -277,7 +279,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6bb187174bbb52c43a1562c4c9d4d67b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxLives: 194
+  maxLives: 10
   _livesOnStart: 5
   _invulnerabilityDuration: 1.5
   currentLives: 0
@@ -428,6 +430,38 @@ MonoBehaviour:
   _timeBreakingDoors: 10
   _playerMovement: {fileID: 5987480786865510303}
   _uiAbility: {fileID: 0}
+--- !u!114 &6558624195018615561
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5987480786865510301}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3a04bbde7aa971b42babb3de81d199a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _playerMovement: {fileID: 5987480786865510303}
+  _playerInput: {fileID: 5987480786865510297}
+  _playerHealth: {fileID: 533797386109943541}
+--- !u!114 &3790316727196863995
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5987480786865510301}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a9c1581325dfb3c4a9ca1773e7d2f26b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _targetTransform: {fileID: 5987480786865510300}
+  _yPositionOfMusicChanging: -9
+  _checkYPositionPeriod: 1
+  _upLevelMusic: 12
+  _downLevelMusic: 13
 --- !u!1001 &6895110523773578925
 PrefabInstance:
   m_ObjectHideFlags: 0

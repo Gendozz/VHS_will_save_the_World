@@ -46,3 +46,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _tapesText: {fileID: 0}
   _textBeforeTapes: 'Tapes: '
+  _tapesBar: {fileID: 0}
+  _tapesPieces: 15000000160000001700000018000000190000001a000000040000000400000004000000040000000400000004000000

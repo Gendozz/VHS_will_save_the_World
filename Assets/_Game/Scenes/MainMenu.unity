@@ -1322,7 +1322,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1273333296}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: JSAM.AudioPlayer, Assembly-CSharp
         m_MethodName: PlaySound
         m_Mode: 1
@@ -2780,7 +2780,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0.75, y: 1}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 10, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -3252,61 +3252,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _text: {fileID: 2010816869}
---- !u!1 &828570596
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 828570597}
-  - component: {fileID: 828570598}
-  m_Layer: 0
-  m_Name: Audio Player
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &828570597
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 828570596}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 2024719883}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &828570598
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 828570596}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d2c6cfe8bfc0d31409a979c41b0c8d71, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  spatialSound: 0
-  loopSound: 0
-  priority: 128
-  pitchShift: 0.05
-  delay: 0
-  ignoreTimeScale: 0
-  sound: {fileID: 11400000, guid: 5e2fc75d57a83f24e8306772db04c18a, type: 2}
-  onStart: 0
-  onEnable: 0
-  onDisable: 2
-  onDestroy: 0
 --- !u!1 &849725004
 GameObject:
   m_ObjectHideFlags: 0
@@ -3785,7 +3730,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &894035388
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3892,7 +3837,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 10, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -4985,7 +4930,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 828570598}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: JSAM.AudioPlayer, Assembly-CSharp
         m_MethodName: PlaySound
         m_Mode: 1
@@ -5316,61 +5261,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bfdb62d673b4be5459f2566895679596, type: 3}
---- !u!1 &1273333294
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1273333295}
-  - component: {fileID: 1273333296}
-  m_Layer: 0
-  m_Name: Audio Player
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1273333295
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1273333294}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 2024719883}
-  m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1273333296
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1273333294}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d2c6cfe8bfc0d31409a979c41b0c8d71, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  spatialSound: 0
-  loopSound: 0
-  priority: 128
-  pitchShift: 0.05
-  delay: 0
-  ignoreTimeScale: 0
-  sound: {fileID: 11400000, guid: 5e2fc75d57a83f24e8306772db04c18a, type: 2}
-  onStart: 0
-  onEnable: 0
-  onDisable: 2
-  onDestroy: 0
 --- !u!1 &1311204676
 GameObject:
   m_ObjectHideFlags: 0
@@ -5883,8 +5773,8 @@ RectTransform:
   m_Father: {fileID: 1986907179}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.75, y: 0}
-  m_AnchorMax: {x: 0.75, y: 1}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -6496,9 +6386,27 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   audioFileObjects:
+  - {fileID: 11400000, guid: f8aca476574d3584ba993811158499ee, type: 2}
+  - {fileID: 11400000, guid: a31fc81d60ff53a489aa0b0a1fcd9cae, type: 2}
+  - {fileID: 11400000, guid: 277dbf7dbbcc7ec41976a0c81232ffcd, type: 2}
+  - {fileID: 11400000, guid: 6ce0c1fa6e2bcbc408865ee4798df3b4, type: 2}
+  - {fileID: 11400000, guid: fe14c74e2b4bd21488c14df9e8c1636c, type: 2}
+  - {fileID: 11400000, guid: 4bee33f2ff9df134180fc45a84eef520, type: 2}
+  - {fileID: 11400000, guid: aaaf8cb9213eb3243bed600af1e51063, type: 2}
+  - {fileID: 11400000, guid: de40e57ddfa8b75429601959b3781bd9, type: 2}
+  - {fileID: 11400000, guid: 413d472fddae2524da71b17c329e5db4, type: 2}
+  - {fileID: 11400000, guid: af465baab12aea643b2a1b2991bfd705, type: 2}
   - {fileID: 11400000, guid: 5e2fc75d57a83f24e8306772db04c18a, type: 2}
   - {fileID: 11400000, guid: dd97c6bf8daf7524ba10ab4e875486e0, type: 2}
   - {fileID: 11400000, guid: d13cde9bb1d23c64da36fd67967163f8, type: 2}
+  - {fileID: 11400000, guid: 653d766cd49246442ae455147be80b46, type: 2}
+  - {fileID: 11400000, guid: d910a22865fe76447b3ceb822b80019d, type: 2}
+  - {fileID: 11400000, guid: 28fb2de1cc3bd3e48af4c5021fb2f4b9, type: 2}
+  - {fileID: 11400000, guid: 864ed8c54ff37f74182c37964e0f8315, type: 2}
+  - {fileID: 11400000, guid: 811b9e2bf4d525d4a9fdf805de310b85, type: 2}
+  - {fileID: 11400000, guid: b1eb7b401dc9e764aa0133589753b4a3, type: 2}
+  - {fileID: 11400000, guid: 07db982c9d1239c4980669ff09109004, type: 2}
+  - {fileID: 11400000, guid: 91499bc0334e2204dbb75b8d66e87fb7, type: 2}
   - {fileID: 11400000, guid: a0bffe538b024684a8e5755cb5bfd5a6, type: 2}
   - {fileID: 11400000, guid: c66848cad8deabc44bc673a017067229, type: 2}
   - {fileID: 11400000, guid: 2d3fb558628077d4b8cfacf91a695c25, type: 2}
@@ -6525,6 +6433,9 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 18a8af8ff6866d448bbc0cb014a1c52f, type: 2}
   - {fileID: 11400000, guid: 430f474cd7a40144ca168f5f131bfc42, type: 2}
   - {fileID: 11400000, guid: 7489699860b80fa4d952cfe1fd5f0cbf, type: 2}
+  - {fileID: 11400000, guid: d069107c856e8c34ba45563ed0792cc1, type: 2}
+  - {fileID: 11400000, guid: ebade4c862770a24eb719604fe0026c4, type: 2}
+  - {fileID: 11400000, guid: 83a2ff016ade5854aa13c083b3c243e8, type: 2}
   - {fileID: 11400000, guid: 2665b7aca264a4645bdcbf824c437c8c, type: 2}
   sceneSoundEnumName: JSAM.Sounds
   sceneMusicEnumName: JSAM.Music
@@ -6902,6 +6813,18 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: JSAM.AudioPlayer, Assembly-CSharp
+        m_MethodName: 
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -8230,8 +8153,8 @@ RectTransform:
   m_Father: {fileID: 91479710}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 1, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -8777,8 +8700,6 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 221266582}
-  - {fileID: 828570597}
-  - {fileID: 1273333295}
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -8968,7 +8889,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 828570598}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: JSAM.AudioPlayer, Assembly-CSharp
         m_MethodName: PlaySound
         m_Mode: 1

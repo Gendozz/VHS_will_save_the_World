@@ -113,6 +113,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _healthAmount: 1
   _particleSystemOnCollectPrefab: {fileID: 661917113635754240, guid: 960635277a7de3749be3f5bbc58fb385, type: 3}
+  _playOnCollect: 3
 --- !u!114 &2677801868170030214
 MonoBehaviour:
   m_ObjectHideFlags: 0

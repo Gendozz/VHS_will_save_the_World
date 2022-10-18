@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections;
+using JSAM;
 using UnityEngine;
 
 public class AbilityStealing : MonoBehaviour
@@ -18,6 +19,7 @@ public class AbilityStealing : MonoBehaviour
     {
         _uiAbility.TimerDisplayDoubleJump(_timeDoubleJump);
         _playerMovement.SetDoubleJumpAbility(true);
+        AudioManager.PlaySound(Sounds.DoubleJump);
         StopAllCoroutines();
         StartCoroutine(TimerDoubleJump());
     }
@@ -33,6 +35,7 @@ public class AbilityStealing : MonoBehaviour
         _uiAbility.TimerDisplayBreakingDoors(_timeBreakingDoors);
         IsStartTimerBreakDoors = true;
         onStartBreakDoorAbility?.Invoke();
+        AudioManager.PlaySound(Sounds.DoorCrash);
         StopAllCoroutines();
         StartCoroutine(TimerBreakingDoors());
     }

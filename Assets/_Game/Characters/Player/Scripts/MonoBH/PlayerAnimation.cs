@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using JSAM;
+using UnityEngine;
 
 
 public class PlayerAnimation : MonoBehaviour
@@ -33,8 +34,6 @@ public class PlayerAnimation : MonoBehaviour
             _abilityStealing.onEndBreakDoorAbility += SwitchCanKick;
         }
     }
-
-
 
     private void OnDisable()
     {
@@ -73,13 +72,12 @@ public class PlayerAnimation : MonoBehaviour
         if (_playerInput.IsAttackButtonPressed)
         {
             _animator.SetTrigger("Kick");
+            AudioManager.PlaySound(Sounds.Kick); // TODO: Move to PlayerSounds
         }
     }
 
     private void ApplyMovementAnimations()
     {
-
-
         if (_playerMovement.IsGrounded)
         {
             _animator.SetBool("isGrounded", true);

@@ -38,7 +38,7 @@ public class GameFlowController : MonoBehaviour
     {
         onProgessLoaded?.Invoke();
 
-        Debug.Log("onProgessLoaded fired");
+        //Debug.Log("onProgessLoaded fired");
     }
     private void DoPlayerWinActions()
     {
@@ -79,7 +79,7 @@ public class GameFlowController : MonoBehaviour
 
         file.Close();
 
-        Debug.Log("Game Saved");
+        //Debug.Log("Game Saved");
     }
 
 
@@ -101,7 +101,7 @@ public class GameFlowController : MonoBehaviour
                 TotalTapesAmount = save.TotalTapes;
                 LevelsComplete = save.LevelsComplete;
             }
-            Debug.Log($"Progress Loaded. Total taped collected at start {TotalTapesAmount}. Current build index saved {LevelsComplete}");
+            //Debug.Log($"Progress Loaded. Total taped collected at start {TotalTapesAmount}. Current build index saved {LevelsComplete}");
         }
     }
 

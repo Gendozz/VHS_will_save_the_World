@@ -18,7 +18,7 @@ public class TapeCollectible : MonoBehaviour
     {
         if(other.TryGetComponent<PlayerMovement>(out PlayerMovement playerMovement))
         {
-            AudioManager.PlaySound(_tapePiece);
+            //AudioManager.PlaySound(_tapePiece);
             SwitchLights();
             SayTapeCollected();
             Instantiate(_particleSystemOnCollectPrefab, transform.position, _particleSystemOnCollectPrefab.transform.rotation);
@@ -41,7 +41,7 @@ public class TapeCollectible : MonoBehaviour
 
     private void SayTapeCollected()
     {
-        Debug.Log("Tape collected");
+        //Debug.Log("Tape collected");
         onTapeCollected?.Invoke();
     }
 }

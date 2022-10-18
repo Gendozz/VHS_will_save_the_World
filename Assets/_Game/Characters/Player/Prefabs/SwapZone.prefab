@@ -200,7 +200,7 @@ MonoBehaviour:
   _playerHealth: {fileID: 0}
   _specialButtonLabelCanvas: {fileID: 0}
   _postProcessingVolumeToDelete: {fileID: 0}
-  _delayBeforeDeactivation: 1
+  _delayBeforeDeactivation: 0.5
 --- !u!1 &7606648334114786540
 GameObject:
   m_ObjectHideFlags: 0

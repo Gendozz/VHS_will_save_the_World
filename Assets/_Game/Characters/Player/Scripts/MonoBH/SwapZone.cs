@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using JSAM;
 using TMPro;
 using UnityEngine;
 
@@ -74,6 +75,14 @@ public class SwapZone : MonoBehaviour, IActivatable
 
     private void SwapPlayerClone()
     {
+        if(_isPlayerActive)
+        {
+            AudioManager.PlaySound(Sounds.PlayerSwap);  
+        }
+        else
+        {
+            AudioManager.PlaySound(Sounds.CloneSwap);
+        }
         _isPlayerActive = !_isPlayerActive;
         _playerInput.SwitchInput(_isPlayerActive);
         _cloneInput.SwitchInput(!_isPlayerActive);

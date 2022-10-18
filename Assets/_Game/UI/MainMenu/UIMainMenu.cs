@@ -13,11 +13,10 @@ public class UIMainMenu : MonoBehaviour
     [SerializeField] private TMP_Text _continueButtonText;
     private ChangeTextColorWhenHovered _changeTextColorWhenHovered;
 
-
     private void OnEnable()
     {
         GameFlowController.onProgessLoaded += EnableContinueButton;
-        Debug.Log("UIMainMenu subscribed on GameFlowController.onProgessLoaded");
+        //Debug.Log("UIMainMenu subscribed on GameFlowController.onProgessLoaded");
     }
     private void OnDisable()
     {

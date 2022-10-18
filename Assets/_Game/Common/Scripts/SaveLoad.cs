@@ -36,7 +36,7 @@ public static class SaveLoad
 
         file.Close();
 
-        Debug.Log("Game Saved");
+        //Debug.Log("Game Saved");
 
     }
 
@@ -62,7 +62,7 @@ public static class SaveLoad
 
             TotalTapesAmount = save.TotalTapes;
             LevelsComplete = save.LevelsComplete;
-            Debug.Log("Progress Loaded");
+            //Debug.Log("Progress Loaded");
         }
     }
 

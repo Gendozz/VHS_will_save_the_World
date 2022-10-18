@@ -4,19 +4,18 @@ using UnityEngine;
 
 public class Health : MonoBehaviour, IDamagable, IHealable
 {
-    [Header("Максимальное количество жизней")]
-    [SerializeField] private int maxLives;
+    [Header("Максимальное количество жизней")] [SerializeField]
+    private int maxLives;
 
-    [Header("Количество жизней на старте")]
-    [SerializeField] private int _livesOnStart;
+    [Header("Количество жизней на старте")] [SerializeField]
+    private int _livesOnStart;
 
-    [Header("Продолжительность неуязвимости после получения урона")]
-    [SerializeField] private float _invulnerabilityDuration;
+    [Header("Продолжительность неуязвимости после получения урона")] [SerializeField]
+    private float _invulnerabilityDuration;
 
 
-    [Header("FOR TEST")]
-    [SerializeField] private int currentLives;
-    
+    [Header("FOR TEST")] [SerializeField] private int currentLives;
+
     private IHealthDisplayer healthDisplayer;
 
     private bool _canTakeDamage = true;
@@ -33,6 +32,7 @@ public class Health : MonoBehaviour, IDamagable, IHealable
         {
             healthDisplayer = GetComponentInChildren<IHealthDisplayer>();
         }
+
         ChangeHealthDisplayer();
     }
 
@@ -45,13 +45,13 @@ public class Health : MonoBehaviour, IDamagable, IHealable
             ChangeHealthDisplayer();
             if (currentLives <= 0)
             {
-
                 Die();
                 return;
-            }            
+            }
+
             StartCoroutine(RestoreCanTakeDamage());
 
-            onTakeDamage?.Invoke(); 
+            onTakeDamage?.Invoke();
         }
     }
 
@@ -68,24 +68,27 @@ public class Health : MonoBehaviour, IDamagable, IHealable
             canDieObject.Die();
             return;
         }
+
         Debug.Log($"GameObject {gameObject.name} is died. Didn't you see?");
         onOutOfLifes?.Invoke();
     }
 
     public bool RestoreHealth(int healthAmountToRestore)
     {
-        if (currentLives + healthAmountToRestore > maxLives)
+        if (currentLives >= maxLives)
         {
-            currentLives = maxLives;
-            ChangeHealthDisplayer();
             return false;
         }
-        else
+
+        currentLives += healthAmountToRestore;
+        
+        if (currentLives > maxLives)
         {
-            currentLives += healthAmountToRestore;
-            ChangeHealthDisplayer();
-            return true;
+            currentLives = maxLives;
         }
+        
+        ChangeHealthDisplayer();
+        return true;
     }
 
     private void ChangeHealthDisplayer()

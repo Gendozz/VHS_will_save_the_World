@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using JSAM;
 using UnityEngine;
 
 public class TumblerSwitch : MonoBehaviour
@@ -56,6 +57,7 @@ public class TumblerSwitch : MonoBehaviour
 
     private IEnumerator Switch()
     {
+        AudioManager.PlaySound(Sounds.LeverSound);
         float estimatedTime = 0;
 
         Quaternion startRotation = _switcherTransform.rotation;

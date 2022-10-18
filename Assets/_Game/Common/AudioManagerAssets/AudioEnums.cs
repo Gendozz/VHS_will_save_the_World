@@ -1,8 +1,26 @@
-﻿namespace JSAM {
+namespace JSAM {
     public enum Sounds {
+        CloneSwap,
+        Death,
+        Detonate,
+        DoorCrash,
+        DoubleJump,
+        HealthCollectible,
+        Jump,
+        Kick,
+        KickAttack,
+        LeverSound,
         MM_Button1,
         MM_Button2,
         MM_Button3,
+        NormalSteps,
+        PlayerSwap,
+        PreDetonate,
+        ShootingTrapSound,
+        SlipperySteps,
+        SpikesInvulnerability,
+        SpringTrapSound,
+        TakeDamage,
         TapePiece_01,
         TapePiece_02,
         TapePiece_03,
@@ -29,8 +47,10 @@
         FinalTrack_10,
         FinalTrack_11,
         FinalTrack_12,
-        Level1Noise,
-        Level2Noise,
+        Level1Noise1,
+        Level1Noise2,
+        Level2NoiseDown,
+        Level2NoiseUp,
         MainMenuTheme
     }
 }

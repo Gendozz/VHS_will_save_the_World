@@ -1,4 +1,5 @@
 ﻿using System;
+using JSAM;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -14,6 +15,8 @@ public class TapeCollectibleHandler : MonoBehaviour
 
     [SerializeField] private Image _tapesBar;
 
+    private Sounds[] _tapesPieces = new Sounds[12]; 
+
     private int _currentTotalTapes;
 
     public int GotTapesAmountOnLevel { get; private set; } = 0;
@@ -24,6 +27,19 @@ public class TapeCollectibleHandler : MonoBehaviour
     {
         _currentTotalTapes = GameFlowController.TotalTapesAmount;
         _tapesBar.fillAmount = (float)(GotTapesAmountOnLevel + _currentTotalTapes) / 12;
+
+        _tapesPieces[0] = Sounds.TapePiece_01;
+        _tapesPieces[1] = Sounds.TapePiece_02;
+        _tapesPieces[2] = Sounds.TapePiece_03;
+        _tapesPieces[3] = Sounds.TapePiece_04;
+        _tapesPieces[4] = Sounds.TapePiece_05;
+        _tapesPieces[5] = Sounds.TapePiece_06;
+        _tapesPieces[6] = Sounds.TapePiece_07;
+        _tapesPieces[7] = Sounds.TapePiece_08;
+        _tapesPieces[8] = Sounds.TapePiece_09;
+        _tapesPieces[9] = Sounds.TapePiece_10;
+        _tapesPieces[10] = Sounds.TapePiece_11;
+        _tapesPieces[11] = Sounds.TapePiece_12;
 
         //Debug.Log("Current total tapes on Start: " + _totalTapesCollected);
     }
@@ -46,6 +62,9 @@ public class TapeCollectibleHandler : MonoBehaviour
 
         _tapesBar.fillAmount = (float) (GotTapesAmountOnLevel + _currentTotalTapes) / 12;
         _tapesText.text = _textBeforeTapes + " " + GotTapesAmountOnLevel + _currentTotalTapes;
+
+        AudioManager.PlaySound(_tapesPieces[_currentTotalTapes + GotTapesAmountOnLevel - 1]);
+        Debug.Log($"Just played {_tapesPieces[_currentTotalTapes + GotTapesAmountOnLevel - 1]}");
     }
 
     private void TellHowMuchTapesCollectedOnLevelEnd()

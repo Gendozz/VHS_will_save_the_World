@@ -56,6 +56,8 @@ MonoBehaviour:
   _damageAmount: 1
   _colorLerp: {fileID: 3016254631418516886}
   _redAlertLerp: {fileID: 1006344541575922324}
+  _preDetonateSound: 12
+  _detonateSound: 1
 --- !u!114 &3016254631418516886
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -1,22 +1,23 @@
 ﻿using System.Collections;
+using JSAM;
 using UnityEngine;
 
 public class DamageOnDetonation : MonoBehaviour, IActivatable
 {
-    [Header("Радиус поражения")]
-    [SerializeField] private float _damageRadius;
+    [Header("Радиус поражения")] [SerializeField]
+    private float _damageRadius;
 
-    [Header("Слой игрока")]
-    [SerializeField] private LayerMask _playerLayer;
+    [Header("Слой игрока")] [SerializeField]
+    private LayerMask _playerLayer;
 
-    [Header("Задержка между активацией и взрывом")]
-    [SerializeField] private float _delayBeforeExplosion;
+    [Header("Задержка между активацией и взрывом")] [SerializeField]
+    private float _delayBeforeExplosion;
 
-    [Header("Размер урона")]
-    [SerializeField] private int _damageAmount;
+    [Header("Размер урона")] [SerializeField]
+    private int _damageAmount;
 
-    [Header("Ссылка на ColorLerp")]
-    [SerializeField] private ColorLerp _colorLerp;
+    [Header("Ссылка на ColorLerp")] [SerializeField]
+    private ColorLerp _colorLerp;
 
     [SerializeField] private RedAlertLerp _redAlertLerp;
 
@@ -44,7 +45,8 @@ public class DamageOnDetonation : MonoBehaviour, IActivatable
     {
         if (_isActivated)
         {
-            int collidersAmount = Physics.OverlapSphereNonAlloc(transform.position, _damageRadius, _playerCollider, _playerLayer);
+            int collidersAmount =
+                Physics.OverlapSphereNonAlloc(transform.position, _damageRadius, _playerCollider, _playerLayer);
             _isIntoDamageRadius = collidersAmount > 0;
         }
     }
@@ -53,7 +55,9 @@ public class DamageOnDetonation : MonoBehaviour, IActivatable
     {
         _colorLerp.StartLerp();
         _redAlertLerp.StartLerp();
+        AudioManager.PlaySoundLoop(Sounds.PreDetonate);
         yield return new WaitForSeconds(_delayBeforeExplosion);
+        AudioManager.StopSoundLoop(Sounds.PreDetonate);
 
         if (_isIntoDamageRadius)
         {
@@ -68,6 +72,7 @@ public class DamageOnDetonation : MonoBehaviour, IActivatable
 
     private void SelfDestroy()
     {
+        AudioManager.PlaySound(Sounds.Detonate);
         gameObject.SetActive(false);
     }
 
