@@ -20,7 +20,7 @@ MonoBehaviour:
   category: 
   relativeVolume: 0.32
   spatialize: 1
-  maxDistance: 10
+  maxDistance: 5
   priority: 128
   startingPitch: 1
   pitchShift: 0.05

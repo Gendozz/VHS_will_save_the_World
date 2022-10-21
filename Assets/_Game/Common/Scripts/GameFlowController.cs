@@ -16,6 +16,9 @@ public class GameFlowController : MonoBehaviour
 
     private int _sceneBuildNumberToResetProgress = 2;
 
+    // DEBUG
+    [SerializeField] private int _tapesAmountForSaveDEBUG;
+
     private void OnEnable()
     {
         TapeCollectibleHandler.onLevelEndCoinsCollected += SaveGame;
@@ -26,7 +29,6 @@ public class GameFlowController : MonoBehaviour
     {
         TapeCollectibleHandler.onLevelEndCoinsCollected -= SaveGame;
         LevelEnd.onPlayerGotToLevelEnd -= DoPlayerWinActions;
-
     }
 
     private void Awake()
@@ -40,6 +42,7 @@ public class GameFlowController : MonoBehaviour
 
         //Debug.Log("onProgessLoaded fired");
     }
+
     private void DoPlayerWinActions()
     {
         //_isGamePaused = true;
@@ -56,7 +59,6 @@ public class GameFlowController : MonoBehaviour
 
     private Save CreateSaveObject(int tapesCollectedAmount, int levelCompleteAmount)
     {
-
         Save save = new Save();
 
         save.TotalTapes = tapesCollectedAmount;
@@ -113,19 +115,24 @@ public class GameFlowController : MonoBehaviour
     }
 
 
-
-
     // FOR DEBUG
 
     private void OnGUI()
     {
-        if (SceneManager.GetActiveScene().buildIndex == 0)
-        {
-            if (GUI.Button(new Rect(10, 10, 150, 50), "Clear Progress"))
-                ResetProgress();
-        }
+        if (GUI.Button(new Rect(10, 10, 150, 50), "Clear Progress"))
+            ResetProgress();
+
+        if (GUI.Button(new Rect(500, 70, 200, 50), "Save tapes amount DEBUG"))
+            DEBUG_SAVE_LOAD(_tapesAmountForSaveDEBUG);
+
+        GUI.Label(new Rect(500, 10, 200, 50), $"Total tapes: {TotalTapesAmount}, Level completed: {LevelsComplete}");
     }
 
+    private void DEBUG_SAVE_LOAD(int _tapesToSave)
+    {
+        SaveGame(_tapesToSave);
+        LoadProgress();
+    }
 
     //private void OnLevelWasLoaded(int level)
     //{

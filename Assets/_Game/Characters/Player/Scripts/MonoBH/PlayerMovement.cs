@@ -284,7 +284,7 @@ public class PlayerMovement : MonoBehaviour
     {
         if (ShouldApplyHorizontalMovement())
         {
-            if (IsGrounded)
+            if (IsGrounded || IsOnSlippery)
             {
                 if (!IsOnSlippery)
                 {
@@ -292,7 +292,8 @@ public class PlayerMovement : MonoBehaviour
                 }
                 else
                 {
-                    _rigidbody.velocity = new Vector3(_speedCurve.Evaluate(_playerInput.HorizontalDirection), _rigidbody.velocity.y, _rigidbody.velocity.z);
+                    _rigidbody.velocity = new Vector3(_slipperySpeedCurve.Evaluate(_playerInput.HorizontalDirection), _rigidbody.velocity.y, _rigidbody.velocity.z);
+                    Debug.Log("IsOnSlippery");
                 }
                 _isJumpingFromWall = false;
             }
@@ -458,12 +459,23 @@ public class PlayerMovement : MonoBehaviour
     {
         if (doPausing)
         {
-            onPauseVelocity = _rigidbody.velocity;
+            //Debug.Log("Do pause things");
+            _horizontalInputTreshold = 1;
             onPauseAngularVelocity = _rigidbody.angularVelocity;
+            _rigidbody.angularVelocity = Vector3.zero;
+            onPauseVelocity = _rigidbody.velocity;
+            _rigidbody.velocity = Vector3.zero;
+            
             _rigidbody.isKinematic = true;
+            _rigidbody.Sleep();
+            _canMove = false;
         }
         else
         {
+            //Debug.Log("Do unPause things");
+            _horizontalInputTreshold = 0.15f;
+            _canMove = true;
+            
             _rigidbody.isKinematic = false;
             _rigidbody.velocity = onPauseVelocity;
             _rigidbody.angularVelocity = onPauseAngularVelocity;

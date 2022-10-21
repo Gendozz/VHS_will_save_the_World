@@ -31,23 +31,18 @@ public class LevelFlowController : MonoBehaviour
     {
         _playerHealth.onOutOfLifes += DoAfterPlayerDieActions;
         ShowRemainingTapes.onShowingRemainingTapes += SwitchPlayerMovement;
+        _menuController.OnPauseCanvasSwitchedOff += SwitchPauseState;
     }
 
     private void OnDisable()
     {
         _playerHealth.onOutOfLifes -= DoAfterPlayerDieActions;
         ShowRemainingTapes.onShowingRemainingTapes -= SwitchPlayerMovement;
+        _menuController.OnPauseCanvasSwitchedOff -= SwitchPauseState;
+
 
     }
-
-    private void Update()
-    {
-        if (Input.GetButtonDown(StringConsts.ESC))
-        {
-            SwitchPauseState();
-        }
-    }
-
+    
     private void DoAfterPlayerDieActions()
     {
         _isGamePaused = true;
@@ -62,12 +57,13 @@ public class LevelFlowController : MonoBehaviour
     public void SwitchPauseState()
     {
         _isGamePaused = !_isGamePaused;
-        _menuController.SwitchPauseCanvas();
+        //_menuController.SwitchPauseCanvas();
         SwitchMotions(!_isGamePaused);
     }
 
     private void SwitchMotions(bool needMotions)
     {
+        Debug.Log("SwitchMotions called");
         for (int i = 0; i < _playerInputs.Length; i++)
         {
             _playerInputs[i].enabled = needMotions;
@@ -84,6 +80,7 @@ public class LevelFlowController : MonoBehaviour
 
     private void SwitchPlayerMovement(bool needMotions)
     {
+        Debug.Log("SwitchPlayerMovement called");
         for (int i = 0; i < _playerInputs.Length; i++)
         {
             _playerInputs[i].enabled = !needMotions;

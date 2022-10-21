@@ -10,7 +10,7 @@ public class UIMenuController : MonoBehaviour
 
     private bool _isPauseCanvasDisplayed = false;
 
-    public Action onPauseCanvasSwitchedOff;
+    public event Action OnPauseCanvasSwitchedOff;
 
     private void Awake()
     {
@@ -20,6 +20,14 @@ public class UIMenuController : MonoBehaviour
         SetUpCanvasGroup(winCanvasGroup, 0, false, false);
         SetUpCanvasGroup(failCanvasGroup, 0, false, false);
         SetUpCanvasGroup(pauseCanvasGroup, 0, false, false);
+    }
+
+    private void Update()
+    {
+        if (Input.GetButtonDown(StringConsts.ESC))
+        {
+            SwitchPauseCanvas();
+        }
     }
 
     public void ShowFailCanvas()
@@ -33,15 +41,12 @@ public class UIMenuController : MonoBehaviour
     }
 
     public void SwitchPauseCanvas()
-    {            
+    {
         _isPauseCanvasDisplayed = !_isPauseCanvasDisplayed;
         float canvasAlpha = _isPauseCanvasDisplayed ? 1 : 0;
         SetUpCanvasGroup(pauseCanvasGroup, canvasAlpha, _isPauseCanvasDisplayed, _isPauseCanvasDisplayed);
-        
-        if (!_isPauseCanvasDisplayed)
-        {
-            onPauseCanvasSwitchedOff?.Invoke();
-        }
+
+        OnPauseCanvasSwitchedOff?.Invoke();
     }
 
     public void SetUpCanvasGroup(CanvasGroup canvasGroup, float alpha, bool blocksRaycasts, bool interactable)

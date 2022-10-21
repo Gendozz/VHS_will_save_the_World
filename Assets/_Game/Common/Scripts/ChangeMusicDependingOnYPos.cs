@@ -38,7 +38,6 @@ public class ChangeMusicDependingOnYPos : MonoBehaviour
                 if (!AudioManager.IsMusicPlaying(_upLevelMusic))
                 {
                     AudioManager.PlayMusic(_upLevelMusic); 
-                    //Debug.Log("up music started");
                 }
             }
             else
@@ -51,7 +50,6 @@ public class ChangeMusicDependingOnYPos : MonoBehaviour
                 if (!AudioManager.IsMusicPlaying(_downLevelMusic))
                 {
                     AudioManager.PlayMusic(_downLevelMusic);
-                    //Debug.Log("down music started");
                 }
 
             }        
